@@ -1,0 +1,102 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ namespacedModel }};
+use {{ rootNamespace }}Http\Controllers\Controller;
+use App\Http\Resources\{{ model }}Resource;
+use {{ namespacedRequests }}
+
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
+
+class {{ class }} extends Controller
+{
+    public function index()
+    {
+        // Get Data
+        ${{ modelVariable }}s = {{ model }}::latest()->get();
+
+        // OR with filter
+
+        // ${{ modelVariable }}s = QueryBuilder::for({{ model }}::class)
+        //     ->allowedFilters([
+        //         "test_id",
+        //         AllowedFilter::exact('test_id'),
+        //     ])->get();
+
+
+        // Return Response
+        return response()->success(
+            'this is all {{ model }}s',
+            [
+                "{{ modelVariable }}s" => {{ model }}Resource::collection(${{ modelVariable }}s),
+            ]
+        );
+    }
+
+
+    public function store({{ storeRequest }} $request)
+    {
+        // Store {{ model }}
+        ${{ modelVariable }} = {{ model }}::create($request->validated());
+
+
+        // Add Image to {{ model }}
+        ${{ modelVariable }}
+            ->addMediaFromRequest('image')
+            ->toMediaCollection('{{ model }}');
+
+        // Return Response
+        return response()->success(
+            '{{ modelVariable }} is added success',
+            [
+                "{{ modelVariable }}" => new {{ model }}Resource(${{ modelVariable }}),
+            ]
+        );
+    }
+
+
+    public function show({{ model }} ${{ modelVariable }})
+    {
+        // Return Response
+        return response()->success(
+            'this is your {{ modelVariable }}',
+            [
+                "{{ modelVariable }}" => new {{ model }}Resource(${{ modelVariable }}),
+            ]
+        );
+    }
+
+    public function update({{ updateRequest }} $request, {{ model }} ${{ modelVariable }})
+    {
+        // Update {{ model }}
+         ${{ modelVariable }}->update($request->validated());
+
+
+        // Edit Image for  {{ model }} if exist
+        $request->hasFile('image') &&
+            ${{ modelVariable }}
+                ->addMediaFromRequest('image')
+                ->toMediaCollection('{{ model }}');
+
+
+
+        // Return Response
+        return response()->success(
+            '{{ modelVariable }} is updated success',
+            [
+                "{{ modelVariable }}" => new {{ model }}Resource(${{ modelVariable }}),
+            ]
+        );
+    }
+
+    public function destroy({{ model }} ${{ modelVariable }})
+    {
+        // Delete {{ model }}
+        ${{ modelVariable }}->delete();
+
+        // Return Response
+        return response()->success('{{ modelVariable }} is deleted success');
+    }
+}
