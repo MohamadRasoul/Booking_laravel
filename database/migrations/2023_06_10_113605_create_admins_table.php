@@ -12,12 +12,11 @@ return new class extends Migration
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
 
-            // $table->string('text');
+            $table->string('name');
+            $table->string('username')->unique();
+            $table->string('password');
+            $table->rememberToken();
 
-
-
-
-           
             ######## Foreign keys  ########
 
             // $table->foreignIdFor(City::class)->constrained('cities')->cascadeOnDelete();
