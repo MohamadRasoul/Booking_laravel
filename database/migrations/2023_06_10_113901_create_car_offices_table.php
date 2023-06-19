@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Admin;
+use App\Models\City;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,6 +19,7 @@ return new class extends Migration {
             ######## Foreign keys  ########
 
             $table->foreignIdFor(Admin::class)->constrained();
+            $table->foreignIdFor(City::class)->constrained();
 
             $table->timestamps();
         });

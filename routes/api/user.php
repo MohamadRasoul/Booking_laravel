@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Mobile\Api\CityController;
+use App\Http\Controllers\Mobile\Api;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,24 +27,36 @@ Route::group([
     "prefix" => "city"
 ], function () {
 
-    Route::GET('/', [CityController::class, "index"]);
-    Route::GET('{city}', [CityController::class, "show"]);
+    Route::GET('/', [Api\CityController::class, "index"]);
+    Route::GET('{city}', [Api\CityController::class, "show"]);
 
 });
+
+
+Route::group([
+    "prefix" => "carOffice"
+], function () {
+    Route::GET('', [Api\CarOfficeController::class, "index"]);
+    Route::GET('{carOffice}', [Api\CarOfficeController::class, "show"]);
+});
+
+
+
+
+
 
 //
 //Route::group([
 //    "prefix" => "city"
 //], function () {
 //
-//    Route::GET('', [CityController::class, "index"]);
-//    Route::GET('{city}', [CityController::class, "show"]);
+//    Route::GET('', [Api\CityController::class, "index"]);
+//    Route::GET('{city}', [Api\CityController::class, "show"]);
 //
-//    Route::POST('store', [CityController::class, "store"]);
-//    Route::PUT('{city}', [CityController::class, "update"]);
-//    Route::DELETE('{city}', [CityController::class, "destroy"]);
+//    Route::POST('store', [Api\CityController::class, "store"]);
+//    Route::PUT('{city}', [Api\CityController::class, "update"]);
+//    Route::DELETE('{city}', [Api\CityController::class, "destroy"]);
 //});
-
 
 
 
