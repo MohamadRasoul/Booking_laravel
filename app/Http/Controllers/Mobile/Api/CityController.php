@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Mobile\Api;
 
-use App\Http\Resources\CityResource;
-use App\Models\City;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCityRequest;
 use App\Http\Requests\UpdateCityRequest;
-
+use App\Http\Resources\CityResource;
+use App\Models\City;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -15,11 +15,11 @@ class CityController extends Controller
     public function index()
     {
         // Get Data
-        $citys = City::latest()->get();
+        $cities = City::latest()->get();
 
         // OR with filter
 
-        // $citys = QueryBuilder::for(City::class)
+        // $cities = QueryBuilder::for(City::class)
         //     ->allowedFilters([
         //         "test_id",
         //         AllowedFilter::exact('test_id'),
@@ -28,9 +28,9 @@ class CityController extends Controller
 
         // Return Response
         return response()->success(
-            'this is all Citys',
+            'this is all cities',
             [
-                "citys" => CityResource::collection($citys),
+                "cities" => CityResource::collection($cities),
             ]
         );
     }
@@ -71,14 +71,14 @@ class CityController extends Controller
     public function update(UpdateCityRequest $request, City $city)
     {
         // Update City
-         $city->update($request->validated());
+        $city->update($request->validated());
 
 
         // Edit Image for  City if exist
         $request->hasFile('image') &&
             $city
-                ->addMediaFromRequest('image')
-                ->toMediaCollection('City');
+            ->addMediaFromRequest('image')
+            ->toMediaCollection('City');
 
 
 

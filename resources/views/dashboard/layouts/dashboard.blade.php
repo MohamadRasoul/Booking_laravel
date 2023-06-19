@@ -1,4 +1,17 @@
 <x-dashboard-layout::app :title="$title">
+
+    <x-slot name="head">
+        {{ $head ?? '' }}
+    </x-slot>
+
+    <x-slot name="javascript">
+        {{ $javascript ?? '' }}
+    </x-slot>
+
+
+
+
+
     <!-- Page Header Start-->
     <x-dashboard-partial::header />
 

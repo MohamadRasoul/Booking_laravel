@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Mobile\Api;
 
-use App\Http\Resources\officeCarTypeResource;
-use App\Models\officeCarType;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreofficeCarTypeRequest;
 use App\Http\Requests\UpdateofficeCarTypeRequest;
-
+use App\Http\Resources\officeCarTypeResource;
+use App\Models\officeCarType;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 

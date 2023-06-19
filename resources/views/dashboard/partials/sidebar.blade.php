@@ -61,7 +61,7 @@
 
                     </li>
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="sample-page.html">
+                        <a class="sidebar-link sidebar-title link-nav" href={{ route('city.index') }}>
                             <i data-feather="file-text">
 
                             </i>

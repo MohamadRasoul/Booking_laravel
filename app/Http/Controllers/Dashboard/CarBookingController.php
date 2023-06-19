@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Resources\CarBookingResource;
-use App\Models\CarBooking;
+
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCarBookingRequest;
 use App\Http\Requests\UpdateCarBookingRequest;
-
+use App\Http\Resources\CarBookingResource;
+use App\Models\CarBooking;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 

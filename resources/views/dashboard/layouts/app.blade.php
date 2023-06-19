@@ -20,18 +20,18 @@
         rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/font-awesome.css') }}">
     <!-- ico-font-->
-        <link rel="stylesheet" type="text/css" href="{{asset('dashboard/assets/css/vendors/icofont.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/vendors/icofont.css') }}">
     <!-- Themify icon-->
     <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/vendors/themify.css') }}">
     <!-- Flag icon-->
-        <link rel="stylesheet" type="text/css" href="{{asset('dashboard/assets/css/vendors/flag-icon.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/vendors/flag-icon.css') }}">
     <!-- Feather icon-->
-        <link rel="stylesheet" type="text/css" href="{{asset('dashboard/assets/css/vendors/feather-icon.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/vendors/feather-icon.css') }}">
     {{--    <!-- Plugins css start--> --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/vendors/scrollbar.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/vendors/animate.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{asset('dashboard/assets/css/vendors/chartist.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{asset('dashboard/assets/css/vendors/date-picker.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/vendors/chartist.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/vendors/date-picker.css') }}">
     {{--    <!-- Plugins css Ends--> --}}
     <!-- Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/vendors/bootstrap.css') }}">
@@ -41,7 +41,10 @@
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/responsive.css') }}">
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css'])
+
+
+    {{ $head ?? '' }}
 
 </head>
 
@@ -65,7 +68,6 @@
 
 
         {{ $slot }}
-
 
 
     </div>
@@ -103,9 +105,12 @@
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
     <script src="{{ asset('dashboard/assets/js/script.js') }}"></script>
-{{--    <script src="{{ asset('dashboard/assets/js/theme-customizer/customizer.js') }}"></script>--}}
+    {{--    <script src="{{ asset('dashboard/assets/js/theme-customizer/customizer.js') }}"></script> --}}
     <!-- login js-->
     <!-- Plugin used-->
+    {{ $javascript ?? '' }}
+    @vite(['resources/js/app.js'])
+
 </body>
 
 </html>
