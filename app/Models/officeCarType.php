@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class OfficeCarType extends Model
 {
@@ -14,6 +15,9 @@ class OfficeCarType extends Model
     protected $casts = [];
 
     ########## Relations ##########
-
+    public function carOffice(): BelongsTo
+    {
+        return $this->belongsTo(CarOffice::class);
+    }
 
 }

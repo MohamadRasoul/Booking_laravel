@@ -3,27 +3,34 @@
 namespace App\Http\Controllers\Mobile\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Mobile\CarBooking\IndexForUserRequest;
 use App\Http\Requests\StoreCarBookingRequest;
-use App\Http\Requests\UpdateCarBookingRequest;
 use App\Http\Resources\CarBookingResource;
 use App\Models\CarBooking;
+use Illuminate\Support\Facades\Auth;
 use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\AllowedInclude;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class CarBookingController extends Controller
 {
-    public function index()
+    public function indexForUser(IndexForUserRequest $request)
     {
-        // Get Data
-        $carBookings = CarBooking::latest()->get();
+        // Get Data with filter
 
-        // OR with filter
+        $user = Auth::guard('api_user')->user();
 
-        // $carBookings = QueryBuilder::for(CarBooking::class)
-        //     ->allowedFilters([
-        //         "test_id",
-        //         AllowedFilter::exact('test_id'),
-        //     ])->get();
+
+        $carBookings = QueryBuilder::for($user->carBookings())
+            ->allowedFilters([
+                "status",
+                AllowedFilter::exact('car_office_id', 'officeCarType.carOffice.id'),
+            ])
+            ->allowedIncludes(
+                'user',
+                AllowedInclude::relationship("officeCarType.carOffice")
+            )
+            ->get();
 
 
         // Return Response
@@ -38,14 +45,10 @@ class CarBookingController extends Controller
 
     public function store(StoreCarBookingRequest $request)
     {
+        $user = Auth::guard('api_user')->user();
+
         // Store CarBooking
-        $carBooking = CarBooking::create($request->validated());
-
-
-        // Add Image to CarBooking
-        $carBooking
-            ->addMediaFromRequest('image')
-            ->toMediaCollection('CarBooking');
+        $carBooking = $user->carBookings()->create($request->validated());
 
         // Return Response
         return response()->success(
@@ -59,6 +62,13 @@ class CarBookingController extends Controller
 
     public function show(CarBooking $carBooking)
     {
+
+        $carBooking->load(
+            [
+                'user',
+                'officeCarType' => ['carOffice']
+            ]);
+
         // Return Response
         return response()->success(
             'this is your carBooking',
@@ -68,28 +78,6 @@ class CarBookingController extends Controller
         );
     }
 
-    public function update(UpdateCarBookingRequest $request, CarBooking $carBooking)
-    {
-        // Update CarBooking
-         $carBooking->update($request->validated());
-
-
-        // Edit Image for  CarBooking if exist
-        $request->hasFile('image') &&
-            $carBooking
-                ->addMediaFromRequest('image')
-                ->toMediaCollection('CarBooking');
-
-
-
-        // Return Response
-        return response()->success(
-            'carBooking is updated success',
-            [
-                "carBooking" => new CarBookingResource($carBooking),
-            ]
-        );
-    }
 
     public function destroy(CarBooking $carBooking)
     {

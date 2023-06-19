@@ -51,6 +51,16 @@ Route::group([
         Route::GET('', [Api\CarTypeController::class, "index"]);
     });
 
+    Route::group([
+        "prefix" => "carBooking"
+    ], function () {
+        Route::GET('getAllForUser', [Api\CarBookingController::class, "indexForUser"]);
+        Route::GET('{carBooking}', [Api\CarBookingController::class, "show"]);
+
+        Route::POST('', [Api\CarBookingController::class, "store"]);
+
+    });
+
 });
 
 
