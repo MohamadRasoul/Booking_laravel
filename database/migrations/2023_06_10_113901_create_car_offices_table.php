@@ -1,26 +1,23 @@
 <?php
 
+use App\Models\Admin;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
 
     public function up(): void
     {
         Schema::create('car_offices', function (Blueprint $table) {
             $table->id();
 
-            // $table->string('text');
+            $table->string('name');
 
 
-
-
-           
             ######## Foreign keys  ########
 
-            // $table->foreignIdFor(City::class)->constrained('cities')->cascadeOnDelete();
+            $table->foreignIdFor(Admin::class)->constrained();
 
             $table->timestamps();
         });
