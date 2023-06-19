@@ -40,6 +40,12 @@ Route::group([
     Route::GET('{carOffice}', [Api\CarOfficeController::class, "show"]);
 });
 
+Route::group([
+    "prefix" => "carType"
+], function () {
+    Route::GET('', [Api\CarTypeController::class, "index"]);
+});
+
 
 
 
