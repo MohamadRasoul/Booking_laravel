@@ -1,8 +1,10 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\TestSeeder;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Seeders\AdminSeeder;
+use Database\Seeders\citySeeder;
 use Illuminate\Database\Seeder;
 
 class TestSeeder extends Seeder
