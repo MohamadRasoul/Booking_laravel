@@ -13,13 +13,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->callWith([
-            TestSeeder::class
-        ]);
 
         $this->call([
             citySeeder::class,
             AdminSeeder::class,
+            CarTypeSeeder::class,
         ]);
+
+
+        $this->callWith([
+            TestSeeder::class
+        ]);
+
     }
 }

@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CarTypeFactory extends Factory
 {
-  
+
     public function definition(): array
     {
         return [
-            // "name"   => $this->faker->name,
+            "name" => $this->faker->name,
         ];
     }
 }

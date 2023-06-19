@@ -19,7 +19,12 @@ class CarOfficeController extends Controller
                 "name",
                 AllowedFilter::exact('city_id'),
                 AllowedFilter::exact('admin_id'),
-            ])->get();
+            ])
+            ->allowedIncludes([
+                'carTypes'
+            ])
+            ->with('admin', 'city')
+            ->get();
 
 
         // Return Response
@@ -35,6 +40,7 @@ class CarOfficeController extends Controller
 
     public function show(CarOffice $carOffice)
     {
+        $carOffice->load('admin', 'city', 'carTypes');
         // Return Response
         return response()->success(
             'this is your carOffice',
