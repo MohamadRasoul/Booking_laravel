@@ -2,15 +2,14 @@
 
 namespace Database\Seeders\TestSeeder;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class OfficeCarTypeSeeder extends Seeder
+class UserSeeder extends Seeder
 {
-
-
     public function run(): void
     {
-        //  \App\Models\OfficeCarTypeSeeder::factory(10)->create();
+        User::factory(10)->create();
 
     }
 }

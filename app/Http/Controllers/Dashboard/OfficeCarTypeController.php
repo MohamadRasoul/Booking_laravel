@@ -7,16 +7,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreofficeCarTypeRequest;
 use App\Http\Requests\UpdateofficeCarTypeRequest;
 use App\Http\Resources\officeCarTypeResource;
-use App\Models\officeCarType;
-use Spatie\QueryBuilder\AllowedFilter;
-use Spatie\QueryBuilder\QueryBuilder;
+use App\Models\OfficeCarType;
 
 class OfficeCarTypeController extends Controller
 {
     public function index()
     {
         // Get Data
-        $officeCarTypes = officeCarType::latest()->get();
+        $officeCarTypes = OfficeCarType::latest()->get();
 
         // OR with filter
 
@@ -40,7 +38,7 @@ class OfficeCarTypeController extends Controller
     public function store(StoreofficeCarTypeRequest $request)
     {
         // Store officeCarType
-        $officeCarType = officeCarType::create($request->validated());
+        $officeCarType = OfficeCarType::create($request->validated());
 
 
         // Add Image to officeCarType
@@ -58,7 +56,7 @@ class OfficeCarTypeController extends Controller
     }
 
 
-    public function show(officeCarType $officeCarType)
+    public function show(OfficeCarType $officeCarType)
     {
         // Return Response
         return response()->success(
@@ -69,17 +67,17 @@ class OfficeCarTypeController extends Controller
         );
     }
 
-    public function update(UpdateofficeCarTypeRequest $request, officeCarType $officeCarType)
+    public function update(UpdateofficeCarTypeRequest $request, OfficeCarType $officeCarType)
     {
         // Update officeCarType
-         $officeCarType->update($request->validated());
+        $officeCarType->update($request->validated());
 
 
         // Edit Image for  officeCarType if exist
         $request->hasFile('image') &&
-            $officeCarType
-                ->addMediaFromRequest('image')
-                ->toMediaCollection('officeCarType');
+        $officeCarType
+            ->addMediaFromRequest('image')
+            ->toMediaCollection('officeCarType');
 
 
 
@@ -92,7 +90,7 @@ class OfficeCarTypeController extends Controller
         );
     }
 
-    public function destroy(officeCarType $officeCarType)
+    public function destroy(OfficeCarType $officeCarType)
     {
         // Delete officeCarType
         $officeCarType->delete();

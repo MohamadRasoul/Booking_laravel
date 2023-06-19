@@ -11,6 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('office_car_type', function (Blueprint $table) {
+            $table->id();
 
             ######## Foreign keys  ########
             $table->foreignIdFor(CarOffice::class)->constrained();

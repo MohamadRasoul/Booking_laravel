@@ -24,28 +24,34 @@ Route::group([
 
 
 Route::group([
-    "prefix" => "city"
+    "middleware" => "auth:api_user"
 ], function () {
 
-    Route::GET('/', [Api\CityController::class, "index"]);
-    Route::GET('{city}', [Api\CityController::class, "show"]);
+
+    Route::group([
+        "prefix" => "city"
+    ], function () {
+
+        Route::GET('/', [Api\CityController::class, "index"]);
+        Route::GET('{city}', [Api\CityController::class, "show"]);
+
+    });
+
+
+    Route::group([
+        "prefix" => "carOffice"
+    ], function () {
+        Route::GET('', [Api\CarOfficeController::class, "index"]);
+        Route::GET('{carOffice}', [Api\CarOfficeController::class, "show"]);
+    });
+
+    Route::group([
+        "prefix" => "carType"
+    ], function () {
+        Route::GET('', [Api\CarTypeController::class, "index"]);
+    });
 
 });
-
-
-Route::group([
-    "prefix" => "carOffice"
-], function () {
-    Route::GET('', [Api\CarOfficeController::class, "index"]);
-    Route::GET('{carOffice}', [Api\CarOfficeController::class, "show"]);
-});
-
-Route::group([
-    "prefix" => "carType"
-], function () {
-    Route::GET('', [Api\CarTypeController::class, "index"]);
-});
-
 
 
 

@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
+use App\Models\OfficeCarType;
 use App\Models\User;
-use App\Models\officeCarType;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class OfficeCarTypePolicy
@@ -13,7 +13,7 @@ class OfficeCarTypePolicy
     /**
      * Determine whether the user can view any models.
      *
-     * @param  \App\Models\User  $user
+     * @param User $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function viewAny(User $user)
@@ -24,11 +24,11 @@ class OfficeCarTypePolicy
     /**
      * Determine whether the user can view the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\officeCarType  $officeCarType
+     * @param User $user
+     * @param OfficeCarType $officeCarType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, officeCarType $officeCarType)
+    public function view(User $user, OfficeCarType $officeCarType)
     {
         //
     }
@@ -36,7 +36,7 @@ class OfficeCarTypePolicy
     /**
      * Determine whether the user can create models.
      *
-     * @param  \App\Models\User  $user
+     * @param User $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function create(User $user)
@@ -47,11 +47,11 @@ class OfficeCarTypePolicy
     /**
      * Determine whether the user can update the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\officeCarType  $officeCarType
+     * @param User $user
+     * @param OfficeCarType $officeCarType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, officeCarType $officeCarType)
+    public function update(User $user, OfficeCarType $officeCarType)
     {
         //
     }
@@ -59,11 +59,11 @@ class OfficeCarTypePolicy
     /**
      * Determine whether the user can delete the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\officeCarType  $officeCarType
+     * @param User $user
+     * @param OfficeCarType $officeCarType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, officeCarType $officeCarType)
+    public function delete(User $user, OfficeCarType $officeCarType)
     {
         //
     }
@@ -71,11 +71,11 @@ class OfficeCarTypePolicy
     /**
      * Determine whether the user can restore the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\officeCarType  $officeCarType
+     * @param User $user
+     * @param OfficeCarType $officeCarType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, officeCarType $officeCarType)
+    public function restore(User $user, OfficeCarType $officeCarType)
     {
         //
     }
@@ -83,11 +83,11 @@ class OfficeCarTypePolicy
     /**
      * Determine whether the user can permanently delete the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\officeCarType  $officeCarType
+     * @param User $user
+     * @param OfficeCarType $officeCarType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, officeCarType $officeCarType)
+    public function forceDelete(User $user, OfficeCarType $officeCarType)
     {
         //
     }

@@ -2,19 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\Model;
 
-class officeCarType extends Pivot
+class OfficeCarType extends Model
 {
-    use HasFactory;
 
+
+    protected $table = 'office_car_type';
     protected $guarded = [];
 
     protected $casts = [];
 
     ########## Relations ##########
-
 
 
 }

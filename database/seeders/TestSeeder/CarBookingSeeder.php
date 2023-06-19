@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\TestSeeder;
 
+use App\Models\CarBooking;
 use Illuminate\Database\Seeder;
 
 class CarBookingSeeder extends Seeder
@@ -10,7 +11,7 @@ class CarBookingSeeder extends Seeder
 
     public function run(): void
     {
-        //  \App\Models\CarBookingSeeder::factory(10)->create();
+        CarBooking::factory(50)->create();
 
     }
 }

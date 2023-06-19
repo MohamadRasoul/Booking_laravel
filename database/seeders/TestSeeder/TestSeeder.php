@@ -15,7 +15,9 @@ class TestSeeder extends Seeder
 
 
         $this->call([
+            UserSeeder::class,
             CarOfficeSeeder::class,
+            CarBookingSeeder::class,
         ]);
 
 
