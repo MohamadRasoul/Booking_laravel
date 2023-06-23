@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable  implements JWTSubject
+class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -47,6 +47,11 @@ class User extends Authenticatable  implements JWTSubject
     public function carBookings(): HasMany
     {
         return $this->hasMany(CarBooking::class);
+    }
+
+    public function restaurantBookings(): HasMany
+    {
+        return $this->hasMany(RestaurantBooking::class);
     }
 
     ########## Libraries ##########

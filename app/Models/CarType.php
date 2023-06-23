@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 //use Spatie\MediaLibrary\HasMedia;
 //use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -28,7 +29,7 @@ class CarType extends Model //implements HasMedia
     // {
     //     $this
     //         ->addMediaCollection('CarType')
-    //         ->useFallbackUrl(env('APP_URL') . '/images/default.jpg')
+    //         ->useFallbackUrl(config('app.url') . '/images/default.jpg')
     //         ->singleFile();
     // }
 

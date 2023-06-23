@@ -18,6 +18,8 @@ class TestSeeder extends Seeder
             UserSeeder::class,
             CarOfficeSeeder::class,
             CarBookingSeeder::class,
+            RestaurantSeeder::class,
+            RestaurantBookingSeeder::class
         ]);
 
 

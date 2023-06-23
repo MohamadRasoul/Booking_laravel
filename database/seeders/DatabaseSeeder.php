@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             citySeeder::class,
             AdminSeeder::class,
             CarTypeSeeder::class,
+            TableTypeSeeder::class,
         ]);
 
 

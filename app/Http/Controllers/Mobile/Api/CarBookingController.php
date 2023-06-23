@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Mobile\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Mobile\CarBooking\IndexForUserRequest;
-use App\Http\Requests\StoreCarBookingRequest;
+use App\Http\Requests\Mobile\CarBooking\IndexCarBookingForUserRequest;
+use App\Http\Requests\Mobile\CarBooking\StoreCarBookingRequest;
 use App\Http\Resources\CarBookingResource;
 use App\Models\CarBooking;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +14,7 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class CarBookingController extends Controller
 {
-    public function indexForUser(IndexForUserRequest $request)
+    public function indexForUser(IndexCarBookingForUserRequest $request)
     {
         // Get Data with filter
 

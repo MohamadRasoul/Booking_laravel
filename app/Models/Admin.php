@@ -37,7 +37,7 @@ class Admin extends Authenticatable //implements HasMedia
     // {
     //     $this
     //         ->addMediaCollection('Admin')
-    //         ->useFallbackUrl(env('APP_URL') . '/images/default.jpg')
+    //         ->useFallbackUrl(config('app.url') . '/images/default.jpg')
     //         ->singleFile();
     // }
 

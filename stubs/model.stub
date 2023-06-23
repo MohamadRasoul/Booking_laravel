@@ -28,7 +28,7 @@ class {{ class }} extends Model //implements HasMedia
     // {
     //     $this
     //         ->addMediaCollection('{{ class }}')
-    //         ->useFallbackUrl(env('APP_URL') . '/images/default.jpg')
+    //         ->useFallbackUrl(config('app.url') . '/images/default.jpg')
     //         ->singleFile();
     // }
 

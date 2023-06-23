@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 //use Spatie\MediaLibrary\HasMedia;
 //use Spatie\MediaLibrary\InteractsWithMedia;
 
-class CarOffice extends Model //implements HasMedia
+class Restaurant extends Model //implements HasMedia
 {
     use HasFactory;
 
@@ -18,6 +18,7 @@ class CarOffice extends Model //implements HasMedia
 
     protected $fillable = [
         'name',
+        'about',
         'admin_id',
         'city_id'
     ];
@@ -36,19 +37,20 @@ class CarOffice extends Model //implements HasMedia
         return $this->belongsTo(City::class);
     }
 
-    public function carTypes(): BelongsToMany
+    public function tableTypes(): BelongsToMany
     {
-        return $this->belongsToMany(CarType::class, 'office_car_type');
+        return $this->belongsToMany(TableType::class, 'restaurant_table_type');
     }
+
     ########## Libraries ##########
 
 
-    // public function registerMediaCollections(): void
-    // {
-    //     $this
-    //         ->addMediaCollection('CarOffice')
-    //         ->useFallbackUrl(config('app.url') . '/images/default.jpg')
-    //         ->singleFile();
-    // }
+    public function registerMediaCollections(): void
+    {
+        $this
+            ->addMediaCollection('Restaurant')
+            ->useFallbackUrl(config('app.url') . '/images/default.jpg')
+            ->singleFile();
+    }
 
 }

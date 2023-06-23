@@ -46,6 +46,14 @@ Route::group([
 
     });
 
+    Route::group([
+        "prefix" => "restaurant"
+    ], function () {
+
+        require __DIR__ . '/restaurant.php';
+
+    });
+
 });
 
 

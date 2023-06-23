@@ -24,6 +24,7 @@ Route::group([
     Route::GET('{carBooking}', [Api\CarBookingController::class, "show"]);
 
     Route::POST('', [Api\CarBookingController::class, "store"]);
+    Route::DELETE('{carBooking}', [Api\CarBookingController::class, "destroy"]);
 
 });
 
