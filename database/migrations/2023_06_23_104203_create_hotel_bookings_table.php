@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\RestaurantTableType;
+use App\Models\HotelRoomType;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -10,10 +10,10 @@ return new class extends Migration {
 
     public function up(): void
     {
-        Schema::create('restaurant_bookings', function (Blueprint $table) {
+        Schema::create('hotel_bookings', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedInteger('table_number')->nullable();
+            $table->integer('room_number')->nullable();
 
             $table->unsignedSmallInteger('escorts_number')->default(0);
             $table->text('description')->nullable();
@@ -25,8 +25,7 @@ return new class extends Migration {
             ######## Foreign keys  ########
 
             $table->foreignIdFor(User::class)->constrained();
-            $table->foreignIdFor(RestaurantTableType::class)->constrained('restaurant_table_type');
-
+            $table->foreignIdFor(HotelRoomType::class)->constrained('hotel_room_type');
 
             $table->timestamps();
         });
@@ -34,6 +33,6 @@ return new class extends Migration {
 
     public function down(): void
     {
-        Schema::dropIfExists('restaurant_bookings');
+        Schema::dropIfExists('hotel_bookings');
     }
 };

@@ -17,7 +17,7 @@ class StoreCarBookingRequest extends FormRequest
     {
         return [
             "address_details" => ['required', 'string'],
-            "seat_number" => ['required', 'integer'],
+            "escorts_number" => ['required', 'integer'],
             "latitude_from" => ['required', 'numeric', 'between:-90,90'],
             "longitude_from" => ['required', 'numeric', 'between:-90,90'],
             "latitude_to" => ['required', 'numeric', 'between:-90,90'],

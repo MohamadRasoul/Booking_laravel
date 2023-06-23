@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Mobile\RestaurantBooking;
+namespace App\Http\Requests\Mobile\HotelBooking;
 
 use Illuminate\Foundation\Http\FormRequest;
 
 
-class StoreRestaurantBookingRequest extends FormRequest
+class StoreHotelBookingRequest extends FormRequest
 {
 
     public function authorize(): bool
@@ -20,7 +20,7 @@ class StoreRestaurantBookingRequest extends FormRequest
             "escorts_number" => ['nullable', 'integer'],
 
             "booking_datetime" => ['required', 'date'],
-            "restaurant_table_type_id" => ['required', 'exists:restaurant_table_type,id']
+            "hotel_room_type_id" => ['required', 'exists:hotel_room_type,id']
         ];
     }
 

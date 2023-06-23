@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->string('manufacture_company')->nullable();
 
             $table->text('address_details');
-            $table->unsignedSmallInteger('seat_number');
+            $table->unsignedSmallInteger('escorts_number');
 
             $table->string('latitude_from');
             $table->string('longitude_from');

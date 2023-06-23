@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Mobile\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\TableTypeResource;
-use App\Models\TableType;
+use App\Http\Resources\RoomTypeResource;
+use App\Models\RoomType;
 use Spatie\QueryBuilder\QueryBuilder;
 
-class TableTypeController extends Controller
+class RoomTypeController extends Controller
 {
     public function index()
     {
         // Get Data with filter
 
-        $tableTypes = QueryBuilder::for(TableType::class)
+        $roomTypes = QueryBuilder::for(RoomType::class)
             ->allowedFilters([
                 "name",
             ])->get();
@@ -21,9 +21,9 @@ class TableTypeController extends Controller
 
         // Return Response
         return response()->success(
-            'this is all TableTypes',
+            'this is all RoomTypes',
             [
-                "tableTypes" => TableTypeResource::collection($tableTypes),
+                "roomTypes" => RoomTypeResource::collection($roomTypes),
             ]
         );
     }

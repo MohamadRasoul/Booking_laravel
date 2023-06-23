@@ -54,6 +54,14 @@ Route::group([
 
     });
 
+    Route::group([
+        "prefix" => "hotel"
+    ], function () {
+
+        require __DIR__ . '/hotel.php';
+
+    });
+
 });
 
 

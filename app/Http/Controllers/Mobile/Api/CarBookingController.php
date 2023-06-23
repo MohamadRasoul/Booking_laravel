@@ -7,6 +7,7 @@ use App\Http\Requests\Mobile\CarBooking\IndexCarBookingForUserRequest;
 use App\Http\Requests\Mobile\CarBooking\StoreCarBookingRequest;
 use App\Http\Resources\CarBookingResource;
 use App\Models\CarBooking;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\AllowedInclude;
@@ -14,14 +15,18 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class CarBookingController extends Controller
 {
+    protected User $userAuth;
+
+    public function __construct()
+    {
+        $this->userAuth = Auth::guard('api_user')->user();
+    }
+
     public function indexForUser(IndexCarBookingForUserRequest $request)
     {
         // Get Data with filter
 
-        $user = Auth::guard('api_user')->user();
-
-
-        $carBookings = QueryBuilder::for($user->carBookings())
+        $carBookings = QueryBuilder::for($this->userAuth->carBookings())
             ->allowedFilters([
                 "status",
                 AllowedFilter::exact('car_office_id', 'officeCarType.carOffice.id'),
@@ -45,10 +50,8 @@ class CarBookingController extends Controller
 
     public function store(StoreCarBookingRequest $request)
     {
-        $user = Auth::guard('api_user')->user();
-
         // Store CarBooking
-        $carBooking = $user->carBookings()->create($request->validated());
+        $carBooking = $this->userAuth->carBookings()->create($request->validated());
 
         // Return Response
         return response()->success(

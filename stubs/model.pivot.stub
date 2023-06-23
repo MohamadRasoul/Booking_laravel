@@ -9,7 +9,7 @@ class {{ class }} extends Pivot
 {
     use HasFactory;
 
-    protected $guarded = [];
+
 
     protected $casts = [];
 

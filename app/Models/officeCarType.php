@@ -10,7 +10,7 @@ class OfficeCarType extends Model
 
 
     protected $table = 'office_car_type';
-    protected $guarded = [];
+
 
     protected $casts = [];
 

@@ -13,7 +13,7 @@ class CarType extends Model //implements HasMedia
     use HasFactory;
     //use InteractsWithMedia;
 
-    protected $guarded = [];
+    public $timestamps = false;
 
     protected $casts = [];
 

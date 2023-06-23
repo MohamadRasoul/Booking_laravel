@@ -7,6 +7,7 @@ use App\Http\Requests\Mobile\RestaurantBooking\IndexRestaurantBookingForUserRequ
 use App\Http\Requests\Mobile\RestaurantBooking\StoreRestaurantBookingRequest;
 use App\Http\Resources\RestaurantBookingResource;
 use App\Models\RestaurantBooking;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\AllowedInclude;
@@ -14,14 +15,18 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class RestaurantBookingController extends Controller
 {
+    protected User $userAuth;
+
+    public function __construct()
+    {
+        $this->userAuth = Auth::guard('api_user')->user();
+    }
+
     public function indexForUser(IndexRestaurantBookingForUserRequest $request)
     {
         // Get Data with filter
 
-        $user = Auth::guard('api_user')->user();
-
-
-        $restaurantBookings = QueryBuilder::for($user->restaurantBookings())
+        $restaurantBookings = QueryBuilder::for($this->userAuth->restaurantBookings())
             ->allowedFilters([
                 "status",
                 AllowedFilter::exact('restaurant_id', 'restaurantTableType.restaurant.id'),
@@ -45,9 +50,8 @@ class RestaurantBookingController extends Controller
     public function store(StoreRestaurantBookingRequest $request)
     {
         // Store RestaurantBooking
-        $user = Auth::guard('api_user')->user();
 
-        $restaurantBooking = $user->restaurantBookings()->create($request->validated());
+        $restaurantBooking = $this->userAuth->restaurantBookings()->create($request->validated());
 
 
         // Return Response

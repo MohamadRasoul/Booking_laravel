@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\BookingStatusEnum;
+use F9Web\LaravelDeletable\Traits\RestrictsDeletion;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class RestaurantBooking extends Model //implements HasMedia
 {
     use HasFactory;
+    use RestrictsDeletion;
 
     //use InteractsWithMedia;
 
@@ -27,7 +29,7 @@ class RestaurantBooking extends Model //implements HasMedia
     protected $attributes = [
         'status' => BookingStatusEnum::PENDING,
     ];
-    
+
     protected $casts = [];
 
 
@@ -35,6 +37,11 @@ class RestaurantBooking extends Model //implements HasMedia
     public function restaurantTableType(): BelongsTo
     {
         return $this->belongsTo(RestaurantTableType::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 
     ########## Libraries ##########

@@ -11,40 +11,33 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 //use Spatie\MediaLibrary\HasMedia;
 //use Spatie\MediaLibrary\InteractsWithMedia;
 
-class CarBooking extends Model //implements HasMedia
+class HotelBooking extends Model //implements HasMedia
 {
     use HasFactory;
     use RestrictsDeletion;
 
     //use InteractsWithMedia;
 
-    protected $fillable = [
-        'car_number',
-        'color',
-        'manufacture_company',
-        'address_details',
-        'escorts_number',
-        'latitude_from',
-        'longitude_from',
-        'latitude_to',
-        'longitude_to',
-        'booking_datetime',
-        'status',
-        'office_car_type_id'
-    ];
-
-    protected $hidden = ['created_at', 'updated_at'];
 
     protected $casts = [];
+
+    protected $fillable = [
+        'room_number',
+        'escorts_number',
+        'description',
+        'booking_datetime',
+        'user_id',
+        'hotel_room_type_id'
+    ];
 
     protected $attributes = [
         'status' => BookingStatusEnum::PENDING,
     ];
 
     ########## Relations ##########
-    public function officeCarType(): BelongsTo
+    public function hotelRoomType(): BelongsTo
     {
-        return $this->belongsTo(OfficeCarType::class);
+        return $this->belongsTo(HotelRoomType::class);
     }
 
     public function user(): BelongsTo
@@ -53,6 +46,7 @@ class CarBooking extends Model //implements HasMedia
     }
 
     ########## Libraries ##########
+
     public function isDeletable(): bool
     {
         if ((int)$this->status !== BookingStatusEnum::PENDING->value) {

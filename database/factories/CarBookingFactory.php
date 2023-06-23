@@ -22,7 +22,7 @@ class CarBookingFactory extends Factory
             "manufacture_company" => $this->faker->vehicleBrand,
 
             "address_details" => $this->faker->address,
-            "seat_number" => $this->faker->numberBetween(1, 6),
+            "escorts_number" => $this->faker->numberBetween(1, 6),
 
             "latitude_from" => $this->faker->latitude(32.3112, 37.3199),
             "longitude_from" => $this->faker->longitude(35.7272, 42.3770),

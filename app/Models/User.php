@@ -54,6 +54,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(RestaurantBooking::class);
     }
 
+    public function hotelBookings(): HasMany
+    {
+        return $this->hasMany(HotelBooking::class);
+    }
+
     ########## Libraries ##########
 
     public function getJWTIdentifier()

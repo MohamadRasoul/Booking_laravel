@@ -19,7 +19,9 @@ class TestSeeder extends Seeder
             CarOfficeSeeder::class,
             CarBookingSeeder::class,
             RestaurantSeeder::class,
-            RestaurantBookingSeeder::class
+            RestaurantBookingSeeder::class,
+            HotelSeeder::class,
+            HotelBookingSeeder::class
         ]);
 
 

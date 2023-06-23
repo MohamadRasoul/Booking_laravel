@@ -2,19 +2,20 @@
 
 namespace App\Http\Resources;
 
+use App\Models\HotelBooking;
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-
-class RestaurantBookingResource extends JsonResource
+/** @mixin HotelBooking */
+class HotelBookingResource extends JsonResource
 {
-
-
-    public function toArray($request): array
+    public function toArray(Request $request): array
     {
         return [
             'id' => $this->id,
-            "table_number" => $this->table_number,
             
+            'room_number' => $this->room_number,
+
             'escorts_number' => $this->escorts_number,
             'description' => $this->description,
 
@@ -22,7 +23,8 @@ class RestaurantBookingResource extends JsonResource
             "status" => $this->status,
 
             "user" => UserResource::make($this->whenLoaded('user')),
-            "restaurant" => RestaurantResource::make($this->whenLoadedRelation('restaurantTableType.restaurant'))
+            "hotel" => HotelResource::make($this->whenLoadedRelation('hotelRoomType.hotel'))
+
         ];
     }
 }

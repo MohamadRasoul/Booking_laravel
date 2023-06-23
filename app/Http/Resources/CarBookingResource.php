@@ -16,7 +16,7 @@ class CarBookingResource extends JsonResource
             "color" => $this->color,
             "manufacture_company" => $this->manufacture_company,
             "address_details" => $this->address_details,
-            "seat_number" => $this->seat_number,
+            "escorts_number" => $this->escorts_number,
             "latitude_from" => $this->latitude_from,
             "longitude_from" => $this->longitude_from,
             "latitude_to" => $this->latitude_to,

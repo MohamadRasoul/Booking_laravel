@@ -8,17 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 //use Spatie\MediaLibrary\HasMedia;
 //use Spatie\MediaLibrary\InteractsWithMedia;
 
-class TableType extends Model //implements HasMedia
+class RoomType extends Model //implements HasMedia
 {
     use HasFactory;
 
     //use InteractsWithMedia;
 
-
     public $timestamps = false;
 
     protected $casts = [];
 
+    protected $fillable = ['name'];
 
     ########## Relations ##########
 
@@ -29,7 +29,7 @@ class TableType extends Model //implements HasMedia
     // public function registerMediaCollections(): void
     // {
     //     $this
-    //         ->addMediaCollection('TableType')
+    //         ->addMediaCollection('RoomType')
     //         ->useFallbackUrl(config('app.url') . '/images/default.jpg')
     //         ->singleFile();
     // }
