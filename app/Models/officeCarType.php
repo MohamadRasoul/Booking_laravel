@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class OfficeCarType extends Model
 {
-
-
     protected $table = 'office_car_type';
 
 

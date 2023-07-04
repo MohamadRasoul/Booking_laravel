@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Dashboard;
 
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreofficeCarTypeRequest;
-use App\Http\Requests\UpdateofficeCarTypeRequest;
-use App\Http\Resources\officeCarTypeResource;
+use App\Http\Requests\StoreOfficeCarTypeRequest;
+use App\Http\Requests\UpdateOfficeCarTypeRequest;
+use App\Http\Resources\OfficeCarTypeResource;
 use App\Models\OfficeCarType;
 
 class OfficeCarTypeController extends Controller
@@ -29,13 +29,13 @@ class OfficeCarTypeController extends Controller
         return response()->success(
             'this is all officeCarTypes',
             [
-                "officeCarTypes" => officeCarTypeResource::collection($officeCarTypes),
+                "officeCarTypes" => OfficeCarTypeResource::collection($officeCarTypes),
             ]
         );
     }
 
 
-    public function store(StoreofficeCarTypeRequest $request)
+    public function store(StoreOfficeCarTypeRequest $request)
     {
         // Store officeCarType
         $officeCarType = OfficeCarType::create($request->validated());
@@ -50,7 +50,7 @@ class OfficeCarTypeController extends Controller
         return response()->success(
             'officeCarType is added success',
             [
-                "officeCarType" => new officeCarTypeResource($officeCarType),
+                "officeCarType" => new OfficeCarTypeResource($officeCarType),
             ]
         );
     }
@@ -62,12 +62,12 @@ class OfficeCarTypeController extends Controller
         return response()->success(
             'this is your officeCarType',
             [
-                "officeCarType" => new officeCarTypeResource($officeCarType),
+                "officeCarType" => new OfficeCarTypeResource($officeCarType),
             ]
         );
     }
 
-    public function update(UpdateofficeCarTypeRequest $request, OfficeCarType $officeCarType)
+    public function update(UpdateOfficeCarTypeRequest $request, OfficeCarType $officeCarType)
     {
         // Update officeCarType
         $officeCarType->update($request->validated());
@@ -85,7 +85,7 @@ class OfficeCarTypeController extends Controller
         return response()->success(
             'officeCarType is updated success',
             [
-                "officeCarType" => new officeCarTypeResource($officeCarType),
+                "officeCarType" => new OfficeCarTypeResource($officeCarType),
             ]
         );
     }

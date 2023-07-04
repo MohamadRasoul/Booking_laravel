@@ -5,9 +5,9 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 
 
-class UpdateofficeCarTypeRequest extends FormRequest
+class UpdateOfficeCarTypeRequest extends FormRequest
 {
-    
+
     public function authorize(): bool
     {
         return true;
