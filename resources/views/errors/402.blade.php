@@ -1,5 +1,8 @@
-@extends('errors::minimal')
+@extends('errors.layout')
 
-@section('title', __('Payment Required'))
-@section('code', '402')
-@section('message', __('Payment Required'))
+@section('title','Error - 402')
+
+@section('status',402)
+@section('message','Some Thing Wrong...')
+
+
