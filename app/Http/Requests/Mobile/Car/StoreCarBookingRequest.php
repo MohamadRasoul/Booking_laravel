@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Mobile\CarBooking;
+namespace App\Http\Requests\Mobile\Car;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -18,11 +18,13 @@ class StoreCarBookingRequest extends FormRequest
         return [
             "address_details" => ['required', 'string'],
             "escorts_number" => ['required', 'integer'],
+            
             "latitude_from" => ['required', 'numeric', 'between:-90,90'],
             "longitude_from" => ['required', 'numeric', 'between:-90,90'],
             "latitude_to" => ['required', 'numeric', 'between:-90,90'],
             "longitude_to" => ['required', 'numeric', 'between:-90,90'],
-            "booking_datetime" => ['required', 'date'],
+
+            "booking_datetime" => ['required', 'date', 'after:now'],
             "office_car_type_id" => ['required', 'exists:office_car_type,id']
         ];
     }

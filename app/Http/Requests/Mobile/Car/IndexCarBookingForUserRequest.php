@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Mobile\CarBooking;
+namespace App\Http\Requests\Mobile\Car;
 
 use App\Enums\BookingStatusEnum;
 use Illuminate\Foundation\Http\FormRequest;

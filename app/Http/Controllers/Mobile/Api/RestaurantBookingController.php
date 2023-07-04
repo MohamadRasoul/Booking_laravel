@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Mobile\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Mobile\RestaurantBooking\IndexRestaurantBookingForUserRequest;
-use App\Http\Requests\Mobile\RestaurantBooking\StoreRestaurantBookingRequest;
+use App\Http\Requests\Mobile\Restaurant\IndexRestaurantBookingForUserRequest;
+use App\Http\Requests\Mobile\Restaurant\StoreRestaurantBookingRequest;
 use App\Http\Resources\RestaurantBookingResource;
 use App\Models\RestaurantBooking;
 use App\Models\User;

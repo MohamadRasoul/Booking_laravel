@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Requests\Mobile\HotelBooking;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
 
-class StoreHotelBookingRequest extends FormRequest
+class UpdateClinicRequest extends FormRequest
 {
-
+    
     public function authorize(): bool
     {
         return true;
@@ -16,11 +16,7 @@ class StoreHotelBookingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "description" => ['nullable', 'string'],
-            "escorts_number" => ['nullable', 'integer'],
-
-            "booking_datetime" => ['required', 'date'],
-            "hotel_room_type_id" => ['required', 'exists:hotel_room_type,id']
+            //
         ];
     }
 

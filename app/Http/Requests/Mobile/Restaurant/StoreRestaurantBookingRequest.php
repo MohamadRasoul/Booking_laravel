@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Mobile\RestaurantBooking;
+namespace App\Http\Requests\Mobile\Restaurant;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -19,7 +19,7 @@ class StoreRestaurantBookingRequest extends FormRequest
             "description" => ['nullable', 'string'],
             "escorts_number" => ['nullable', 'integer'],
 
-            "booking_datetime" => ['required', 'date'],
+            "booking_datetime" => ['required', 'date', 'after:now'],
             "restaurant_table_type_id" => ['required', 'exists:restaurant_table_type,id']
         ];
     }

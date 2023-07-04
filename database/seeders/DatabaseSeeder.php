@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             CarTypeSeeder::class,
             TableTypeSeeder::class,
             RoomTypeSeeder::class,
+            ClinicSpecializationSeeder::class,
         ]);
 
 

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Mobile\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Mobile\CarBooking\IndexCarBookingForUserRequest;
-use App\Http\Requests\Mobile\CarBooking\StoreCarBookingRequest;
+use App\Http\Requests\Mobile\Car\IndexCarBookingForUserRequest;
+use App\Http\Requests\Mobile\Car\StoreCarBookingRequest;
 use App\Http\Resources\CarBookingResource;
 use App\Models\CarBooking;
 use App\Models\User;
@@ -25,7 +25,6 @@ class CarBookingController extends Controller
     public function indexForUser(IndexCarBookingForUserRequest $request)
     {
         // Get Data with filter
-
         $carBookings = QueryBuilder::for($this->userAuth->carBookings())
             ->allowedFilters([
                 "status",

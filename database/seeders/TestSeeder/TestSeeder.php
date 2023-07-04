@@ -21,7 +21,10 @@ class TestSeeder extends Seeder
             RestaurantSeeder::class,
             RestaurantBookingSeeder::class,
             HotelSeeder::class,
-            HotelBookingSeeder::class
+            HotelBookingSeeder::class,
+            ClinicSeeder::class,
+            ClinicSessionSeeder::class,
+            ClinicBookingSeeder::class,
         ]);
 
 

@@ -2,19 +2,18 @@
 
 namespace App\Http\Resources;
 
+use App\Models\ClinicSpecialization;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CarOfficeResource extends JsonResource
+/** @mixin ClinicSpecialization */
+class ClinicSpecializationResource extends JsonResource
 {
     public function toArray(Request $request): array
     {
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'admin' => AdminResource::make($this->whenLoaded('admin')),
-            'city' => CityResource::make($this->whenLoaded('city')),
-            'car_types' => CarTypeResource::collection($this->whenLoaded('carTypes')),
         ];
     }
 }

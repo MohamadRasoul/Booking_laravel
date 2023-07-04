@@ -12,6 +12,7 @@ enum BookingStatusEnum: int
     case PENDING = 1;
     case ADMIN_ACCEPTED = 2;
     case ADMIN_REJECTED = 3;
+    
     case DONE = 4;
     case NOT_DONE = 5;
 }
