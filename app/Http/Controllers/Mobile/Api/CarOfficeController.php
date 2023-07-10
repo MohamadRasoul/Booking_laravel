@@ -26,7 +26,6 @@ class CarOfficeController extends Controller
             ->with('admin', 'city')
             ->get();
 
-
         // Return Response
         return response()->success(
             'this is all CarOffices',

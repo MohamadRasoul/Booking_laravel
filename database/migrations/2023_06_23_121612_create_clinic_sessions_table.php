@@ -19,7 +19,7 @@ return new class extends Migration {
 
             ######## Foreign keys  ########
 
-            $table->foreignIdFor(Clinic::class)->constrained('cities');
+            $table->foreignIdFor(Clinic::class)->constrained('clinics');
 
         });
     }

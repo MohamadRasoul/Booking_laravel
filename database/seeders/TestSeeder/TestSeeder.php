@@ -23,7 +23,6 @@ class TestSeeder extends Seeder
             HotelSeeder::class,
             HotelBookingSeeder::class,
             ClinicSeeder::class,
-            ClinicSessionSeeder::class,
             ClinicBookingSeeder::class,
         ]);
 

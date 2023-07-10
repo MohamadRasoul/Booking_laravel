@@ -16,12 +16,9 @@ class ClinicResource extends JsonResource
             'name' => $this->name,
             'about' => $this->about,
             'experience_years' => $this->experience_years,
-            'day_slot_number' => $this->day_slot_number,
-            'open_at' => $this->open_at,
-            'close_at' => $this->close_at,
-            'open_days' => $this->open_days,
+            'session_duration' => $this->session_duration,
 
-
+            'place_contact' => PlaceContactResource::make($this->whenLoaded('placeContact')),
             'admin' => AdminResource::make($this->whenLoaded('admin')),
             'city' => CityResource::make($this->whenLoaded('city')),
             'clinic_specialization' => ClinicSpecializationResource::make($this->whenLoaded('clinicSpecialization')),

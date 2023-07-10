@@ -2,8 +2,9 @@
 
 namespace Database\Seeders\TestSeeder;
 
-use App\Models\CarType;
 use App\Models\Hotel;
+use App\Models\PlaceContact;
+use App\Models\RoomType;
 use Illuminate\Database\Seeder;
 
 class HotelSeeder extends Seeder
@@ -12,14 +13,11 @@ class HotelSeeder extends Seeder
 
     public function run(): void
     {
-        Hotel::factory(10)->create()->each(function (Hotel $hotel) {
-            $hotel->roomTypes()->attach(
-                CarType::inRandomOrder()
-                    ->take(5)
-                    ->pluck('id')
-                    ->toArray()
-            );
-        });
+        $roomTypes = RoomType::inRandomOrder()->take(5)->get();
 
+        Hotel::factory(10)
+            ->has(PlaceContact::factory()->count(1), 'placeContact')
+            ->hasAttached($roomTypes)
+            ->create();
     }
 }

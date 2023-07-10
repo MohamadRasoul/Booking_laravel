@@ -11,14 +11,13 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class ClinicController extends Controller
 {
-    
+
     public function index(IndexClinicRequest $request)
     {
         // Get Data with filter
         $clinics = QueryBuilder::for(Clinic::class)
             ->allowedFilters([
                 "name",
-                AllowedFilter::scope('is_open'),
                 AllowedFilter::exact('clinic_specialization_id'),
                 AllowedFilter::exact('admin_id'),
                 AllowedFilter::exact('city_id'),

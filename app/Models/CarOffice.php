@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\PlaceContactRelationTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class CarOffice extends Model //implements HasMedia
 {
     use HasFactory;
+    use PlaceContactRelationTrait;
 
     //use InteractsWithMedia;
 
@@ -23,8 +25,7 @@ class CarOffice extends Model //implements HasMedia
     ];
 
     protected $casts = [];
-
-
+    
     ########## Relations ##########
     public function admin(): BelongsTo
     {

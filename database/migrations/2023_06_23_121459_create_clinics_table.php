@@ -18,10 +18,7 @@ return new class extends Migration {
             $table->text('about');
             $table->unsignedSmallInteger('experience_years');
 
-            $table->unsignedSmallInteger('day_slot_number');  /// Enum
-            $table->time('open_at');  /// Enum
-            $table->time('close_at');  /// Enum
-            $table->json('open_days');  /// Enum
+            $table->unsignedSmallInteger('session_duration');  /// Enum
 
 
             ######## Foreign keys  ########

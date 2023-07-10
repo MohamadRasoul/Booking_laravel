@@ -2,9 +2,12 @@
 
 namespace App\Http\Resources;
 
+use App\Models\RestaurantBooking;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-
+/**
+ * @mixin RestaurantBooking
+ */
 class RestaurantBookingResource extends JsonResource
 {
 
@@ -14,7 +17,7 @@ class RestaurantBookingResource extends JsonResource
         return [
             'id' => $this->id,
             "table_number" => $this->table_number,
-            
+
             'escorts_number' => $this->escorts_number,
             'description' => $this->description,
 
