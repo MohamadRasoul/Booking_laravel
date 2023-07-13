@@ -5,82 +5,112 @@ namespace {{ namespace }};
 use {{ namespacedModel }};
 use {{ rootNamespace }}Http\Controllers\Controller;
 use {{ namespacedRequests }}
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class {{ class }} extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function index(): View
     {
-        //
+        /*
+        ${{ modelVariable }}s = {{ model }}::latest()->get();
+
+
+        return view(
+            'dashboard.pages.${{ modelVariable }}.index',
+            compact('${{ modelVariable }}s')
+        );
+        */
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+    public function create(): View
     {
-        //
+        /*
+
+        return view(
+            'dashboard.pages.${{ modelVariable }}.create',
+        );
+        */
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \{{ namespacedStoreRequest }}  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store({{ storeRequest }} $request)
+
+    public function store({{ storeRequest }} $request): RedirectResponse
     {
-        //
+        /*
+
+        // Store {{ model }}
+        ${{ modelVariable }} = {{ model }}::create($request->validated());
+
+
+        // Add Image to {{ model }}
+        ${{ modelVariable }}
+            ->addMediaFromRequest('image')
+            ->toMediaCollection('{{ model }}');
+
+
+        return back();
+        */
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
-     * @return \Illuminate\Http\Response
-     */
-    public function show({{ model }} ${{ modelVariable }})
+
+    public function show({{ model }} ${{ modelVariable }}): View
     {
-        //
+        /*
+        return view(
+            'dashboard.pages.${{ modelVariable }}.show',
+            compact('${{ modelVariable }}')
+        );
+        */
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
-     * @return \Illuminate\Http\Response
-     */
-    public function edit({{ model }} ${{ modelVariable }})
+
+    public function edit({{ model }} ${{ modelVariable }}): View
     {
-        //
+        /*
+
+        return view(
+            'dashboard.pages.${{ modelVariable }}.edit',
+            compact('${{ modelVariable }}')
+        );
+
+        */
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \{{ namespacedUpdateRequest }}  $request
-     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
-     * @return \Illuminate\Http\Response
-     */
-    public function update({{ updateRequest }} $request, {{ model }} ${{ modelVariable }})
+
+    public function update({{ updateRequest }} $request, {{ model }} ${{ modelVariable }}): RedirectResponse
     {
-        //
+        /*
+
+        // Update {{ model }}
+        ${{ modelVariable }}->update($request->validated());
+
+
+        // Edit Image for  {{ model }} if exist
+        $request->hasFile('image') &&
+            ${{ modelVariable }}
+                ->addMediaFromRequest('image')
+                ->toMediaCollection('{{ model }}');
+
+        return back();
+        */
+
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy({{ model }} ${{ modelVariable }})
+
+    public function destroy({{ model }} ${{ modelVariable }}): RedirectResponse
     {
-        //
+        /*
+        // Delete {{ model }}
+        ${{ modelVariable }}->delete();
+
+ch
+        return back();
+        */
     }
 }
