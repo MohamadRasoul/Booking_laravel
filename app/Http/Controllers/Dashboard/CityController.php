@@ -7,12 +7,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\City\StoreCityRequest;
 use App\Http\Requests\Dashboard\City\UpdateCityRequest;
 use App\Models\City;
-use Spatie\QueryBuilder\AllowedFilter;
-use Spatie\QueryBuilder\QueryBuilder;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class CityController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         // Get Data
         $cities = City::latest()->get();
@@ -24,7 +24,7 @@ class CityController extends Controller
     }
 
 
-    public function store(StoreCityRequest $request)
+    public function store(StoreCityRequest $request): RedirectResponse
     {
         // Store City
         $city = City::create($request->validated());
@@ -36,8 +36,7 @@ class CityController extends Controller
     }
 
 
-
-    public function update(UpdateCityRequest $request, City $city)
+    public function update(UpdateCityRequest $request, City $city): RedirectResponse
     {
         // Update City
         $city->update($request->validated());
@@ -47,7 +46,7 @@ class CityController extends Controller
         return back();
     }
 
-    public function destroy(City $city)
+    public function destroy(City $city): RedirectResponse
     {
         // Delete City
         $city->delete();
