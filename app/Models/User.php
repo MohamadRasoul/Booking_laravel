@@ -3,10 +3,10 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Library\LaravelNotification\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
@@ -22,7 +22,12 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = [
         'name',
         'username',
-        'password'
+        'password',
+        'fcm_token',
+        'address',
+        'phone_number',
+        'longitude',
+        'latitude',
     ];
 
     /**
@@ -74,5 +79,11 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+
+    public function routeNotificationForFcm()
+    {
+        return $this->fcm_token;
     }
 }
