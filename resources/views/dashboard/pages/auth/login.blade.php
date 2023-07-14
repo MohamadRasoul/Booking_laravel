@@ -22,15 +22,15 @@
                 <div class="form-group">
                     <label class="col-form-label">Username</label>
                     <input class="form-control" type="text" required="" placeholder="username"
-                        name="username" :value="old('username')" autofocus autocomplete="username" />
-                    <x-dashboard-component::input-error :messages="$errors->get('username')" class="mt-2" />
+                           name="username" :value="old('username')" autofocus autocomplete="username"/>
+                    <x-dashboard-component::input-error field="username" class="mt-2"/>
                 </div>
                 <div class="form-group">
                     <label class="col-form-label">Password</label>
                     <div x-data='{showPassword:false}' class="form-input position-relative">
                         <input class="form-control" :type="showPassword ? 'text' : 'password'" required=""
-                            placeholder="*********" name="password" autocomplete="current-password" />
-                        <x-dashboard-component::input-error :messages="$errors->get('password')" class="mt-2" />
+                               placeholder="*********" name="password" autocomplete="current-password"/>
+                        <x-dashboard-component::input-error field='password' class="mt-2"/>
                         <div class="show-hide">
                             <span class="show" x-on:click="showPassword = !showPassword"> </span>
                         </div>

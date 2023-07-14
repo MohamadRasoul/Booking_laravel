@@ -1,9 +1,9 @@
-@props(['messages'])
+@props(['field'])
 
-@if ($messages)
+@error($field)
     <ul {{ $attributes->merge(['class' => 'text-sm text-danger space-y-1']) }}>
-        @foreach ((array) $messages as $message)
+        @foreach ((array) $errors->get($field) as $message)
             <li>{{ $message }}</li>
         @endforeach
     </ul>
-@endif
+@enderror

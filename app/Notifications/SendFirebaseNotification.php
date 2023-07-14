@@ -5,7 +5,7 @@ namespace App\Notifications;
 use App\Channels\FirebaseAndDatabaseChannel;
 use Illuminate\Notifications\Notification;
 
-class SendPushNotification extends Notification
+class SendFirebaseNotification extends Notification
 {
 //    use Queueable;
 

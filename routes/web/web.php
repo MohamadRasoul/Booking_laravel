@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 
 
-//Route::view('/', 'errors.403');
 Route::redirect('/', 'admin');
 
 

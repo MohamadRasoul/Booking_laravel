@@ -18,8 +18,8 @@
                     <label class="pt-0 col-form-label">Your Name</label>
                     <div class="row g-2">
                         <input class="form-control" type="text" required="" placeholder="First name"
-                            name="name">
-                        <x-dashboard-component::input-error :messages="$errors->get('name')" class="mt-2" />
+                               name="name">
+                        <x-dashboard-component::input-error field='name' class="mt-2"/>
                     </div>
                 </div>
 
@@ -28,8 +28,8 @@
                 <div class="form-group">
                     <label class="col-form-label">Username</label>
                     <input class="form-control" type="text" required="" placeholder="username"
-                        name="username">
-                    <x-dashboard-component::input-error :messages="$errors->get('username')" class="mt-2" />
+                           name="username">
+                    <x-dashboard-component::input-error field='username' class="mt-2"/>
                 </div>
 
                 <!-- Password -->
@@ -37,8 +37,8 @@
                     <label class="col-form-label">Password</label>
                     <div x-data='{showPassword:false}' class="form-input position-relative">
                         <input class="form-control" :type="showPassword ? 'text' : 'password'" required=""
-                            placeholder="*********" name="password">
-                        <x-dashboard-component::input-error :messages="$errors->get('password')" class="mt-2" />
+                               placeholder="*********" name="password">
+                        <x-dashboard-component::input-error field='password' class="mt-2"/>
                         <div class="show-hide"><span class="show" x-on:click="showPassword = !showPassword"></span>
                         </div>
                     </div>
@@ -48,8 +48,8 @@
                     <label class="col-form-label">Confirm Password</label>
                     <div x-data='{showPassword:false}' class="form-input position-relative">
                         <input class="form-control" :type="showPassword ? 'text' : 'password'" required=""
-                            placeholder="*********" name="password_confirmation">
-                        <x-dashboard-component::input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                               placeholder="*********" name="password_confirmation">
+                        <x-dashboard-component::input-error field='password_confirmation' class="mt-2"/>
                         <div class="show-hide"><span class="show" x-on:click="showPassword = !showPassword"></span>
                         </div>
                     </div>
