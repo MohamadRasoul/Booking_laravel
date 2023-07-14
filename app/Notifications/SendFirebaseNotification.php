@@ -9,7 +9,6 @@ class SendPushNotification extends Notification
 {
 //    use Queueable;
 
-
     /**
      * Create a new notification instance.
      *
@@ -19,7 +18,6 @@ class SendPushNotification extends Notification
         protected string $title,
         protected string $message,
         protected  $image,
-        protected $imageCollection,
     )
     {
         //
@@ -50,7 +48,6 @@ class SendPushNotification extends Notification
 
         return [
             'image' => $this->image,
-            'imageCollection' => $this->imageCollection
         ];
     }
 
