@@ -70,26 +70,26 @@
                     </li >
                     <li class="sidebar-list" >
                         <a class="sidebar-link sidebar-title link-nav" href={{ route('city.index') }}>
-                            <i data-feather="map-pin" >
+                            <i data-feather="map-pin">
 
-                            </i >
-                            <span >Cities</span >
+                            </i>
+                            <span>Cities</span>
 
-                        </a >
+                        </a>
 
-                    </li >
-                    <li class="sidebar-list" >
-                        <a class="sidebar-link sidebar-title link-nav" href="internationalization.html" >
-                            <i data-feather="bell" ></i >
-                            <span >Notification
-                            </span >
-                        </a >
+                    </li>
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title link-nav" href={{ route('notification.index') }} >
+                            <i data-feather="bell"></i>
+                            <span>Notification
+                            </span>
+                        </a>
 
-                    </li >
+                    </li>
 
-                    <li class="sidebar-main-title" >
-                        <div >
-                            <h6 >Places
+                    <li class="sidebar-main-title">
+                        <div>
+                            <h6>Places
                             </h6 >
                         </div >
                     </li >

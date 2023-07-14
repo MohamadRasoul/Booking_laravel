@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Dashboard\{CityController};
+use App\Http\Controllers\Dashboard\{CityController, NotificationController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,5 +33,17 @@ Route::group([
     // Route::GET("/{city}/edit", [CityController::class, 'edit'])->name('edit');
     Route::PUT("/{city}", [CityController::class, 'update'])->name('update');
     Route::DELETE("/{city}", [CityController::class, 'destroy'])->name('destroy');
+});
+
+
+Route::group([
+    'prefix' => 'notification',
+    'as' => 'notification.'
+], function () {
+    Route::GET("/", [NotificationController::class, 'index'])->name('index');
+
+    Route::POST("/", [NotificationController::class, 'store'])->name('store');
+
+    Route::DELETE("/{notification}", [NotificationController::class, 'destroy'])->name('destroy');
 });
 

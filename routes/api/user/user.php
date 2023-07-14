@@ -5,16 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group([
-    "prefix" => "city"
-], function () {
-
-    Route::GET('/', [Api\CityController::class, "index"]);
-    Route::GET('{city}', [Api\CityController::class, "show"]);
-
-});
-
-
-Route::group([
     "prefix" => "car"
 ], function () {
 
@@ -44,6 +34,25 @@ Route::group([
 ], function () {
 
     require __DIR__ . '/clinic.php';
+
+});
+
+
+Route::group([
+    "prefix" => "city"
+], function () {
+
+    Route::GET('/', [Api\CityController::class, "index"]);
+    Route::GET('{city}', [Api\CityController::class, "show"]);
+
+});
+
+Route::group([
+    "prefix" => "notification"
+], function () {
+
+    Route::GET('/', [Api\NotificationController::class, "index"]);
+    Route::GET('{city}', [Api\NotificationController::class, "show"]);
 
 });
 

@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Mobile\Api;
+
+use App\Http\Controllers\Controller;
 
 class MediaController extends Controller
 {

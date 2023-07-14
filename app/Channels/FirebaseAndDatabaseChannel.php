@@ -3,7 +3,6 @@
 namespace App\Channels;
 
 use App\Http\Resources\NotificationResource;
-use App\Services\MediaService;
 use DB;
 use Exception;
 use Illuminate\Http\Client\Response;
@@ -20,12 +19,12 @@ class FirebaseAndDatabaseChannel extends DatabaseChannel
 
 
         if ($storedNotification instanceof HasMedia) {
+            $storedNotification
+                ->addMedia($notification->setMediaImage($notifiable)['image'])
+                ->preservingOriginal()
+                ->toMediaCollection('Notification');
 
-            (new MediaService())->storeImage(
-                model: $storedNotification,
-                image: $notification->setMediaImage($notifiable)['image'],
-                collection: $notification->setMediaImage($notifiable)['imageCollection'],
-            );
+
         } else {
             throw new Exception('this model not include image');
         }
