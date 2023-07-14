@@ -13,33 +13,25 @@ class {{ class }} extends Controller
 
     public function index(): View
     {
-        /*
         ${{ modelVariable }}s = {{ model }}::latest()->get();
-
 
         return view(
             'dashboard.pages.${{ modelVariable }}.index',
             compact('${{ modelVariable }}s')
         );
-        */
     }
 
 
     public function create(): View
     {
-        /*
-
         return view(
             'dashboard.pages.${{ modelVariable }}.create',
         );
-        */
     }
 
 
     public function store({{ storeRequest }} $request): RedirectResponse
     {
-        /*
-
         // Store {{ model }}
         ${{ modelVariable }} = {{ model }}::create($request->validated());
 
@@ -49,43 +41,31 @@ class {{ class }} extends Controller
             ->addMediaFromRequest('image')
             ->toMediaCollection('{{ model }}');
 
-
         return back();
-        */
 
     }
 
 
     public function show({{ model }} ${{ modelVariable }}): View
     {
-        /*
         return view(
             'dashboard.pages.${{ modelVariable }}.show',
             compact('${{ modelVariable }}')
         );
-        */
-
     }
 
 
     public function edit({{ model }} ${{ modelVariable }}): View
     {
-        /*
-
         return view(
             'dashboard.pages.${{ modelVariable }}.edit',
             compact('${{ modelVariable }}')
         );
-
-        */
-
     }
 
 
     public function update({{ updateRequest }} $request, {{ model }} ${{ modelVariable }}): RedirectResponse
     {
-        /*
-
         // Update {{ model }}
         ${{ modelVariable }}->update($request->validated());
 
@@ -97,20 +77,14 @@ class {{ class }} extends Controller
                 ->toMediaCollection('{{ model }}');
 
         return back();
-        */
-
-
     }
 
 
     public function destroy({{ model }} ${{ modelVariable }}): RedirectResponse
     {
-        /*
         // Delete {{ model }}
         ${{ modelVariable }}->delete();
 
-ch
         return back();
-        */
     }
 }
