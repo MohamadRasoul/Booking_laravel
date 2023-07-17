@@ -15,7 +15,7 @@ class Notification extends DatabaseNotification implements HasMedia
     public function registerMediaCollections(): void
     {
         $this
-            ->addMediaCollection('Restaurant')
+            ->addMediaCollection('Notification')
             ->useFallbackUrl(config('app.url') . '/images/default.jpg')
             ->singleFile();
     }
@@ -23,12 +23,8 @@ class Notification extends DatabaseNotification implements HasMedia
     public function registerMediaConversions(Media $media = null): void
     {
         $media->setCustomProperty('hash', MediaService::hashImage($media->getPath()));
-//
-//        $this->addMediaConversion('thumb')
-//            // ->nonQueued()
-//            ->performOnCollections('addressShop1')
-//            ->width(100)
-//            ->height(100);
+
+        $media->save();
     }
 
 

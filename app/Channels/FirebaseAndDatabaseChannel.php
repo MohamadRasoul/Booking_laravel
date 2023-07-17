@@ -3,16 +3,21 @@
 namespace App\Channels;
 
 use App\Http\Resources\NotificationResource;
-use DB;
 use Exception;
 use Illuminate\Http\Client\Response;
 use Illuminate\Notifications\Channels\DatabaseChannel;
 use Illuminate\Notifications\Notification;
 use Kutia\Larafirebase\Facades\Larafirebase;
 use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 
 class FirebaseAndDatabaseChannel extends DatabaseChannel
 {
+    /**
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
+     */
     public function send($notifiable, Notification $notification)
     {
         $storedNotification = parent::send($notifiable, $notification);
@@ -29,7 +34,6 @@ class FirebaseAndDatabaseChannel extends DatabaseChannel
             throw new Exception('this model not include image');
         }
 
-        DB::commit();
         $this->sendFirebase($notifiable, $storedNotification);
 
     }

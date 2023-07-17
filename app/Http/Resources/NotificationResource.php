@@ -19,9 +19,26 @@ class NotificationResource extends JsonResource
             'title' => $this->data['title'],
             'message' => $this->data['message'],
             'read_at' => $this->read_at,
+            'image' => $this->resolveImage(),
             'notifiable_type' => $this->notifiable_type,
             'notifiable_id' => $this->notifiable_id,
             'created_at' => $this->created_at,
+        ];
+    }
+
+
+    protected function resolveImage()
+    {
+        if ($this->getFirstMedia('Notification')) {
+            return ImageResource::make($this->getFirstMedia('Notification'));
+        }
+
+        return (object)[
+            'id' => null,
+            'media_url' => $this->getFallbackMediaUrl('Notification'),
+            'media_type' => null,
+            'hash' => null,
+            'order' => null,
         ];
     }
 }

@@ -20,7 +20,6 @@ class SendFirebaseNotification extends Notification
         protected  $image,
     )
     {
-        //
     }
 
     /**
