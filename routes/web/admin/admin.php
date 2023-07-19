@@ -47,3 +47,46 @@ Route::group([
     Route::DELETE("/{notification}", [NotificationController::class, 'destroy'])->name('destroy');
 });
 
+
+
+Route::group([
+    "prefix" => "car",
+    'as' => 'car.'
+], function () {
+
+    require __DIR__ . '/car.php';
+
+});
+
+
+
+//Route::group([
+//    "prefix" => "restaurant",
+//    'as' => 'restaurant.'
+//], function () {
+//
+//    require __DIR__ . '/restaurant.php';
+//
+//});
+//
+//Route::group([
+//    "prefix" => "hotel",
+//    'as' => 'hotel.'
+//], function () {
+//
+//    require __DIR__ . '/hotel.php';
+//
+//});
+//
+//
+//Route::group([
+//    "prefix" => "clinic",
+//    'as' => 'clinic.'
+//], function () {
+//
+//    require __DIR__ . '/clinic.php';
+//
+//});
+
+
+

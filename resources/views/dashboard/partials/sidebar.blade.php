@@ -104,7 +104,7 @@
                         </a >
                         <ul class="sidebar-submenu" >
                             <li ><a class="" href="index.html" >cars</a ></li >
-                            <li ><a class="" href="dashboard-02.html" >car type</a ></li >
+                            <li ><a class="" href="{{ route('car.type.index') }}" >car type</a ></li >
                         </ul >
                     </li >
 
