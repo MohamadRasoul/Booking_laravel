@@ -60,23 +60,23 @@ Route::group([
 
 
 
-//Route::group([
-//    "prefix" => "restaurant",
-//    'as' => 'restaurant.'
-//], function () {
-//
-//    require __DIR__ . '/restaurant.php';
-//
-//});
-//
-//Route::group([
-//    "prefix" => "hotel",
-//    'as' => 'hotel.'
-//], function () {
-//
-//    require __DIR__ . '/hotel.php';
-//
-//});
+Route::group([
+    "prefix" => "restaurant",
+    'as' => 'restaurant.'
+], function () {
+
+    require __DIR__ . '/restaurant.php';
+
+});
+
+Route::group([
+    "prefix" => "hotel",
+    'as' => 'hotel.'
+], function () {
+
+    require __DIR__ . '/hotel.php';
+
+});
 //
 //
 //Route::group([

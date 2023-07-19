@@ -15,6 +15,8 @@ class CarType extends Model //implements HasMedia
 
     public $timestamps = false;
 
+    protected $fillable= ['name'];
+
     protected $casts = [];
 
 

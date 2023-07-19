@@ -4,8 +4,8 @@ use App\Http\Controllers\Dashboard\{CarTypeController};
 use Illuminate\Support\Facades\Route;
 
 Route::group([
-    'prefix' => 'type',
-    'as' => 'type.'
+    'prefix' => 'carType',
+    'as' => 'carType.'
 ], function () {
     Route::GET("/", [CarTypeController::class, 'index'])->name('index');
     // Route::GET("/{carType}", [CarTypeController::class, 'show'])->name('show');

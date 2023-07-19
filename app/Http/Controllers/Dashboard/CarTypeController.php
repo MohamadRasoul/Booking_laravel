@@ -2,102 +2,54 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreCarTypeRequest;
-use App\Http\Requests\UpdateCarTypeRequest;
-use App\Http\Resources\CarTypeResource;
+use App\Http\Requests\Dashboard\CarType\StoreCarTypeRequest;
+use App\Http\Requests\Dashboard\CarType\UpdateCarTypeRequest;
 use App\Models\CarType;
-use Spatie\QueryBuilder\AllowedFilter;
-use Spatie\QueryBuilder\QueryBuilder;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class CarTypeController extends Controller
 {
-    public function index()
+
+    public function index(): View
     {
-        // Get Data
-        $carTypes = CarType::latest()->get();
+        $carTypes = CarType::latest('name')->get();
 
-        // OR with filter
-
-        // $carTypes = QueryBuilder::for(CarType::class)
-        //     ->allowedFilters([
-        //         "test_id",
-        //         AllowedFilter::exact('test_id'),
-        //     ])->get();
-
-
-        // Return Response
-        return response()->success(
-            'this is all CarTypes',
-            [
-                "carTypes" => CarTypeResource::collection($carTypes),
-            ]
+        return view(
+            'dashboard.pages.carType.index',
+            compact('carTypes')
         );
     }
 
 
-    public function store(StoreCarTypeRequest $request)
+    public function store(StoreCarTypeRequest $request): RedirectResponse
     {
         // Store CarType
         $carType = CarType::create($request->validated());
 
 
-        // Add Image to CarType
-        $carType
-            ->addMediaFromRequest('image')
-            ->toMediaCollection('CarType');
+        return back();
 
-        // Return Response
-        return response()->success(
-            'carType is added success',
-            [
-                "carType" => new CarTypeResource($carType),
-            ]
-        );
     }
 
 
-    public function show(CarType $carType)
-    {
-        // Return Response
-        return response()->success(
-            'this is your carType',
-            [
-                "carType" => new CarTypeResource($carType),
-            ]
-        );
-    }
-
-    public function update(UpdateCarTypeRequest $request, CarType $carType)
+    public function update(UpdateCarTypeRequest $request, CarType $carType): RedirectResponse
     {
         // Update CarType
-         $carType->update($request->validated());
+        $carType->update($request->validated());
 
 
-        // Edit Image for  CarType if exist
-        $request->hasFile('image') &&
-            $carType
-                ->addMediaFromRequest('image')
-                ->toMediaCollection('CarType');
-
-
-
-        // Return Response
-        return response()->success(
-            'carType is updated success',
-            [
-                "carType" => new CarTypeResource($carType),
-            ]
-        );
+        return back();
     }
 
-    public function destroy(CarType $carType)
+
+    public function destroy(CarType $carType): RedirectResponse
     {
         // Delete CarType
         $carType->delete();
 
-        // Return Response
-        return response()->success('carType is deleted success');
+        return back();
     }
 }

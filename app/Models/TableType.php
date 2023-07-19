@@ -19,6 +19,8 @@ class TableType extends Model //implements HasMedia
 
     protected $casts = [];
 
+    protected $fillable= ['name'];
+
 
     ########## Relations ##########
 

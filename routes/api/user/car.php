@@ -12,7 +12,7 @@ Route::group([
 });
 
 Route::group([
-    "prefix" => "type"
+    "prefix" => "carType"
 ], function () {
     Route::GET('', [Api\CarTypeController::class, "index"]);
 });

@@ -1,4 +1,4 @@
-<x-dashboard-layout::dashboard title="Car Types" >
+<x-dashboard-layout::dashboard title="Room Types" >
 
 
     <x-slot name="head" >
@@ -22,24 +22,24 @@
                                 display: flex;
                                 justify-content: space-between;
                                 align-items: center;" >
-                        <h5 >Car Types</h5 >
+                        <h5 >Room Types</h5 >
                         <button class="btn btn-primary" type="button" data-bs-toggle="modal"
-                                data-bs-target="#addCarTypeModal" >Add
+                                data-bs-target="#addRoomTypeModal" >Add
                         </button >
 
-                        <!-- Start - Add CarType Modal -->
+                        <!-- Start - Add RoomType Modal -->
                         <div class="modal
-                                fade" id="addCarTypeModal" tabindex="-1"
+                                fade" id="addRoomTypeModal" tabindex="-1"
                              role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
                             <div class="modal-dialog" role="document" >
                                 <div class="modal-content" >
                                     <div class="modal-header" >
-                                        <h5 class="modal-title" id="exampleModalLabel2" >Add CarType</h5 >
+                                        <h5 class="modal-title" id="exampleModalLabel2" >Add RoomType</h5 >
                                         <button class="btn-close" type="button" data-bs-dismiss="modal"
                                                 aria-label="Close" ></button >
                                     </div >
                                     <div class="modal-body" >
-                                        <form action="{{ route('car.carType.store') }}" method='post' >
+                                        <form action="{{ route('hotel.roomType.store') }}" method='post' >
                                             @csrf
                                             <div class="mb-3" >
                                                 <label class="col-form-label" for="recipient-name" >Name</label >
@@ -66,7 +66,7 @@
                                 </div >
                             </div >
                         </div >
-                        <!-- End - Add CarType Modal -->
+                        <!-- End - Add RoomType Modal -->
 
 
                     </div >
@@ -82,19 +82,19 @@
                                 <tbody >
 
 
-                                @foreach ($carTypes as $carType)
+                                @foreach ($roomTypes as $roomType)
                                     <tr >
-                                        <td >{{ $carType->name }}</td >
+                                        <td >{{ $roomType->name }}</td >
 
                                         <td class='align-content-end w-25' >
 
                                             <button class="btn" type="button" data-bs-toggle="modal"
-                                                    data-bs-target="#editCarTypeModal_{{ $carType->id }}" >
+                                                    data-bs-target="#editRoomTypeModal_{{ $roomType->id }}" >
                                                 <i class="fa fa-edit text-primary fs-5" ></i >
                                             </button >
 
-                                            <!-- Start - Edit CarType Modal -->
-                                            <div class="modal fade" id="editCarTypeModal_{{ $carType->id }}"
+                                            <!-- Start - Edit RoomType Modal -->
+                                            <div class="modal fade" id="editRoomTypeModal_{{ $roomType->id }}"
                                                  tabindex="-1" role="dialog"
                                                  aria-labelledby="exampleModalLabel" aria-hidden="true" >
                                                 <div class="modal-dialog" role="document" >
@@ -102,14 +102,14 @@
                                                         <div class="modal-header" >
                                                             <h5 class="modal-title" id="exampleModalLabel2" >
                                                                 Edit
-                                                                {{ ' - ' . $carType->name }}</h5 >
+                                                                {{ ' - ' . $roomType->name }}</h5 >
                                                             <button class="btn-close" type="button"
                                                                     data-bs-dismiss="modal"
                                                                     aria-label="Close" ></button >
                                                         </div >
                                                         <div class="modal-body" >
                                                             <form
-                                                                action={{ route('car.carType.update', $carType->id) }}
+                                                                action={{ route('hotel.roomType.update', $roomType->id) }}
                                                                     method='post'>
                                                                 @method('put')
                                                                 @csrf
@@ -118,7 +118,7 @@
                                                                            for="recipient-name">Name</label>
                                                                     <input class="form-control" type="text"
                                                                            name='name'
-                                                                           value="{{ old('name') ?? $carType->name }}">
+                                                                           value="{{ old('name') ?? $roomType->name }}">
                                                                 </div>
                                                                 <div class="modal-footer"
                                                                      style="border-top: 0;
@@ -136,36 +136,36 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- End - Edit CarType Modal -->
+                                            <!-- End - Edit RoomType Modal -->
 
 
-                                            <!-- Start - Delete CarType  -->
+                                            <!-- Start - Delete RoomType  -->
 
                                             <button class="btn" type="button" data-bs-toggle="modal"
                                                     data-original-title="test"
-                                                    data-bs-target="#deleteModal_{{ $carType->id }}">
+                                                    data-bs-target="#deleteModal_{{ $roomType->id }}">
                                                 <i class="fa fa-trash-o text-danger fs-5">
                                                 </i>
                                             </button>
 
 
-                                            <div class="modal fade" id="deleteModal_{{ $carType->id }}" tabindex="-1"
+                                            <div class="modal fade" id="deleteModal_{{ $roomType->id }}" tabindex="-1"
                                                  role="dialog"
                                                  aria-labelledby="deleteModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="deleteModalLabel">Delete
-                                                                CarType</h5>
+                                                                RoomType</h5>
                                                             <button class="btn-close" type="button"
                                                                     data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
-                                                        <div class="modal-body">Are You sure to delete CarType ?
+                                                        <div class="modal-body">Are You sure to delete RoomType ?
                                                         </div>
 
                                                         <div class="modal-footer">
                                                             <form style="display:initial"
-                                                                  action={{ route('car.carType.destroy', $carType) }} method="POST">
+                                                                  action={{ route('hotel.roomType.destroy', $roomType) }} method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button class="btn btn-primary" type="button"
@@ -180,7 +180,7 @@
                                                 </div>
                                             </div>
 
-                                            <!-- End - Delete CarType -->
+                                            <!-- End - Delete RoomType -->
 
                                         </td>
                                     </tr>

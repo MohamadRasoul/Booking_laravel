@@ -104,7 +104,7 @@
                         </a >
                         <ul class="sidebar-submenu" >
                             <li ><a class="" href="index.html" >cars</a ></li >
-                            <li ><a class="" href="{{ route('car.type.index') }}" >car type</a ></li >
+                            <li ><a class="" href="{{ route('car.carType.index') }}" >car type</a ></li >
                         </ul >
                     </li >
 
@@ -118,7 +118,7 @@
                             <span class="" >Resturants </span ></a >
                         <ul class="sidebar-submenu" >
                             <li ><a class="" href="index.html" >resturants</a ></li >
-                            <li ><a class="" href="dashboard-02.html" >table type</a ></li >
+                            <li ><a class="" href="{{ route('restaurant.tableType.index') }}">table type</a ></li >
                         </ul >
                     </li >
 
@@ -132,7 +132,7 @@
                             <span class="" >Hotel </span ></a >
                         <ul class="sidebar-submenu" >
                             <li ><a class="" href="index.html" >hotels</a ></li >
-                            <li ><a class="" href="dashboard-02.html" >room Type</a ></li >
+                            <li ><a class="" href="{{ route('hotel.roomType.index') }}" >room Type</a ></li >
                         </ul >
                     </li >
 

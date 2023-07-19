@@ -14,8 +14,8 @@ return new class extends Migration {
             $table->id();
 
             ######## Foreign keys  ########
-            $table->foreignIdFor(Restaurant::class)->constrained();
-            $table->foreignIdFor(TableType::class)->constrained();
+            $table->foreignIdFor(Restaurant::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(TableType::class)->constrained()->cascadeOnDelete();
 
         });
     }

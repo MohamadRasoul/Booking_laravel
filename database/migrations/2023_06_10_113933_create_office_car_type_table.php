@@ -14,8 +14,8 @@ return new class extends Migration {
             $table->id();
 
             ######## Foreign keys  ########
-            $table->foreignIdFor(CarOffice::class)->constrained();
-            $table->foreignIdFor(CarType::class)->constrained();
+            $table->foreignIdFor(CarOffice::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(CarType::class)->constrained()->cascadeOnDelete();
 
         });
     }

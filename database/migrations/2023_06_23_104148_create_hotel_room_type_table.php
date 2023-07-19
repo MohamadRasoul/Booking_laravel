@@ -12,10 +12,10 @@ return new class extends Migration {
     {
         Schema::create('hotel_room_type', function (Blueprint $table) {
             $table->id();
-            
+
             ######## Foreign keys  ########
-            $table->foreignIdFor(Hotel::class)->constrained();
-            $table->foreignIdFor(RoomType::class)->constrained();
+            $table->foreignIdFor(Hotel::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(RoomType::class)->constrained()->cascadeOnDelete();
 
         });
     }
