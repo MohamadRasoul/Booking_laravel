@@ -15,7 +15,7 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class ClinicBookingController extends Controller
 {
-    protected User $userAuth;
+    protected $userAuth;
 
     public function __construct()
     {

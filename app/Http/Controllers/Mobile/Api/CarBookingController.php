@@ -15,11 +15,11 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class CarBookingController extends Controller
 {
-    protected User $userAuth;
+    protected $userAuth;
 
     public function __construct()
     {
-        $this->userAuth = Auth::guard('api_user')->user();
+        $this->userAuth = Auth::guard('api_user')->user() ?? null;
     }
 
     public function indexForUser(IndexCarBookingForUserRequest $request)
