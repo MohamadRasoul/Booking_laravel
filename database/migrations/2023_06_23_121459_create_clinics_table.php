@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\Admin;
 use App\Models\City;
 use App\Models\ClinicSpecialization;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -23,7 +23,7 @@ return new class extends Migration {
             ######## Foreign keys  ########
 
             $table->foreignIdFor(ClinicSpecialization::class)->constrained();
-            $table->foreignIdFor(Admin::class)->constrained();
+            $table->foreignIdFor(User::class)->constrained();
             $table->foreignIdFor(City::class)->constrained();
 
             $table->timestamps();

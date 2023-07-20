@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Admin;
 use App\Models\City;
 use App\Models\Hotel;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class HotelFactory extends Factory
@@ -15,9 +15,8 @@ class HotelFactory extends Factory
     {
         return [
             "name" => $this->faker->name,
-            "about" => $this->faker->text,
 
-            "admin_id" => Admin::inRandomOrder()->first()->id,
+            "user_id" => User::inRandomOrder()->first()->id,
             "city_id" => City::inRandomOrder()->first()->id,
         ];
     }
