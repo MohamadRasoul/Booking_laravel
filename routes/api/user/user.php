@@ -5,10 +5,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group([
-    "prefix" => "car"
+    "prefix" => "carOffice"
 ], function () {
 
-    require __DIR__ . '/car.php';
+    require __DIR__ . '/carOffice.php';
 
 });
 

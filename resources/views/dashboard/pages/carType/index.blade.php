@@ -39,7 +39,7 @@
                                                 aria-label="Close" ></button >
                                     </div >
                                     <div class="modal-body" >
-                                        <form action="{{ route('car.carType.store') }}" method='post' >
+                                        <form action="{{ route('carOffice.carType.store') }}" method='post' >
                                             @csrf
                                             <div class="mb-3" >
                                                 <label class="col-form-label" for="recipient-name" >Name</label >
@@ -109,7 +109,7 @@
                                                         </div >
                                                         <div class="modal-body" >
                                                             <form
-                                                                action={{ route('car.carType.update', $carType->id) }}
+                                                                action={{ route('carOffice.carType.update', $carType->id) }}
                                                                     method='post'>
                                                                 @method('put')
                                                                 @csrf
@@ -165,7 +165,7 @@
 
                                                         <div class="modal-footer">
                                                             <form style="display:initial"
-                                                                  action={{ route('car.carType.destroy', $carType) }} method="POST">
+                                                                  action={{ route('carOffice.carType.destroy', $carType) }} method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button class="btn btn-primary" type="button"

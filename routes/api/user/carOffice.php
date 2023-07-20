@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group([
-    "prefix" => "office"
 ], function () {
     Route::GET('', [Api\CarOfficeController::class, "index"]);
     Route::GET('{carOffice}', [Api\CarOfficeController::class, "show"]);

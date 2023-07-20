@@ -50,11 +50,11 @@ Route::group([
 
 
 Route::group([
-    "prefix" => "car",
-    'as' => 'car.'
+    "prefix" => "carOffice",
+    'as' => 'carOffice.'
 ], function () {
 
-    require __DIR__ . '/car.php';
+    require __DIR__ . '/carOffice.php';
 
 });
 
