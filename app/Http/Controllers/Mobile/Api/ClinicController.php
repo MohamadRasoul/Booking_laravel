@@ -23,9 +23,10 @@ class ClinicController extends Controller
                 AllowedFilter::exact('city_id'),
             ])
             ->allowedIncludes([
-                'clinicSessions'
+                'clinicSessions',
+                'user',
             ])
-            ->with('user', 'city', 'clinicSpecialization')
+            ->with('city', 'clinicSpecialization')
             ->get();
 
 

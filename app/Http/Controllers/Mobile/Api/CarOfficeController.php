@@ -21,9 +21,10 @@ class CarOfficeController extends Controller
                 AllowedFilter::exact('user_id'),
             ])
             ->allowedIncludes([
-                'carTypes'
+                'carTypes',
+                'user',
             ])
-            ->with('user', 'city')
+            ->with('city')
             ->get();
 
         // Return Response

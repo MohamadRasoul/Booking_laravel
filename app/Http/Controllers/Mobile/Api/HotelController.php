@@ -21,9 +21,10 @@ class HotelController extends Controller
                 AllowedFilter::exact('user_id'),
             ])
             ->allowedIncludes([
-                'roomTypes'
+                'roomTypes',
+                'user',
             ])
-            ->with('user', 'city')
+            ->with('city')
             ->get();
 
 
