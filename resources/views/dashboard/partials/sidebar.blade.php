@@ -103,8 +103,8 @@
                             <span class="" >{{'Car Office'}}</span >
                         </a >
                         <ul class="sidebar-submenu" >
-                            <li ><a class="" href="index.html" >cars</a ></li >
-                            <li ><a class="" href="{{ route('car.carType.index') }}" >car type</a ></li >
+                            <li ><a class="" href="{{ route('carOffice.index') }}" >car Offices</a ></li >
+                            <li ><a class="" href="{{ route('carOffice.carType.index') }}" >car type</a ></li >
                         </ul >
                     </li >
 
