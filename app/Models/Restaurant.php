@@ -2,21 +2,21 @@
 
 namespace App\Models;
 
+use App\Services\MediaService;
 use App\Traits\PlaceContactRelationTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-//use Spatie\MediaLibrary\HasMedia;
-//use Spatie\MediaLibrary\InteractsWithMedia;
-
-class Restaurant extends Model //implements HasMedia
+class Restaurant extends Model implements HasMedia
 {
     use HasFactory;
     use PlaceContactRelationTrait;
-
-    //use InteractsWithMedia;
+    use InteractsWithMedia;
 
     protected $fillable = [
         'name',
@@ -53,6 +53,14 @@ class Restaurant extends Model //implements HasMedia
             ->addMediaCollection('Restaurant')
             ->useFallbackUrl(config('app.url') . '/images/default.jpg')
             ->singleFile();
+    }
+
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $media->setCustomProperty('hash', MediaService::hashImage($media->getPath()));
+
+        $media->save();
     }
 
 }
