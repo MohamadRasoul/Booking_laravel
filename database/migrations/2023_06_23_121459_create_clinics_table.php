@@ -15,7 +15,6 @@ return new class extends Migration {
             $table->id();
 
             $table->string('name');
-            $table->text('about');
             $table->unsignedSmallInteger('experience_years');
 
             $table->unsignedSmallInteger('session_duration');  /// Enum

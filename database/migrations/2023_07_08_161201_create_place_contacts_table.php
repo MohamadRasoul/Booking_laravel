@@ -9,6 +9,7 @@ return new class extends Migration {
     {
         Schema::create('place_contacts', function (Blueprint $table) {
             $table->id();
+            $table->text('about');
             $table->text('address');
             $table->string('phone_number');
             $table->string('latitude');
