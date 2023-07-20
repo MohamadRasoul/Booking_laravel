@@ -16,6 +16,7 @@ class PlaceContactFactory extends Factory
 //        $placeContactable_type = $this->faker->randomElement(BookingServiceEnum::values());
 
         return [
+            'about' => $this->faker->text(),
             'address' => $this->faker->address(),
             'phone_number' => $this->faker->phoneNumber(),
             'latitude' => $this->faker->latitude(),

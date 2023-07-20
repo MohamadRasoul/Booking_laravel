@@ -15,9 +15,9 @@ class HotelResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'about' => $this->about,
-            
+
             'place_contact' => PlaceContactResource::make($this->whenLoaded('placeContact')),
-            'admin' => AdminResource::make($this->whenLoaded('admin')),
+            'user' => AdminResource::make($this->whenLoaded('user')),
             'city' => CityResource::make($this->whenLoaded('city')),
             'room_types' => RoomTypeResource::collection($this->whenLoaded('roomTypes')),
         ];

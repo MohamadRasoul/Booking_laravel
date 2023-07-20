@@ -19,7 +19,7 @@ class CarOfficeResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'place_contact' => PlaceContactResource::make($this->whenLoaded('placeContact')),
-            'admin' => AdminResource::make($this->whenLoaded('admin')),
+            'user' => AdminResource::make($this->whenLoaded('user')),
             'city' => CityResource::make($this->whenLoaded('city')),
             'car_types' => CarTypeResource::collection($this->whenLoaded('carTypes')),
         ];

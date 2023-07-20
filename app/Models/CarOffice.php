@@ -25,11 +25,11 @@ class CarOffice extends Model //implements HasMedia
     ];
 
     protected $casts = [];
-    
+
     ########## Relations ##########
-    public function admin(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Admin::class);
+        return $this->belongsTo(User::class);
     }
 
     public function city(): BelongsTo
