@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Mobile\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RoomTypeResource;
 use App\Models\RoomType;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class RoomTypeController extends Controller
@@ -16,6 +17,7 @@ class RoomTypeController extends Controller
         $roomTypes = QueryBuilder::for(RoomType::class)
             ->allowedFilters([
                 "name",
+                AllowedFilter::exact('hotel_id', 'hotels.id')
             ])->get();
 
 
