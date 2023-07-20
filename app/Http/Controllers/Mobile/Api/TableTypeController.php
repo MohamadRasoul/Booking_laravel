@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Mobile\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\TableTypeResource;
 use App\Models\TableType;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class TableTypeController extends Controller
@@ -16,6 +17,8 @@ class TableTypeController extends Controller
         $tableTypes = QueryBuilder::for(TableType::class)
             ->allowedFilters([
                 "name",
+                AllowedFilter::exact('restaurant_id', 'restaurants.id')
+
             ])->get();
 
 
