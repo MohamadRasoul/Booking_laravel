@@ -39,7 +39,8 @@
                                                 aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="{{ route('notification.store') }}" method='post' enctype="multipart/form-data">
+                                        <form action="{{ route('notification.store') }}" method='post'
+                                              enctype="multipart/form-data">
                                             @csrf
                                             <div class="mb-3">
                                                 <label class="col-form-label" for="recipient-name">Title</label>
@@ -58,7 +59,7 @@
 
                                             <div class="mb-3">
                                                 <label class="col-form-label" for="recipient-name">Image</label>
-                                                <input class="form-control" type="file"  name='image' >
+                                                <input class="form-control" type="file" name='image'>
                                                 <x-dashboard-component::input-error
                                                     field='image'></x-dashboard-component::input-error>
                                             </div>
@@ -101,7 +102,10 @@
                                         <td>{{ $notification->data['title'] }}</td>
                                         <td>{{ $notification->data['message'] }}</td>
                                         <td>{{ $notification->notifiable->name }}</td>
-                                        <td>{{ $notification->read_at ? "YES" : "NO" }}</td>
+                                        <td @class([
+                                                'font-success' => $notification->read_at ,
+                                                'font-danger' => ! $notification->read_at ,
+                                            ])>{{ $notification->read_at ? "YES" : "NO" }}</td>
 
                                         <td class='align-content-end w-25'>
 
