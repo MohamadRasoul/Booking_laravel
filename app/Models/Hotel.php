@@ -29,6 +29,10 @@ class Hotel extends Model implements HasMedia
     ];
 
 
+    protected $with = [
+        'media'
+    ];
+
     ########## Relations ##########
     public function user(): BelongsTo
     {
@@ -52,7 +56,6 @@ class Hotel extends Model implements HasMedia
     {
         $this
             ->addMediaCollection('Hotel')
-            ->useFallbackUrl(config('app.url') . '/images/default.jpg')
             ->singleFile();
     }
 

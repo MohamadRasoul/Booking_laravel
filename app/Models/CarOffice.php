@@ -26,6 +26,10 @@ class CarOffice extends Model implements HasMedia
 
     protected $casts = [];
 
+    protected $with = [
+        'media'
+    ];
+
     ########## Relations ##########
     public function user(): BelongsTo
     {
@@ -49,7 +53,6 @@ class CarOffice extends Model implements HasMedia
     {
         $this
             ->addMediaCollection('CarOffice')
-            ->useFallbackUrl(config('app.url') . '/images/default.jpg')
             ->singleFile();
     }
 

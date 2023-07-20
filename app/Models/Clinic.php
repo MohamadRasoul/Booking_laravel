@@ -34,6 +34,10 @@ class Clinic extends Model implements HasMedia
     ];
 
 
+    protected $with = [
+        'media'
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -65,7 +69,6 @@ class Clinic extends Model implements HasMedia
     {
         $this
             ->addMediaCollection('Clinic')
-            ->useFallbackUrl(config('app.url') . '/images/default.jpg')
             ->singleFile();
     }
 

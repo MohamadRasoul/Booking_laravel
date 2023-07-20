@@ -28,6 +28,10 @@ class Restaurant extends Model implements HasMedia
     protected $casts = [];
 
 
+    protected $with = [
+        'media'
+    ];
+
     ########## Relations ##########
     public function user(): BelongsTo
     {
@@ -51,7 +55,6 @@ class Restaurant extends Model implements HasMedia
     {
         $this
             ->addMediaCollection('Restaurant')
-            ->useFallbackUrl(config('app.url') . '/images/default.jpg')
             ->singleFile();
     }
 

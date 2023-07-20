@@ -16,7 +16,6 @@ class Notification extends DatabaseNotification implements HasMedia
     {
         $this
             ->addMediaCollection('Notification')
-            ->useFallbackUrl(config('app.url') . '/images/default.jpg')
             ->singleFile();
     }
 

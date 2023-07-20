@@ -18,6 +18,8 @@ class CarOfficeResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+
+            'image' => $this->whenLoaded('media', ImageResource::make($this->getFirstMedia('CarOffice'))),
             'place_contact' => PlaceContactResource::make($this->whenLoaded('placeContact')),
             'user' => AdminResource::make($this->whenLoaded('user')),
             'city' => CityResource::make($this->whenLoaded('city')),
