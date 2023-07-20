@@ -19,13 +19,13 @@ class ClinicController extends Controller
             ->allowedFilters([
                 "name",
                 AllowedFilter::exact('clinic_specialization_id'),
-                AllowedFilter::exact('admin_id'),
+                AllowedFilter::exact('user_id'),
                 AllowedFilter::exact('city_id'),
             ])
             ->allowedIncludes([
                 'clinicSessions'
             ])
-            ->with('admin', 'city', 'clinicSpecialization')
+            ->with('user', 'city', 'clinicSpecialization')
             ->get();
 
 

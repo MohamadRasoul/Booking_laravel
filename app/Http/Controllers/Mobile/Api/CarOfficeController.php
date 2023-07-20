@@ -18,12 +18,12 @@ class CarOfficeController extends Controller
             ->allowedFilters([
                 "name",
                 AllowedFilter::exact('city_id'),
-                AllowedFilter::exact('admin_id'),
+                AllowedFilter::exact('user_id'),
             ])
             ->allowedIncludes([
                 'carTypes'
             ])
-            ->with('admin', 'city')
+            ->with('user', 'city')
             ->get();
 
         // Return Response
@@ -34,7 +34,6 @@ class CarOfficeController extends Controller
             ]
         );
     }
-
 
 
     public function show(CarOffice $carOffice)

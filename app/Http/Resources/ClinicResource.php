@@ -19,7 +19,7 @@ class ClinicResource extends JsonResource
             'session_duration' => $this->session_duration,
 
             'place_contact' => PlaceContactResource::make($this->whenLoaded('placeContact')),
-            'admin' => AdminResource::make($this->whenLoaded('admin')),
+            'user' => AdminResource::make($this->whenLoaded('user')),
             'city' => CityResource::make($this->whenLoaded('city')),
             'clinic_specialization' => ClinicSpecializationResource::make($this->whenLoaded('clinicSpecialization')),
 

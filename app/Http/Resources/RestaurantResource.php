@@ -23,9 +23,9 @@ class RestaurantResource extends JsonResource
             "id" => $this->id,
             "name" => $this->name,
             "about" => $this->about,
-            
+
             'place_contact' => PlaceContactResource::make($this->whenLoaded('placeContact')),
-            'admin' => AdminResource::make($this->whenLoaded('admin')),
+            'user' => AdminResource::make($this->whenLoaded('user')),
             'city' => CityResource::make($this->whenLoaded('city')),
             'table_types' => TableTypeResource::collection($this->whenLoaded('tableTypes')),
         ];

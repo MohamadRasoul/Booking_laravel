@@ -34,9 +34,9 @@ class Clinic extends Model //implements HasMedia
     ];
 
 
-    public function admin(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Admin::class);
+        return $this->belongsTo(User::class);
     }
 
     public function city(): BelongsTo

@@ -18,12 +18,12 @@ class RestaurantController extends Controller
             ->allowedFilters([
                 "name",
                 AllowedFilter::exact('city_id'),
-                AllowedFilter::exact('admin_id'),
+                AllowedFilter::exact('user_id'),
             ])
             ->allowedIncludes([
                 'tableTypes'
             ])
-            ->with('admin', 'city')
+            ->with('user', 'city')
             ->get();
 
 
