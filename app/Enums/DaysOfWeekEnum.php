@@ -16,4 +16,25 @@ enum DaysOfWeekEnum: int
     case THU = 4;
     case FRI = 5;
     case SAT = 6;
+
+
+    /**
+     * @return string
+     */
+    public function getHumanName(): string
+    {
+
+//        DaysOfWeekEnum::FRI->getHumanName()
+
+
+        return match ($this) {
+            self::SUN => 'sunday',
+            self::MON => 'monday',
+            self::TUE => 'TUE',
+            self::WED => 'WED',
+            self::THU => 'THU',
+            self::FRI => 'FRI',
+            self::SAT => 'SAT',
+        };
+    }
 }
