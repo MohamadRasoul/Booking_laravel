@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Dashboard\{CityController, NotificationController};
+use App\Http\Controllers\Dashboard\{AdminController, CityController, NotificationController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +37,24 @@ Route::group([
 
 
 Route::group([
+    'prefix' => 'admin',
+    'as' => 'admin.'
+], function () {
+    Route::GET("/", [AdminController::class, 'index'])->name('index');
+    // Route::GET("/{admin}", [AdminController::class, 'show'])->name('show');
+
+    // Route::GET("/create", [AdminController::class, 'create'])->name('create');
+    Route::POST("/", [AdminController::class, 'store'])->name('store');
+
+    // Route::GET("/{admin}/edit", [AdminController::class, 'edit'])->name('edit');
+    Route::PUT("/{admin}", [AdminController::class, 'update'])->name('update');
+    Route::DELETE("/{admin}", [AdminController::class, 'destroy'])->name('destroy');
+});
+
+
+
+
+Route::group([
     'prefix' => 'notification',
     'as' => 'notification.'
 ], function () {
@@ -55,7 +73,6 @@ Route::group([
 ], function () {
 
     require __DIR__ . '/carOffice.php';
-
 });
 
 
@@ -66,7 +83,6 @@ Route::group([
 ], function () {
 
     require __DIR__ . '/restaurant.php';
-
 });
 
 Route::group([
@@ -75,7 +91,6 @@ Route::group([
 ], function () {
 
     require __DIR__ . '/hotel.php';
-
 });
 //
 //
@@ -87,6 +102,3 @@ Route::group([
 //    require __DIR__ . '/clinic.php';
 //
 //});
-
-
-

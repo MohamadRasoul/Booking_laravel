@@ -1,4 +1,4 @@
-<x-dashboard-layout::dashboard title="Cities">
+<x-dashboard-layout::dashboard title="Admins">
 
 
     <x-slot name="head">
@@ -22,25 +22,28 @@
                                 display: flex;
                                 justify-content: space-between;
                                 align-items: center;">
-                        <h5>Cities</h5>
+                        <h5>Admins</h5>
+
+
                         <button class="btn btn-primary" type="button" data-bs-toggle="modal"
-                            data-bs-target="#addCityModal">Add
+                            data-bs-target="#addAdminModal">Add
                         </button>
 
-                        <!-- Start - Add City Modal -->
-                        <div class="modal
-                                fade" id="addCityModal" tabindex="-1"
-                            role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <!-- Start - Add Admin Modal -->
+                        <div class="modal fade" id="addAdminModal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel2">Add City</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel2">Add Admin</h5>
                                         <button class="btn-close" type="button" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="{{ route('city.store') }}" method='post'>
+                                        <form action="{{ route('admin.store') }}" method='post'>
                                             @csrf
+
+
                                             <div class="mb-3">
                                                 <label class="col-form-label" for="recipient-name">Name</label>
                                                 <input class="form-control" type="text" name='name'
@@ -50,6 +53,38 @@
                                                     </x-dashboard-component::input-error>
                                                 @enderror
                                             </div>
+
+                                            <div class="mb-3">
+                                                <label class="col-form-label" for="recipient-name">Username</label>
+                                                <input class="form-control" type="text" name='username'
+                                                    value="{{ old('username') }}">
+                                                @error('username')
+                                                    <x-dashboard-component::input-error :="$message">
+                                                    </x-dashboard-component::input-error>
+                                                @enderror
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label class="col-form-label" for="recipient-name">Password</label>
+                                                <input class="form-control" type="password" name='password'>
+                                                @error('password')
+                                                    <x-dashboard-component::input-error :="$message">
+                                                    </x-dashboard-component::input-error>
+                                                @enderror
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label class="col-form-label" for="recipient-name">Password
+                                                    confirmation</label>
+                                                <input class="form-control" type="password"
+                                                    name='password_confirmation'>
+                                                @error('password_confirmation')
+                                                    <x-dashboard-component::input-error :="$message">
+                                                    </x-dashboard-component::input-error>
+                                                @enderror
+                                            </div>
+
+
                                             <div class="modal-footer"
                                                 style="border-top: 0;
                                                              padding: 0;">
@@ -66,7 +101,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- End - Add City Modal -->
+                        <!-- End - Add Admin Modal -->
 
 
                     </div>
@@ -76,25 +111,27 @@
                                 <thead>
                                     <tr>
                                         <th>Name</th>
+                                        <th>Username</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
 
-                                    @foreach ($cities as $city)
+                                    @foreach ($admins as $admin)
                                         <tr>
-                                            <td>{{ $city->name }}</td>
+                                            <td>{{ $admin->name }}</td>
+                                            <td>{{ $admin->username }}</td>
 
                                             <td class='align-content-end w-25'>
 
                                                 <button class="btn" type="button" data-bs-toggle="modal"
-                                                    data-bs-target="#editCityModal_{{ $city->id }}">
+                                                    data-bs-target="#editAdminModal_{{ $admin->id }}">
                                                     <i class="fa fa-edit text-primary fs-5"></i>
                                                 </button>
 
-                                                <!-- Start - Edit City Modal -->
-                                                <div class="modal fade" id="editCityModal_{{ $city->id }}"
+                                                <!-- Start - Edit Admin Modal -->
+                                                <div class="modal fade" id="editAdminModal_{{ $admin->id }}"
                                                     tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                                     aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
@@ -102,26 +139,77 @@
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel2">
                                                                     Edit
-                                                                    {{ ' - ' . $city->name }}</h5>
+                                                                    {{ ' - ' . $admin->name }}</h5>
                                                                 <button class="btn-close" type="button"
                                                                     data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action={{ route('city.update', $city->id) }}
+                                                                <form action={{ route('admin.update', $admin->id) }}
                                                                     method='post'>
                                                                     @method('put')
                                                                     @csrf
+
+
+
+
                                                                     <div class="mb-3">
                                                                         <label class="col-form-label"
                                                                             for="recipient-name">Name</label>
                                                                         <input class="form-control" type="text"
                                                                             name='name'
-                                                                            value="{{ old('name') ?? $city->name }}">
+                                                                            value="{{ old('name') ?? $admin->name }}">
+                                                                        @error('name')
+                                                                            <x-dashboard-component::input-error
+                                                                                :="$message">
+                                                                            </x-dashboard-component::input-error>
+                                                                        @enderror
                                                                     </div>
+
+                                                                    <div class="mb-3">
+                                                                        <label class="col-form-label"
+                                                                            for="recipient-name">Username</label>
+                                                                        <input class="form-control" type="text"
+                                                                            name='username'
+                                                                            value="{{ old('username') ?? $admin->username }}">
+                                                                        @error('username')
+                                                                            <x-dashboard-component::input-error
+                                                                                :="$message">
+                                                                            </x-dashboard-component::input-error>
+                                                                        @enderror
+                                                                    </div>
+
+                                                                    <div class="mb-3">
+                                                                        <label class="col-form-label"
+                                                                            for="recipient-name">Password</label>
+                                                                        <input class="form-control" type="password"
+                                                                            name='password'>
+                                                                        @error('password')
+                                                                            <x-dashboard-component::input-error
+                                                                                :="$message">
+                                                                            </x-dashboard-component::input-error>
+                                                                        @enderror
+                                                                    </div>
+
+                                                                    <div class="mb-3">
+                                                                        <label class="col-form-label"
+                                                                            for="recipient-name">Password
+                                                                            confirmation</label>
+                                                                        <input class="form-control" type="password"
+                                                                            name='password_confirmation'>
+                                                                        @error('password_confirmation')
+                                                                            <x-dashboard-component::input-error
+                                                                                :="$message">
+                                                                            </x-dashboard-component::input-error>
+                                                                        @enderror
+                                                                    </div>
+
+
+
                                                                     <div class="modal-footer"
                                                                         style="border-top: 0;
                                                                                     padding: 0;">
-                                                                        <button class="btn btn-secondary" type="button"
+                                                                        <button class="btn btn-secondary"
+                                                                            type="button"
                                                                             data-bs-dismiss="modal">Close
                                                                         </button>
                                                                         <button class="btn btn-primary"
@@ -133,37 +221,39 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- End - Edit City Modal -->
+                                                <!-- End - Edit Admin Modal -->
 
 
-                                                <!-- Start - Delete City  -->
+
+
+                                                <!-- Start - Delete Admin  -->
 
                                                 <button class="btn" type="button" data-bs-toggle="modal"
                                                     data-original-title="test"
-                                                    data-bs-target="#deleteModal_{{ $city->id }}">
+                                                    data-bs-target="#deleteModal_{{ $admin->id }}">
                                                     <i class="fa fa-trash-o text-danger fs-5">
                                                     </i>
                                                 </button>
 
 
-                                                <div class="modal fade" id="deleteModal_{{ $city->id }}"
+                                                <div class="modal fade" id="deleteModal_{{ $admin->id }}"
                                                     tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
                                                     aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="deleteModalLabel">Delete
-                                                                    City</h5>
+                                                                    Admin</h5>
                                                                 <button class="btn-close" type="button"
                                                                     data-bs-dismiss="modal"
                                                                     aria-label="Close"></button>
                                                             </div>
-                                                            <div class="modal-body">Are You sure to delete City ?
+                                                            <div class="modal-body">Are You sure to delete Admin ?
                                                             </div>
 
                                                             <div class="modal-footer">
                                                                 <form style="display:initial"
-                                                                    action={{ route('city.destroy', $city) }}
+                                                                    action={{ route('admin.destroy', $admin) }}
                                                                     method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
@@ -180,7 +270,7 @@
                                                     </div>
                                                 </div>
 
-                                                <!-- End - Delete City -->
+                                                <!-- End - Delete Admin -->
 
                                             </td>
                                         </tr>
