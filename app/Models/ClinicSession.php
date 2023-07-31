@@ -38,12 +38,4 @@ class ClinicSession extends Model //implements HasMedia
     ########## Libraries ##########
 
 
-    // public function registerMediaCollections(): void
-    // {
-    //     $this
-    //         ->addMediaCollection('ClinicSession')
-    //         ->useFallbackUrl(config('app.url') . '/images/default.jpg')
-    //         ->singleFile();
-    // }
-
 }

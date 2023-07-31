@@ -28,12 +28,4 @@ class ClinicSpecialization extends Model //implements HasMedia
     ########## Libraries ##########
 
 
-    // public function registerMediaCollections(): void
-    // {
-    //     $this
-    //         ->addMediaCollection('ClinicSpecialization')
-    //         ->useFallbackUrl(config('app.url') . '/images/default.jpg')
-    //         ->singleFile();
-    // }
-
 }

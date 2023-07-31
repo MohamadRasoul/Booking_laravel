@@ -32,12 +32,4 @@ class CarType extends Model //implements HasMedia
     ########## Libraries ##########
 
 
-    // public function registerMediaCollections(): void
-    // {
-    //     $this
-    //         ->addMediaCollection('CarType')
-    //         ->useFallbackUrl(config('app.url') . '/images/default.jpg')
-    //         ->singleFile();
-    // }
-
 }
