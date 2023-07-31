@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Enums\DaysOfWeekEnum;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dashboard\CarOffice\StoreCarOfficeRequest;
+use App\Http\Requests\Dashboard\CarOffice\UpdateCarOfficeRequest;
+use App\Http\Requests\Dashboard\PlaceContact\StorePlaceContactRequest;
+use App\Http\Requests\Dashboard\PlaceContact\UpdatePlaceContactRequest;
 use App\Models\CarOffice;
+use App\Models\City;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class CarOfficeController extends Controller
@@ -13,27 +19,31 @@ class CarOfficeController extends Controller
 
     public function index(): View
     {
-        $carOffices = CarOffice::latest()->get();
+
+        $carOffices = CarOffice::latest()->with(['user', 'city'])->get();
+
+        $daysOfWeek = DaysOfWeekEnum::getDaysForSelect();
+        $users = User::all();
+        $cities = City::all();
+
 
         return view(
             'dashboard.pages.carOffice.index',
-            compact('carOffices')
+            compact([
+                'carOffices',
+                'daysOfWeek',
+                'users',
+                'cities',
+            ])
         );
     }
 
 
-    public function create(): View
+    public function store(StoreCarOfficeRequest $carOfficeRequest, StorePlaceContactRequest $placeContactRequest): RedirectResponse
     {
-        return view(
-            'dashboard.pages.carOffice.create',
-        );
-    }
 
-
-    public function store(Request $request): RedirectResponse
-    {
-        // Store CarOffice
-        $carOffice = CarOffice::create($request->validated());
+        $carOffice = CarOffice::create($carOfficeRequest->validated());
+        $carOffice->placeContact()->create($placeContactRequest->validated());
 
 
         // Add Image to CarOffice
@@ -45,36 +55,19 @@ class CarOfficeController extends Controller
 
     }
 
-
-    public function show(CarOffice $carOffice): View
-    {
-        return view(
-            'dashboard.pages.carOffice.show',
-            compact('carOffice')
-        );
-    }
-
-
-    public function edit(CarOffice $carOffice): View
-    {
-        return view(
-            'dashboard.pages.carOffice.edit',
-            compact('carOffice')
-        );
-    }
-
-
-    public function update(Request $request, CarOffice $carOffice): RedirectResponse
+    public function update(UpdateCarOfficeRequest $carOfficeRequest, UpdatePlaceContactRequest $placeContactRequest, CarOffice $carOffice): RedirectResponse
     {
         // Update CarOffice
-        $carOffice->update($request->validated());
+        $carOffice->update($carOfficeRequest->validated());
+
+        $carOffice->placeContact()->update($placeContactRequest->validated());
 
 
         // Edit Image for  CarOffice if exist
-        $request->hasFile('image') &&
-            $carOffice
-                ->addMediaFromRequest('image')
-                ->toMediaCollection('CarOffice');
+        $carOfficeRequest->hasFile('image') &&
+        $carOffice
+            ->addMediaFromRequest('image')
+            ->toMediaCollection('CarOffice');
 
         return back();
     }
@@ -83,6 +76,8 @@ class CarOfficeController extends Controller
     public function destroy(CarOffice $carOffice): RedirectResponse
     {
         // Delete CarOffice
+        $carOffice->placeContact()->delete();
+
         $carOffice->delete();
 
         return back();

@@ -14,6 +14,8 @@ return new class extends Migration {
             $table->string('phone_number');
             $table->string('latitude');
             $table->string('longitude');
+            $table->string('facebook_url');
+            $table->string('instagram_url');
 
             $table->time('open_at');
             $table->time('close_at');
