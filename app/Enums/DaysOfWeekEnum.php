@@ -18,23 +18,35 @@ enum DaysOfWeekEnum: int
     case SAT = 6;
 
 
+    public static function getDaysForSelect(): array
+    {
+        return [
+            self::SUN->value => self::SUN->getHumanName(),
+            self::MON->value => self::MON->getHumanName(),
+            self::TUE->value => self::TUE->getHumanName(),
+            self::WED->value => self::WED->getHumanName(),
+            self::THU->value => self::THU->getHumanName(),
+            self::FRI->value => self::FRI->getHumanName(),
+            self::SAT->value => self::SAT->getHumanName(),
+        ];
+    }
+
     /**
      * @return string
      */
     public function getHumanName(): string
     {
-
-//        DaysOfWeekEnum::FRI->getHumanName()
-
-
         return match ($this) {
-            self::SUN => 'sunday',
-            self::MON => 'monday',
-            self::TUE => 'TUE',
-            self::WED => 'WED',
-            self::THU => 'THU',
-            self::FRI => 'FRI',
-            self::SAT => 'SAT',
+            self::SUN => 'Sunday',
+            self::MON => 'Monday',
+            self::TUE => 'Tuesday',
+            self::WED => 'Wednesday',
+            self::THU => 'Thursday',
+            self::FRI => 'Friday',
+            self::SAT => 'Saturday',
         };
     }
+
+
 }
+
