@@ -13,7 +13,7 @@ class HotelBookingResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            
+
             'room_number' => $this->room_number,
 
             'escorts_number' => $this->escorts_number,
@@ -23,8 +23,8 @@ class HotelBookingResource extends JsonResource
             "status" => $this->status,
 
             "user" => UserResource::make($this->whenLoaded('user')),
-            "hotel" => HotelResource::make($this->whenLoadedRelation('hotelRoomType.hotel'))
-
+            "hotel" => HotelResource::make($this->whenLoadedRelation('hotel')),
+            "room_type" => RoomTypeResource::make($this->whenLoadedRelation('roomType'))
         ];
     }
 }

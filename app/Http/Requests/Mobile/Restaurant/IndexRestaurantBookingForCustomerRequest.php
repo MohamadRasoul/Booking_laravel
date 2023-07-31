@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Requests\Mobile\Hotel;
+namespace App\Http\Requests\Mobile\Restaurant;
 
 use App\Enums\BookingStatusEnum;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Enum;
 
-class IndexHotelBookingForUserRequest extends FormRequest
+class IndexRestaurantBookingForCustomerRequest extends FormRequest
 {
     public function rules(): array
     {
         return [
             "include" => ['nullable', 'string'],
             "filter.status" => ['integer', new Enum(BookingStatusEnum::class)],
-            'filter.hotel_id' => ['integer', 'exists:hotels,id']
+            'filter.restaurant_id' => ['integer', 'exists:restaurants,id']
         ];
     }
 

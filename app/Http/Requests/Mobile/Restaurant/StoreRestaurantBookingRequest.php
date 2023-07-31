@@ -20,7 +20,9 @@ class StoreRestaurantBookingRequest extends FormRequest
             "escorts_number" => ['nullable', 'integer'],
 
             "booking_datetime" => ['required', 'date', 'after:now'],
-            "restaurant_table_type_id" => ['required', 'exists:restaurant_table_type,id']
+
+            'restaurant_id' => ['required', 'exists:restaurants,id'],
+            'table_type_id' => ['required', 'exists:table_types,id'],
         ];
     }
 

@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Mobile\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Mobile\Restaurant\IndexRestaurantBookingForUserRequest;
+use App\Http\Requests\Mobile\Restaurant\IndexRestaurantBookingForCustomerRequest;
 use App\Http\Requests\Mobile\Restaurant\StoreRestaurantBookingRequest;
 use App\Http\Resources\RestaurantBookingResource;
 use App\Models\RestaurantBooking;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\AllowedInclude;
@@ -22,7 +21,7 @@ class RestaurantBookingController extends Controller
         $this->userAuth = Auth::guard('api_user')->user();
     }
 
-    public function indexForUser(IndexRestaurantBookingForUserRequest $request)
+    public function indexForCustomer(IndexRestaurantBookingForCustomerRequest $request)
     {
         // Get Data with filter
 
@@ -35,6 +34,10 @@ class RestaurantBookingController extends Controller
                 'user',
                 AllowedInclude::relationship("restaurantTableType.restaurant")
             )
+            ->with([
+                'restaurant',
+                'tableType'
+            ])
             ->get();
 
         // Return Response

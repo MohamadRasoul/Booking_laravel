@@ -3,7 +3,8 @@
 namespace Database\Factories;
 
 use App\Enums\BookingStatusEnum;
-use App\Models\HotelRoomType;
+use App\Models\Hotel;
+use App\Models\RoomType;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -23,7 +24,8 @@ class HotelBookingFactory extends Factory
             "status" => $this->faker->randomElement(BookingStatusEnum::values()),
 
             "user_id" => User::inRandomOrder()->first()->id,
-            "hotel_room_type_id" => HotelRoomType::inRandomOrder()->first()->id,
+            "hotel_id" => Hotel::inRandomOrder()->first()->id,
+            "room_type_id" => RoomType::inRandomOrder()->first()->id,
         ];
     }
 }

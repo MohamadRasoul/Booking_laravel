@@ -19,6 +19,7 @@ class CarBooking extends Model //implements HasMedia
     //use InteractsWithMedia;
 
     protected $fillable = [
+        'status',
         'car_number',
         'color',
         'manufacture_company',
@@ -29,7 +30,9 @@ class CarBooking extends Model //implements HasMedia
         'latitude_to',
         'longitude_to',
         'booking_datetime',
-        'office_car_type_id'
+        'user_id',
+        'car_office_id',
+        'car_type_id',
     ];
 
     protected $hidden = ['created_at', 'updated_at'];
@@ -41,9 +44,14 @@ class CarBooking extends Model //implements HasMedia
     ];
 
     ########## Relations ##########
-    public function officeCarType(): BelongsTo
+    public function carOffice(): BelongsTo
     {
-        return $this->belongsTo(OfficeCarType::class);
+        return $this->belongsTo(CarOffice::class);
+    }
+
+    public function carType(): BelongsTo
+    {
+        return $this->belongsTo(CarType::class);
     }
 
     public function user(): BelongsTo

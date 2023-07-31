@@ -20,7 +20,9 @@ class StoreHotelBookingRequest extends FormRequest
             "escorts_number" => ['nullable', 'integer'],
 
             "booking_datetime" => ['required', 'date', 'after:now'],
-            "hotel_room_type_id" => ['required', 'exists:hotel_room_type,id']
+
+            'hotel_id' => ['required', 'exists:hotels,id'],
+            'room_type_id' => ['required', 'exists:room_types,id',],
         ];
     }
 

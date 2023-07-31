@@ -2,9 +2,14 @@
 
 namespace App\Http\Resources;
 
+use App\Models\CarBooking;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+
+/**
+ * @mixin CarBooking
+ */
 class CarBookingResource extends JsonResource
 {
     public function toArray(Request $request): array
@@ -24,7 +29,8 @@ class CarBookingResource extends JsonResource
             "booking_datetime" => $this->booking_datetime,
             "status" => $this->status,
             "user" => UserResource::make($this->whenLoaded('user')),
-            "car_office" => CarOfficeResource::make($this->whenLoadedRelation('officeCarType.carOffice'))
+            "car_office" => CarOfficeResource::make($this->whenLoadedRelation('carOffice')),
+            "car_type" => CarTypeResource::make($this->whenLoadedRelation('carType'))
         ];
     }
 }

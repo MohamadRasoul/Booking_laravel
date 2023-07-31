@@ -14,6 +14,9 @@ class PlaceContact extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        'facebook_url',
+        'instagram_url',
+        'about',
         'address',
         'phone_number',
         'latitude',
@@ -21,6 +24,8 @@ class PlaceContact extends Model
         'open_at',
         'close_at',
         'open_days',
+        'placeContactable_id',
+        'placeContactable_type'
     ];
 
     protected $casts = [

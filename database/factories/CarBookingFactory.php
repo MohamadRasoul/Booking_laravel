@@ -3,7 +3,8 @@
 namespace Database\Factories;
 
 use App\Enums\BookingStatusEnum;
-use App\Models\OfficeCarType;
+use App\Models\CarOffice;
+use App\Models\CarType;
 use App\Models\User;
 use Faker\Provider\Fakecar;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -34,7 +35,8 @@ class CarBookingFactory extends Factory
             "status" => $this->faker->randomElement(BookingStatusEnum::values()),
 
             "user_id" => User::inRandomOrder()->first()->id,
-            "office_car_type_id" => OfficeCarType::inRandomOrder()->first()->id,
+            "car_office_id" => CarOffice::inRandomOrder()->first()->id,
+            "car_type_id" => CarType::inRandomOrder()->first()->id,
         ];
     }
 }

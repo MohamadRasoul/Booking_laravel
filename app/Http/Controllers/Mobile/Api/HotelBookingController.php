@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Mobile\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Mobile\Hotel\IndexHotelBookingForUserRequest;
+use App\Http\Requests\Mobile\Hotel\IndexHotelBookingForCustomerRequest;
 use App\Http\Requests\Mobile\Hotel\StoreHotelBookingRequest;
 use App\Http\Resources\HotelBookingResource;
 use App\Models\HotelBooking;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\AllowedInclude;
@@ -23,7 +22,7 @@ class HotelBookingController extends Controller
     }
 
 
-    public function indexForUser(IndexHotelBookingForUserRequest $request)
+    public function indexForCustomer(IndexHotelBookingForCustomerRequest $request)
     {
         // Get Data with filter
 
@@ -36,6 +35,10 @@ class HotelBookingController extends Controller
                 'user',
                 AllowedInclude::relationship("hotelRoomType.hotel")
             )
+            ->with([
+                'hotel',
+                'roomType'
+            ])
             ->get();
 
         // Return Response

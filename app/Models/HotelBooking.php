@@ -26,8 +26,10 @@ class HotelBooking extends Model //implements HasMedia
         'escorts_number',
         'description',
         'booking_datetime',
+        'status',
         'user_id',
-        'hotel_room_type_id'
+        'hotel_id',
+        'room_type_id'
     ];
 
     protected $attributes = [
@@ -35,9 +37,15 @@ class HotelBooking extends Model //implements HasMedia
     ];
 
     ########## Relations ##########
-    public function hotelRoomType(): BelongsTo
+
+    public function hotel(): BelongsTo
     {
-        return $this->belongsTo(HotelRoomType::class);
+        return $this->belongsTo(Hotel::class);
+    }
+
+    public function roomType(): BelongsTo
+    {
+        return $this->belongsTo(RoomType::class);
     }
 
     public function user(): BelongsTo

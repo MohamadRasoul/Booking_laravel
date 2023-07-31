@@ -20,10 +20,13 @@ class RestaurantBooking extends Model //implements HasMedia
 
     protected $fillable = [
         'table_number',
+        'escorts_number',
         'description',
         'booking_datetime',
+        'status',
         'user_id',
-        'restaurant_table_type_id'
+        'restaurant_id',
+        'table_type_id',
     ];
 
     protected $attributes = [
@@ -34,9 +37,14 @@ class RestaurantBooking extends Model //implements HasMedia
 
 
     ########## Relations ##########
-    public function restaurantTableType(): BelongsTo
+    public function restaurant(): BelongsTo
     {
-        return $this->belongsTo(RestaurantTableType::class);
+        return $this->belongsTo(Restaurant::class);
+    }
+
+    public function tableType(): BelongsTo
+    {
+        return $this->belongsTo(TableType::class);
     }
 
     public function user(): BelongsTo

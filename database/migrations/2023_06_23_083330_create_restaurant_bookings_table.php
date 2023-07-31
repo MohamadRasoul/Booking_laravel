@@ -1,6 +1,7 @@
 <?php
 
-use App\Models\RestaurantTableType;
+use App\Models\Restaurant;
+use App\Models\TableType;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -25,7 +26,8 @@ return new class extends Migration {
             ######## Foreign keys  ########
 
             $table->foreignIdFor(User::class)->constrained();
-            $table->foreignIdFor(RestaurantTableType::class)->constrained('restaurant_table_type');
+            $table->foreignIdFor(Restaurant::class)->constrained('restaurant_table_type');
+            $table->foreignIdFor(TableType::class)->constrained('restaurant_table_type');
 
 
             $table->timestamps();

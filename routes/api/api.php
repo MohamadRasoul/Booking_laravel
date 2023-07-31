@@ -20,7 +20,8 @@ Route::group([
 
 
 Route::group([
-    "prefix" => "user"
+    "prefix" => "user",
+    "middleware" => "auth:api_user"
 ], function () {
     require __DIR__ . '/user/user.php';
 });

@@ -25,7 +25,8 @@ class RestaurantBookingResource extends JsonResource
             "status" => $this->status,
 
             "user" => UserResource::make($this->whenLoaded('user')),
-            "restaurant" => RestaurantResource::make($this->whenLoadedRelation('restaurantTableType.restaurant'))
+            "restaurant" => RestaurantResource::make($this->whenLoadedRelation('restaurant')),
+            "table_type" => TableTypeResource::make($this->whenLoadedRelation('tableType')),
         ];
     }
 }

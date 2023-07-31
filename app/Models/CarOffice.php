@@ -20,7 +20,7 @@ class CarOffice extends Model implements HasMedia
 
     protected $fillable = [
         'name',
-        'admin_id',
+        'user_id',
         'city_id'
     ];
 
@@ -29,6 +29,7 @@ class CarOffice extends Model implements HasMedia
     protected $with = [
         'media'
     ];
+
 
     ########## Relations ##########
     public function user(): BelongsTo

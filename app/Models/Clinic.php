@@ -25,7 +25,7 @@ class Clinic extends Model implements HasMedia
         'experience_years',
         'session_duration',
         'clinic_specialization_id',
-        'admin_id',
+        'user_id',
         'city_id'
     ];
 

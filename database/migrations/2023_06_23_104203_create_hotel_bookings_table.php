@@ -1,6 +1,7 @@
 <?php
 
-use App\Models\HotelRoomType;
+use App\Models\Hotel;
+use App\Models\RoomType;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -25,7 +26,8 @@ return new class extends Migration {
             ######## Foreign keys  ########
 
             $table->foreignIdFor(User::class)->constrained();
-            $table->foreignIdFor(HotelRoomType::class)->constrained('hotel_room_type');
+            $table->foreignIdFor(Hotel::class)->constrained('hotel_room_type');
+            $table->foreignIdFor(RoomType::class)->constrained('hotel_room_type');
 
             $table->timestamps();
         });

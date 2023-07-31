@@ -19,7 +19,7 @@ Route::group([
 Route::group([
     "prefix" => "booking"
 ], function () {
-    Route::GET('getAllForUser', [Api\HotelBookingController::class, "indexForUser"]);
+    Route::GET('getAllForCustomer', [Api\HotelBookingController::class, "indexForCustomer"]);
     Route::GET('{hotelBooking}', [Api\HotelBookingController::class, "show"])->whereNumber('hotelBooking');
 
     Route::POST('', [Api\HotelBookingController::class, "store"]);
