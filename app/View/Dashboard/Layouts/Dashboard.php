@@ -2,6 +2,8 @@
 
 namespace App\View\Dashboard\Layouts;
 
+use Closure;
+use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class Dashboard extends Component
@@ -12,14 +14,17 @@ class Dashboard extends Component
      *
      * @return void
      */
-    public function __construct(public $title = null)
+    public function __construct(
+        public $title = null,
+        public $head = null
+    )
     {
     }
 
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
+     * @return View|Closure|string
      */
     public function render()
     {
