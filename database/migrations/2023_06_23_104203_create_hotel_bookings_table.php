@@ -26,8 +26,8 @@ return new class extends Migration {
             ######## Foreign keys  ########
 
             $table->foreignIdFor(User::class)->constrained();
-            $table->foreignIdFor(Hotel::class)->constrained('hotel_room_type');
-            $table->foreignIdFor(RoomType::class)->constrained('hotel_room_type');
+            $table->foreignIdFor(Hotel::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(RoomType::class)->constrained()->cascadeOnDelete();
 
             $table->timestamps();
         });

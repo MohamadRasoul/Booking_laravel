@@ -26,8 +26,8 @@ return new class extends Migration {
             ######## Foreign keys  ########
 
             $table->foreignIdFor(User::class)->constrained();
-            $table->foreignIdFor(Restaurant::class)->constrained('restaurant_table_type');
-            $table->foreignIdFor(TableType::class)->constrained('restaurant_table_type');
+            $table->foreignIdFor(Restaurant::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(TableType::class)->constrained()->cascadeOnDelete();
 
 
             $table->timestamps();
