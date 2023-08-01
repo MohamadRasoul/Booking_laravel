@@ -54,6 +54,8 @@ class CarOffice extends Model implements HasMedia
     {
         $this
             ->addMediaCollection('CarOffice')
+            ->useFallbackUrl(env('APP_URL') . '/images/default.png')
+
             ->singleFile();
     }
 
@@ -64,5 +66,4 @@ class CarOffice extends Model implements HasMedia
 
         $media->save();
     }
-
 }
