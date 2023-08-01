@@ -22,7 +22,7 @@
                                     src="{{ $restaurant->getFirstMediaUrl('Restaurant') }}" alt="#">
                             </div>
                             <div class="m-l-20 media-body align-self-center">
-                                <h4 class=" mt-2 user-name" style="">JOHAN DIO</h4>
+                                <h4 class=" mt-2 user-name" style="">{{$restaurant->name}}</h4>
                             </div>
                         </div>
                     </div>
