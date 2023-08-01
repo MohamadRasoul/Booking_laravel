@@ -151,6 +151,7 @@
 
                                             <x-dashboard-component::modal.carOffice.show-modal
                                                 :carOffice="$carOffice"
+                                                :carTypes="$carTypes"
                                             />
                                             <!-- End - Show CarOffice -->
 
