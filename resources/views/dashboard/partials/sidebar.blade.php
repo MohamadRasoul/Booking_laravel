@@ -115,7 +115,7 @@
                             <i data-feather="coffee"></i>
                             <span class="">Resturants </span></a>
                         <ul class="sidebar-submenu">
-                            <li><a class="" href="{{route('restaurant.index')}}">resturants</a></li>
+                            <li><a class="" href="{{ route('restaurant.index') }}">resturants</a></li>
                             <li><a class="" href="{{ route('restaurant.tableType.index') }}">table type</a></li>
                         </ul>
                     </li>
@@ -128,7 +128,7 @@
                             <i data-feather="home"></i>
                             <span class="">Hotel </span></a>
                         <ul class="sidebar-submenu">
-                            <li><a class="" href="index.html">hotels</a></li>
+                            <li><a class="" href="{{ route('hotel.index') }}">hotels</a></li>
                             <li><a class="" href="{{ route('hotel.roomType.index') }}">room Type</a></li>
                         </ul>
                     </li>

@@ -56,7 +56,9 @@ class Hotel extends Model implements HasMedia
     {
         $this
             ->addMediaCollection('Hotel')
+            ->useFallbackUrl(env('APP_URL'). '/images/default.png')
             ->singleFile();
+
     }
 
 

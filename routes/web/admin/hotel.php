@@ -1,7 +1,28 @@
 <?php
 
 use App\Http\Controllers\Dashboard\{RoomTypeController};
+use App\Http\Controllers\Dashboard\HotelController;
 use Illuminate\Support\Facades\Route;
+
+
+Route::group([
+], function () {
+    Route::GET("/", [HotelController::class, 'index'])->name('index');
+    // Route::GET("/{hotel}", [Hotel::class, 'show'])->name('show');
+
+    // Route::GET("/create", [Hotel::class, 'create'])->name('create');
+    Route::POST("/", [HotelController::class, 'store'])->name('store');
+
+    // Route::GET("/{hotel}/edit", [Hotel::class, 'edit'])->name('edit');
+    Route::PUT("/{hotel}", [HotelController::class, 'update'])->name('update');
+    Route::DELETE("/{hotel}", [HotelController::class, 'destroy'])->name('destroy');
+});
+
+
+
+
+
+
 
 Route::group([
     'prefix' => 'roomType',
