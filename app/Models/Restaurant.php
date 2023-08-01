@@ -55,6 +55,7 @@ class Restaurant extends Model implements HasMedia
     {
         $this
             ->addMediaCollection('Restaurant')
+            ->useFallbackUrl(env('APP_URL') . '/images/default.png')
             ->singleFile();
     }
 
