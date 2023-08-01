@@ -19,7 +19,8 @@ class UpdateCarOfficeRequest extends DashboardFormRequest
         return [
             'name' => ['nullable'],
             'image' => ['nullable'],
-
+            'car_types' => ['array', 'min:1'],
+            'car_types.*' => ['integer', 'exists:car_types,id'],
             'user_id' => ['nullable', 'exists:users,id'],
             'city_id' => ['nullable', 'exists:cities,id'],
         ];

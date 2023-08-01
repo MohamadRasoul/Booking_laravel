@@ -1,5 +1,6 @@
 @props([
 'carOffice',
+'carTypes'
 ])
 
 <div class="modal fade modal-bookmark" id="showModal_{{ $carOffice->id }}"
@@ -106,6 +107,16 @@
                                             {{ App\Enums\DaysOfWeekEnum::SAT->getHumanName() . " | "}}
                                             @break
                                     @endswitch
+                                @endforeach
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><b>car Type &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</b>
+                            </td>
+                            <td>
+                                @foreach ($carOffice->carTypes as $carType)
+                                    {{ $carType->name . ' | ' }}
                                 @endforeach
                             </td>
                         </tr>

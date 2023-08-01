@@ -18,6 +18,8 @@ class StoreCarOfficeRequest extends DashboardFormRequest
         return [
             'name' => ['required'],
             'image' => ['required'],
+            'car_types' => ['array', 'min:1'],
+            'car_types.*' => ['integer', 'exists:car_types,id'],
 
             'user_id' => ['required', 'exists:users,id'],
             'city_id' => ['required', 'exists:cities,id'],

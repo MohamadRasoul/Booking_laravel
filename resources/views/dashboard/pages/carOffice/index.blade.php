@@ -37,6 +37,7 @@
                             :daysOfWeek="$daysOfWeek"
                             :users="$users"
                             :cities="$cities"
+                            :carTypes="$carTypes"
                         />
 
                         <!-- End - Add CarOffice -->
@@ -90,6 +91,7 @@
                                                 :daysOfWeek="$daysOfWeek"
                                                 :users="$users"
                                                 :cities="$cities"
+                                                :carTypes="$carTypes"
                                             />
                                             <!-- End - Edit CarOffice -->
 
