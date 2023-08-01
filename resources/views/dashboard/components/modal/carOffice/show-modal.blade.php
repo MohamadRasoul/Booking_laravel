@@ -32,7 +32,7 @@
                                 class="m-l-20 media-body align-self-center">
                                 <h4 class=" mt-2 user-name"
                                     style=""
-                                >JOHAN DIO</h4>
+                                >{{$carOffice->name}}</h4>
                             </div>
                         </div>
                     </div>
