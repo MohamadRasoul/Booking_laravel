@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -37,6 +38,12 @@ class Clinic extends Model implements HasMedia
     protected $with = [
         'media'
     ];
+
+
+    public function clinicBookings(): HasManyThrough
+    {
+        return $this->hasManyThrough(ClinicBooking::class, ClinicSession::class);
+    }
 
     public function user(): BelongsTo
     {

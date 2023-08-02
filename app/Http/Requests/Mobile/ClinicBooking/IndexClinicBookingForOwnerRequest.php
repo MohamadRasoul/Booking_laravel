@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Requests\Mobile\Clinic;
+namespace App\Http\Requests\Mobile\ClinicBooking;
 
 use App\Enums\BookingStatusEnum;
+use Auth;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Enum;
 
-class IndexClinicBookingForUserRequest extends FormRequest
+class IndexClinicBookingForOwnerRequest extends FormRequest
 {
     public function rules(): array
     {
@@ -19,6 +20,7 @@ class IndexClinicBookingForUserRequest extends FormRequest
 
     public function authorize(): bool
     {
-        return true;
+        return $this->route('clinic')->user_id == Auth::guard('api_user')->id();
+//        return true;
     }
 }
