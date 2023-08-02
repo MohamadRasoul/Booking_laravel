@@ -4,6 +4,7 @@ namespace Database\Seeders\TestSeeder;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Filesystem\Filesystem;
 
 class TestSeeder extends Seeder
 {
@@ -12,6 +13,8 @@ class TestSeeder extends Seeder
      */
     public function run(): void
     {
+        $file = new Filesystem;
+        $file->cleanDirectory(public_path('media'));
 
 
         $this->call([
