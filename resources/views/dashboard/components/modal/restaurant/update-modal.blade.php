@@ -146,7 +146,7 @@
                             name="table_types[]" required="">
 
                             @foreach ($tableTypes as $tableType)
-                                <option @selected(!!Arr::first(old('table_types', []), fn($el) => $el == $keyTable)) value={{ $tableType->id }}>{{ $tableType->name }}
+                                <option @selected(!!Arr::first(old('table_types') ?? $restaurant->tableTypes()->allRelatedIds(), fn($el) => $el == $tableType->id)) value={{ $tableType->id }}>{{ $tableType->name }}
                                 </option>
                             @endforeach
 
