@@ -19,11 +19,30 @@ Route::group([
 Route::group([
     "prefix" => "booking"
 ], function () {
-    Route::GET('getAllForCustomer', [Api\HotelBookingController::class, "indexForCustomer"]);
-    Route::GET('{hotelBooking}', [Api\HotelBookingController::class, "show"])->whereNumber('hotelBooking');
 
-    Route::POST('', [Api\HotelBookingController::class, "store"]);
-    Route::DELETE('{hotelBooking}', [Api\HotelBookingController::class, "destroy"]);
+    Route::group([
+        "prefix" => "customer"
+    ], function () {
+        Route::GET('', [Api\HotelBookingAsCustomerController::class, "index"]);
+
+        Route::POST('', [Api\HotelBookingAsCustomerController::class, "store"]);
+
+        Route::DELETE('hotelBooking/{hotelBooking}', [Api\HotelBookingAsCustomerController::class, "destroy"])->whereNumber('hotelBooking');
+
+    });
+
+    Route::group([
+        "prefix" => "owner"
+    ], function () {
+        Route::GET('hotel/{hotel}/index', [Api\HotelBookingAsOwnerController::class, "indexByHotel"])->whereNumber('hotel');
+
+        Route::POST('hotelBooking/{hotelBooking}/accept', [Api\HotelBookingAsOwnerController::class, "accept"])->whereNumber('hotelBooking');
+
+        Route::POST('hotelBooking/{hotelBooking}/reject', [Api\HotelBookingAsOwnerController::class, "reject"])->whereNumber('hotelBooking');
+
+    });
+
+    Route::GET('{hotelBooking}', [Api\HotelBookingController::class, "show"])->whereNumber('hotelBooking');
 
 });
 

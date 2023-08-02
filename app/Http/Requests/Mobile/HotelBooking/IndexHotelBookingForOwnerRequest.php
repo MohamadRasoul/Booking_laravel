@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Requests\Mobile\Hotel;
+namespace App\Http\Requests\Mobile\HotelBooking;
 
 use App\Enums\BookingStatusEnum;
+use Auth;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Enum;
 
-class IndexHotelBookingForCustomerRequest extends FormRequest
+class IndexHotelBookingForOwnerRequest extends FormRequest
 {
     public function rules(): array
     {
@@ -19,6 +20,6 @@ class IndexHotelBookingForCustomerRequest extends FormRequest
 
     public function authorize(): bool
     {
-        return true;
+        return $this->route('hotel')->user_id == Auth::guard('api_user')->id();
     }
 }
