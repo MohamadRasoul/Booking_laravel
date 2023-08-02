@@ -18,6 +18,9 @@ class HotelSeeder extends Seeder
         Hotel::factory(10)
             ->has(PlaceContact::factory()->count(1), 'placeContact')
             ->hasAttached($roomTypes)
-            ->create();
+            ->create()
+            ->each(function ($hotel) {
+                setImage($hotel, 'Hotel', '3oZYfGc7ye0');
+            });
     }
 }
