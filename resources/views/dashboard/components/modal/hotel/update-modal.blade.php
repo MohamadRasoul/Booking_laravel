@@ -145,7 +145,7 @@
                             name="room_types[]" required="">
 
                             @foreach ($roomTypes as $roomType)
-                                <option @selected(!!Arr::first(old('room_types', []), fn($el) => $el == $keyTable)) value={{ $roomType->id }}>{{ $roomType->name }}
+                                <option @selected(!!Arr::first(old('room_types') ?? $hotel->roomTypes()->allRelatedIds(), fn($el) => $el == $roomType->id)) value={{ $roomType->id }}>{{ $roomType->name }}
                                 </option>
                             @endforeach
 
