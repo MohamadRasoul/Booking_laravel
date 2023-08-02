@@ -23,8 +23,8 @@ return new class extends Migration {
 
             ######## Foreign keys  ########
 
-            $table->foreignIdFor(User::class)->constrained();
-            $table->foreignIdFor(ClinicSession::class)->constrained();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(ClinicSession::class)->constrained()->cascadeOnDelete();
 
             $table->timestamps();
         });

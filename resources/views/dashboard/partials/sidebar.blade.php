@@ -141,7 +141,9 @@
                             <i data-feather="plus-circle"></i>
                             <span class="">Clinic </span></a>
                         <ul class="sidebar-submenu">
-                            <li><a class="" href="index.html">clinic</a></li>
+                            <li><a class="" href="{{ route('clinic.index') }}">clinic</a></li>
+                            <li><a class="" href="{{ route('clinic.clinicSpecialization.index') }}">clinic
+                                    Specialization</a></li>
                         </ul>
                     </li>
 

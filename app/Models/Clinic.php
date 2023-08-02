@@ -69,6 +69,7 @@ class Clinic extends Model implements HasMedia
     {
         $this
             ->addMediaCollection('Clinic')
+            ->useFallbackUrl(env('APP_URL') . '/images/default.png')
             ->singleFile();
     }
 

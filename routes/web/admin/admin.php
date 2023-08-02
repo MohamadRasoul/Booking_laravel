@@ -94,11 +94,11 @@ Route::group([
 });
 //
 //
-//Route::group([
-//    "prefix" => "clinic",
-//    'as' => 'clinic.'
-//], function () {
-//
-//    require __DIR__ . '/clinic.php';
-//
-//});
+Route::group([
+   "prefix" => "clinic",
+   'as' => 'clinic.'
+], function () {
+
+   require __DIR__ . '/clinic.php';
+
+});
