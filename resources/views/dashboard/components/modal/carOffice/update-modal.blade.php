@@ -138,7 +138,6 @@
                                 :="$message"></x-dashboard-component::input-error>
                         @enderror
                     </div>
-
                     {{-- Car_Type Field --}}
                     <div class="mb-3">
                         <div class="col-form-label">Car Type</div>
@@ -146,7 +145,7 @@
                             required="">
 
                             @foreach ($carTypes as $carType)
-                                <option @selected(!!Arr::first(old('car_types', []) ?? $carType->name, fn($el) => $el == $keyTable)) value={{ $carType->id }}>{{ $carType->name }}
+                                <option @selected(!!Arr::first(old('car_types') ?? $carOffice->carTypes()->allRelatedIds(), fn($el) => $el == $carType->id)) value={{ $carType->id }}>{{ $carType->name }}
                                 </option>
                             @endforeach
 
