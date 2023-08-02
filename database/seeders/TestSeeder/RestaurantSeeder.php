@@ -18,6 +18,9 @@ class RestaurantSeeder extends Seeder
         Restaurant::factory(10)
             ->has(PlaceContact::factory()->count(1), 'placeContact')
             ->hasAttached($tableTypes)
-            ->create();
+            ->create()
+            ->each(function ($restaurant) {
+                setImage($restaurant, 'Restaurant', '312299');
+            });
     }
 }

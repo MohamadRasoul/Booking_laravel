@@ -18,7 +18,11 @@ class CarOfficeSeeder extends Seeder
         CarOffice::factory(10)
             ->has(PlaceContact::factory()->count(1), 'placeContact')
             ->hasAttached($carType)
-            ->create();
+            ->create()
+            ->each(function ($carOffice) {
+                setImage($carOffice, 'CarOffice', '2102317');
+            });
+
 
     }
 }
