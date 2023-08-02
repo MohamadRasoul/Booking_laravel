@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Mobile\Restaurant;
+namespace App\Http\Requests\Mobile\RestaurantBooking;
 
 use Illuminate\Foundation\Http\FormRequest;
 

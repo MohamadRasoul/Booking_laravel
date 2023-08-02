@@ -19,11 +19,29 @@ Route::group([
 Route::group([
     "prefix" => "booking"
 ], function () {
-    Route::GET('getAllForCustomer', [Api\RestaurantBookingController::class, "indexForCustomer"]);
-    Route::GET('{restaurantBooking}', [Api\RestaurantBookingController::class, "show"])->whereNumber('restaurantBooking');
+    Route::group([
+        "prefix" => "customer"
+    ], function () {
+        Route::GET('', [Api\RestaurantBookingAsCustomerController::class, "index"]);
 
-    Route::POST('', [Api\RestaurantBookingController::class, "store"]);
-    Route::DELETE('{restaurantBooking}', [Api\RestaurantBookingController::class, "destroy"]);
+        Route::POST('', [Api\RestaurantBookingAsCustomerController::class, "store"]);
+
+        Route::DELETE('restaurantBooking/{restaurantBooking}', [Api\RestaurantBookingAsCustomerController::class, "destroy"])->whereNumber('restaurantBooking');
+
+    });
+
+    Route::group([
+        "prefix" => "owner"
+    ], function () {
+        Route::GET('restaurant/{restaurant}/index', [Api\RestaurantBookingAsOwnerController::class, "indexByRestaurant"])->whereNumber('restaurant');
+
+        Route::POST('restaurantBooking/{restaurantBooking}/accept', [Api\RestaurantBookingAsOwnerController::class, "accept"])->whereNumber('restaurantBooking');
+
+        Route::POST('restaurantBooking/{restaurantBooking}/reject', [Api\RestaurantBookingAsOwnerController::class, "reject"])->whereNumber('restaurantBooking');
+
+    });
+
+    Route::GET('{restaurantBooking}', [Api\RestaurantBookingController::class, "show"])->whereNumber('restaurantBooking');
 
 });
 
