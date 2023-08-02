@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Mobile\Car;
+namespace App\Http\Requests\Mobile\CarBooking;
 
 use Illuminate\Foundation\Http\FormRequest;
 
