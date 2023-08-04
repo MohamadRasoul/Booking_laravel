@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Enums\BookingStatusEnum;
-use F9Web\LaravelDeletable\Traits\RestrictsDeletion;
+use App\Enums\ClinicVisitTypeEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,12 +14,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class ClinicBooking extends Model //implements HasMedia
 {
     use HasFactory;
-    use RestrictsDeletion;
 
     //use InteractsWithMedia;
 
 
     protected $fillable = [
+        'status',
+        'user_id',
         'clinic_visit_type',
         'case_description',
         'booking_datetime',
@@ -31,8 +32,10 @@ class ClinicBooking extends Model //implements HasMedia
         'status' => BookingStatusEnum::PENDING,
     ];
 
-    protected $casts = [];
-
+    protected $casts = [
+        'status' => BookingStatusEnum::class,
+        'clinic_visit_type' => ClinicVisitTypeEnum::class
+    ];
 
     ########## Relations ##########
     public function user(): BelongsTo
@@ -48,13 +51,5 @@ class ClinicBooking extends Model //implements HasMedia
 
     ########## Libraries ##########
 
-    public function isDeletable(): bool
-    {
-        if ((int)$this->status !== BookingStatusEnum::PENDING->value) {
-            return $this->denyDeletionReason('this booking is finish... you can\'t deleted');
-        }
-
-        return true;
-    }
 
 }

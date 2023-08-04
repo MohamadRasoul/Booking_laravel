@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Requests\Mobile\Car;
+namespace App\Http\Requests\Mobile\CarBooking;
 
 use App\Enums\BookingStatusEnum;
+use Auth;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Enum;
 
-class IndexCarBookingForCustomerRequest extends FormRequest
+class IndexCarBookingForOwnerRequest extends FormRequest
 {
     public function rules(): array
     {
@@ -19,6 +20,7 @@ class IndexCarBookingForCustomerRequest extends FormRequest
 
     public function authorize(): bool
     {
-        return true;
+        return $this->route('carOffice')->user_id == Auth::guard('api_user')->id();
+//        return true;
     }
 }

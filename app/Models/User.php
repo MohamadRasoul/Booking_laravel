@@ -49,6 +49,28 @@ class User extends Authenticatable implements JWTSubject
     ];
 
     ########## Relations ##########
+
+    public function carOffices(): HasMany
+    {
+        return $this->hasMany(CarOffice::class);
+    }
+
+    public function restaurants(): HasMany
+    {
+        return $this->hasMany(Restaurant::class);
+    }
+
+    public function hotels(): HasMany
+    {
+        return $this->hasMany(Hotel::class);
+    }
+
+    public function clinics(): HasMany
+    {
+        return $this->hasMany(Clinic::class);
+    }
+
+
     public function carBookings(): HasMany
     {
         return $this->hasMany(CarBooking::class);

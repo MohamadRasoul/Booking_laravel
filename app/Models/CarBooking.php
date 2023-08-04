@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Enums\BookingStatusEnum;
-use F9Web\LaravelDeletable\Traits\RestrictsDeletion;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,7 +13,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class CarBooking extends Model //implements HasMedia
 {
     use HasFactory;
-    use RestrictsDeletion;
 
     //use InteractsWithMedia;
 
@@ -37,7 +35,9 @@ class CarBooking extends Model //implements HasMedia
 
     protected $hidden = ['created_at', 'updated_at'];
 
-    protected $casts = [];
+    protected $casts = [
+        'status' => BookingStatusEnum::class,
+    ];
 
     protected $attributes = [
         'status' => BookingStatusEnum::PENDING,
@@ -59,14 +59,5 @@ class CarBooking extends Model //implements HasMedia
         return $this->belongsTo(User::class);
     }
 
-    ########## Libraries ##########
-    public function isDeletable(): bool
-    {
-        if ((int)$this->status !== BookingStatusEnum::PENDING->value) {
-            return $this->denyDeletionReason('this booking is finish... you can\'t deleted');
-        }
-
-        return true;
-    }
 
 }

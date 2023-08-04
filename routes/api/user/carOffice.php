@@ -19,11 +19,30 @@ Route::group([
 Route::group([
     "prefix" => "booking"
 ], function () {
-    Route::GET('getAllForCustomer', [Api\CarBookingController::class, "indexForCustomer"]);
-    Route::GET('{carBooking}', [Api\CarBookingController::class, "show"])->whereNumber('carBooking');
 
-    Route::POST('', [Api\CarBookingController::class, "store"]);
-    Route::DELETE('{carBooking}', [Api\CarBookingController::class, "destroy"])->whereNumber('carBooking');
+    Route::group([
+        "prefix" => "customer"
+    ], function () {
+        Route::GET('', [Api\CarBookingAsCustomerController::class, "index"]);
+
+        Route::POST('', [Api\CarBookingAsCustomerController::class, "store"]);
+
+        Route::DELETE('carBooking/{carBooking}', [Api\CarBookingAsCustomerController::class, "destroy"])->whereNumber('carBooking');
+
+    });
+
+    Route::group([
+        "prefix" => "owner"
+    ], function () {
+        Route::GET('carOffice/{carOffice}/index', [Api\CarBookingAsOwnerController::class, "indexByCarOffice"]);
+
+        Route::POST('carBooking/{carBooking}/accept', [Api\CarBookingAsOwnerController::class, "accept"])->whereNumber('carBooking');
+
+        Route::POST('carBooking/{carBooking}/reject', [Api\CarBookingAsOwnerController::class, "reject"])->whereNumber('carBooking');
+
+    });
+
+    Route::GET('{carBooking}', [Api\CarBookingController::class, "show"])->whereNumber('carBooking');
 
 });
 

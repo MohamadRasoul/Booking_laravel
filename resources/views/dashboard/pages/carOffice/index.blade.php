@@ -66,7 +66,9 @@
                                         <td>
                                             <img style="background-size: cover;
                                                         object-fit: cover;
-                                                        width: 100px;"
+                                                        width: 100px;
+                                                        aspect-ratio: 3/2;
+                                                        aspect-ratio: 3/2;"
                                                  src="{{ $carOffice->getFirstMediaUrl('CarOffice') }}"
                                                  alt="">
                                         </td>

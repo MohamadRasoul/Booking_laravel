@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Mobile\Clinic;
+namespace App\Http\Requests\Mobile\ClinicBooking;
 
 use App\Enums\ClinicVisitTypeEnum;
 use Illuminate\Foundation\Http\FormRequest;

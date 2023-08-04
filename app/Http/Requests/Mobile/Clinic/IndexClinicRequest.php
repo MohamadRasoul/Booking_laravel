@@ -10,7 +10,6 @@ class IndexClinicRequest extends FormRequest
     {
         return [
             "include" => ['nullable', 'string'],
-            "filter.is_open" => ['integer', 'bool'],
             'filter.clinic_specialization_id' => ['integer', 'exists:clinic_specializations,id'],
             'filter.admin_id' => ['integer', 'exists:admins,id'],
             'filter.city_id' => ['integer', 'exists:cities,id'],

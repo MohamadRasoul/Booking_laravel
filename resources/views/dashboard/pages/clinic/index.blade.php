@@ -22,19 +22,20 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header"
-                        style="
+                         style="
                                 display: flex;
                                 justify-content: space-between;
                                 align-items: center;">
                         <h5>Clinics</h5>
                         <button class="btn btn-primary" type="button" data-bs-toggle="modal"
-                            data-bs-target="#addClinicModal">Add
+                                data-bs-target="#addClinicModal">Add
                         </button>
 
                         <!-- Start - Add clinic -->
 
                         <x-dashboard-component::modal.clinic.add-modal :daysOfWeek="$daysOfWeek" :users="$users"
-                            :cities="$cities" :clinicSpecializations="$clinicSpecializations" />
+                                                                       :cities="$cities"
+                                                                       :clinicSpecializations="$clinicSpecializations"/>
 
                         <!-- End - Add clinic -->
 
@@ -44,107 +45,110 @@
                         <div class="table-responsive product-table">
                             <table class="display" id="basic-2">
                                 <thead>
-                                    <tr>
-                                        <th>Image</th>
-                                        <th>Name</th>
-                                        <th>PhoneNumber</th>
-                                        <th>Owner</th>
-                                        <th>City</th>
-                                        <th>Created date</th>
-                                        <th>Action</th>
-                                    </tr>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>PhoneNumber</th>
+                                    <th>Owner</th>
+                                    <th>City</th>
+                                    <th>Created date</th>
+                                    <th>Action</th>
+                                </tr>
                                 </thead>
                                 <tbody>
 
 
-                                    @foreach ($clinics as $clinic)
-                                        <tr>
-                                            <td>
-                                                <img style="background-size: cover;
+                                @foreach ($clinics as $clinic)
+                                    <tr>
+                                        <td>
+                                            <img style="background-size: cover;
                                                         object-fit: cover;
-                                                        width: 100px;"
-                                                    src="{{ $clinic->getFirstMediaUrl('Clinic') }}" alt="">
-                                            </td>
-                                            <td>
-                                                <h6> {{ $clinic->name }} </h6>
-                                                <span> {{ $clinic->placeContact->about }} </span>
-                                            </td>
-                                            <td>{{ $clinic->placeContact->phone_number }} </td>
-                                            <td>{{ $clinic->user->name }}</td>
-                                            <td>{{ $clinic->city->name }}</td>
-                                            <td>{{ $clinic->created_at->diffForHumans() }}</td>
-                                            <td class='align-content-end w-25'>
+                                                        width: 100px;
+                                                        aspect-ratio: 3/2;"
+                                                 src="{{ $clinic->getFirstMediaUrl('Clinic') }}" alt="">
+                                        </td>
+                                        <td>
+                                            <h6> {{ $clinic->name }} </h6>
+                                            <span> {{ $clinic->placeContact->about }} </span>
+                                        </td>
+                                        <td>{{ $clinic->placeContact->phone_number }} </td>
+                                        <td>{{ $clinic->user->name }}</td>
+                                        <td>{{ $clinic->city->name }}</td>
+                                        <td>{{ $clinic->created_at->diffForHumans() }}</td>
+                                        <td class='align-content-end w-25'>
 
-                                                <!-- Start - Edit clinic -->
-                                                <button class="btn" type="button" data-bs-toggle="modal"
+                                            <!-- Start - Edit clinic -->
+                                            <button class="btn" type="button" data-bs-toggle="modal"
                                                     data-bs-target="#editClinicModal_{{ $clinic->id }}">
-                                                    <i class="fa fa-edit text-primary fs-5"></i>
-                                                </button>
+                                                <i class="fa fa-edit text-primary fs-5"></i>
+                                            </button>
 
-                                                <x-dashboard-component::modal.clinic.update-modal :clinic="$clinic"
-                                                    :daysOfWeek="$daysOfWeek" :users="$users" :cities="$cities"
-                                                    :clinicSpecializations="$clinicSpecializations" />
-                                                <!-- End - Edit clinic -->
+                                            <x-dashboard-component::modal.clinic.update-modal :clinic="$clinic"
+                                                                                              :daysOfWeek="$daysOfWeek"
+                                                                                              :users="$users"
+                                                                                              :cities="$cities"
+                                                                                              :clinicSpecializations="$clinicSpecializations"/>
+                                            <!-- End - Edit clinic -->
 
 
-                                                <!-- Start - Delete clinic  -->
-                                                <button class="btn" type="button" data-bs-toggle="modal"
+                                            <!-- Start - Delete clinic  -->
+                                            <button class="btn" type="button" data-bs-toggle="modal"
                                                     data-original-title="test"
                                                     data-bs-target="#deleteModal_{{ $clinic->id }}">
-                                                    <i class="fa fa-trash-o text-danger fs-5">
-                                                    </i>
-                                                </button>
+                                                <i class="fa fa-trash-o text-danger fs-5">
+                                                </i>
+                                            </button>
 
-                                                <div class="modal fade" id="deleteModal_{{ $clinic->id }}"
-                                                    tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
-                                                    aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="deleteModalLabel">Delete
-                                                                    clinic</h5>
-                                                                <button class="btn-close" type="button"
+                                            <div class="modal fade" id="deleteModal_{{ $clinic->id }}"
+                                                 tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+                                                 aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="deleteModalLabel">Delete
+                                                                clinic</h5>
+                                                            <button class="btn-close" type="button"
                                                                     data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">Are You sure to delete clinic
-                                                                ?
-                                                            </div>
+                                                        </div>
+                                                        <div class="modal-body">Are You sure to delete clinic
+                                                            ?
+                                                        </div>
 
-                                                            <div class="modal-footer">
-                                                                <form style="display:initial"
-                                                                    action={{ route('clinic.destroy', $clinic) }}
+                                                        <div class="modal-footer">
+                                                            <form style="display:initial"
+                                                                  action={{ route('clinic.destroy', $clinic) }}
                                                                     method="POST">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button class="btn btn-primary" type="button"
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button class="btn btn-primary" type="button"
                                                                         data-bs-dismiss="modal">Close
-                                                                    </button>
-                                                                    <button class="btn btn-danger" type="submit">
-                                                                        Delete
-                                                                    </button>
-                                                                </form>
+                                                                </button>
+                                                                <button class="btn btn-danger" type="submit">
+                                                                    Delete
+                                                                </button>
+                                                            </form>
 
-                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- End - Delete clinic -->
+                                            </div>
+                                            <!-- End - Delete clinic -->
 
 
-                                                <!-- Start - Show clinic  -->
-                                                <button class="btn" type="button" data-bs-toggle="modal"
+                                            <!-- Start - Show clinic  -->
+                                            <button class="btn" type="button" data-bs-toggle="modal"
                                                     data-original-title="test"
                                                     data-bs-target="#showModal_{{ $clinic->id }}">
-                                                    <i class="fa fa-eye text-success fs-5">
-                                                    </i>
-                                                </button>
+                                                <i class="fa fa-eye text-success fs-5">
+                                                </i>
+                                            </button>
 
-                                                <x-dashboard-component::modal.clinic.show-modal :clinic="$clinic" />
-                                                <!-- End - Show clinic -->
+                                            <x-dashboard-component::modal.clinic.show-modal :clinic="$clinic"/>
+                                            <!-- End - Show clinic -->
 
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                        </td>
+                                    </tr>
+                                @endforeach
 
                                 </tbody>
                             </table>
