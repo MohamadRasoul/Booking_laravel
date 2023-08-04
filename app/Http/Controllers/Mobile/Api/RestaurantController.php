@@ -46,7 +46,7 @@ class RestaurantController extends Controller
 
     public function show(Restaurant $restaurant)
     {
-        $restaurant->load('admin', 'city', 'tableTypes');
+        $restaurant->load('user', 'city', 'tableTypes');
         // Return Response
         return response()->success(
             'this is your restaurant',

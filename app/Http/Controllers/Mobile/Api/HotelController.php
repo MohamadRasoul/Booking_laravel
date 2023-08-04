@@ -41,7 +41,7 @@ class HotelController extends Controller
     public function show(Hotel $hotel)
     {
 
-        $hotel->load('admin', 'city', 'roomTypes');
+        $hotel->load('user', 'city', 'roomTypes');
 
         // Return Response
         return response()->success(
