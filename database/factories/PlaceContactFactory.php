@@ -19,8 +19,8 @@ class PlaceContactFactory extends Factory
             'about' => $this->faker->text(),
             'address' => $this->faker->address(),
             'phone_number' => $this->faker->phoneNumber(),
-            'latitude' => $this->faker->latitude(),
-            'longitude' => $this->faker->longitude(),
+            'latitude' => $this->faker->latitude(32.317200, 37.319856),
+            'longitude' => $this->faker->longitude(35.728028, 42.376389),
             'facebook_url' => $this->faker->url(),
             'instagram_url' => $this->faker->url(),
 
