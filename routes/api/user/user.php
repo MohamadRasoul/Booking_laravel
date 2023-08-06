@@ -56,6 +56,17 @@ Route::group([
 
 });
 
+Route::group([
+    "prefix" => "favorite"
+], function () {
+
+    Route::Post('/{model_Number}/model/{id}/modelNumber/assignFavorite', [Api\FavoriteController::class, "assignFavorite"]);
+    Route::get('getRestaurantFavorites',[Api\FavoriteController::class, "getRestaurantFavorites"]);
+    Route::get('getHotelFavorites',[Api\FavoriteController::class, "getHotelFavorites"]);
+    Route::get('getCarOfficeFavorites',[Api\FavoriteController::class, "getCarOfficeFavorites"]);
+    Route::get('getClinicFavorites',[Api\FavoriteController::class, "getClinicFavorites"]);
+});
+
 
 
 

@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Services\MediaService;
 use App\Traits\PlaceContactRelationTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -12,12 +13,18 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Maize\Markable\Markable;
+use Maize\Markable\Models\Favorite;
+
+
 
 class CarOffice extends Model implements HasMedia
 {
     use HasFactory;
     use PlaceContactRelationTrait;
     use InteractsWithMedia;
+    use Markable;
+
 
     protected $fillable = [
         'name',
@@ -28,8 +35,23 @@ class CarOffice extends Model implements HasMedia
     protected $casts = [];
 
     protected $with = [
-        'media'
+        'media',
+        'favorites'
     ];
+
+
+    protected function favoriteCount(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => Favorite::count($this),
+        );
+    }
+
+    
+    protected static $marks = [
+        Favorite::class,
+    ];
+
 
 
     ########## Relations ##########

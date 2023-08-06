@@ -4,6 +4,8 @@ namespace App\Http\Resources;
 
 use App\Models\Restaurant;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Maize\Markable\Models\Favorite;
+
 
 
 /**
@@ -23,7 +25,7 @@ class RestaurantResource extends JsonResource
             "id" => $this->id,
             "name" => $this->name,
             "about" => $this->about,
-
+            'favorite_count' => $this->favorite_count,
             'image' => $this->whenLoaded('media', ImageResource::make($this->getFirstMedia('Restaurant'))),
             'place_contact' => PlaceContactResource::make($this->whenLoaded('placeContact')),
             'user' => AdminResource::make($this->whenLoaded('user')),

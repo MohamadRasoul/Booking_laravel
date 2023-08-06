@@ -4,10 +4,10 @@ use App\Http\Controllers\Mobile\Api;
 use Illuminate\Support\Facades\Route;
 
 
-Route::group([
-], function () {
+Route::group([], function () {
     Route::GET('', [Api\RestaurantController::class, "index"]);
     Route::GET('{restaurant}', [Api\RestaurantController::class, "show"])->whereNumber('restaurant');
+    Route::POST('{restaurant}/assignFavourite', [Api\RestaurantController::class, "assignFavourite"]);
 });
 
 Route::group([
@@ -27,7 +27,6 @@ Route::group([
         Route::POST('', [Api\RestaurantBookingAsCustomerController::class, "store"]);
 
         Route::DELETE('restaurantBooking/{restaurantBooking}', [Api\RestaurantBookingAsCustomerController::class, "destroy"])->whereNumber('restaurantBooking');
-
     });
 
     Route::group([
@@ -38,17 +37,7 @@ Route::group([
         Route::POST('restaurantBooking/{restaurantBooking}/accept', [Api\RestaurantBookingAsOwnerController::class, "accept"])->whereNumber('restaurantBooking');
 
         Route::POST('restaurantBooking/{restaurantBooking}/reject', [Api\RestaurantBookingAsOwnerController::class, "reject"])->whereNumber('restaurantBooking');
-
     });
 
     Route::GET('{restaurantBooking}', [Api\RestaurantBookingController::class, "show"])->whereNumber('restaurantBooking');
-
 });
-
-
-
-
-
-
-
-

@@ -37,7 +37,7 @@ class CarOfficeController extends Controller
 
     public function show(CarOffice $carOffice)
     {
-        $carOffice->load('admin', 'city', 'carTypes');
+        $carOffice->load('user', 'city', 'carTypes');
         // Return Response
         return response()->success(
             'this is your carOffice',
@@ -46,5 +46,4 @@ class CarOfficeController extends Controller
             ]
         );
     }
-
 }

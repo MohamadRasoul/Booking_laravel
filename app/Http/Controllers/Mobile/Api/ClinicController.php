@@ -40,7 +40,7 @@ class ClinicController extends Controller
 
     public function show(Clinic $clinic)
     {
-        $clinic->load('admin', 'city', 'clinicSpecialization', 'clinicSessions');
+        $clinic->load('user', 'city', 'clinicSpecialization', 'clinicSessions');
         // Return Response
         return response()->success(
             'this is your clinic',
@@ -49,5 +49,4 @@ class ClinicController extends Controller
             ]
         );
     }
-
 }
