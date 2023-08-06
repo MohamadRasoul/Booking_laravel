@@ -27,14 +27,13 @@ class HotelBookingAsOwnerController extends Controller
                 'user',
                 'hotel',
                 'roomType'
-            ])
-            ->get();
+            ]);
 
         // Return Response
         return response()->success(
             'this is all HotelBookings',
             [
-                "hotelBookings" => HotelBookingResource::collection($hotelBookings),
+                "hotelBookings" => HotelBookingResource::collection((clone $hotelBookings)->simplePaginate(request()->perPage ?? $hotelBookings->count())),
             ]
         );
     }

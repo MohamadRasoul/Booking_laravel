@@ -18,14 +18,14 @@ class RoomTypeController extends Controller
             ->allowedFilters([
                 "name",
                 AllowedFilter::exact('hotel_id', 'hotels.id')
-            ])->get();
+            ]);
 
 
         // Return Response
         return response()->success(
             'this is all RoomTypes',
             [
-                "roomTypes" => RoomTypeResource::collection($roomTypes),
+                "roomTypes" => RoomTypeResource::collection((clone $roomTypes)->simplePaginate(request()->perPage ?? $roomTypes->count())),
             ]
         );
     }

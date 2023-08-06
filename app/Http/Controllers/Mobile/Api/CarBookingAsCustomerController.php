@@ -34,15 +34,14 @@ class CarBookingAsCustomerController extends Controller
                 'user',
                 'carOffice',
                 'carType'
-            ])
-            ->get();
+            ]);
 
 
         // Return Response
         return response()->success(
             'this is all CarBookings',
             [
-                "carBookings" => CarBookingResource::collection($carBookings),
+                "carBookings" => CarBookingResource::collection((clone $carBookings)->simplePaginate(request()->perPage ?? $carBookings->count())),
             ]
         );
     }

@@ -18,14 +18,14 @@ class CarTypeController extends Controller
             ->allowedFilters([
                 "name",
                 AllowedFilter::exact('car_office_id', 'carOffices.id')
-            ])->get();
+            ]);
 
 
         // Return Response
         return response()->success(
             'this is all CarTypes',
             [
-                "carTypes" => CarTypeResource::collection($carTypes),
+                "carTypes" => CarTypeResource::collection((clone $carTypes)->simplePaginate(request()->perPage ?? $carTypes->count())),
             ]
         );
     }

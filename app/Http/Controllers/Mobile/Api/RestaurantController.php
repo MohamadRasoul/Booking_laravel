@@ -24,15 +24,14 @@ class RestaurantController extends Controller
                 'tableTypes',
                 'user',
             ])
-            ->with('city')
-            ->get();
+            ->with('city');
 
 
         // Return Response
         return response()->success(
             'this is all Restaurants',
             [
-                "restaurants" => RestaurantResource::collection($restaurants),
+                "restaurants" => RestaurantResource::collection((clone $restaurants)->simplePaginate(request()->perPage ?? $restaurants->count())),
             ]
         );
     }

@@ -24,15 +24,14 @@ class HotelController extends Controller
                 'roomTypes',
                 'user',
             ])
-            ->with('city')
-            ->get();
+            ->with('city');
 
 
         // Return Response
         return response()->success(
             'this is all Hotels',
             [
-                "hotels" => HotelResource::collection($hotels),
+                "hotels" => HotelResource::collection((clone $hotels)->simplePaginate(request()->perPage ?? $hotels->count())),
             ]
         );
     }

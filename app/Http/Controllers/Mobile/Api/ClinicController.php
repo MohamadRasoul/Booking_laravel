@@ -26,15 +26,14 @@ class ClinicController extends Controller
                 'clinicSessions',
                 'user',
             ])
-            ->with('city', 'clinicSpecialization')
-            ->get();
+            ->with('city', 'clinicSpecialization');
 
 
         // Return Response
         return response()->success(
             'this is all Clinics',
             [
-                "clinics" => ClinicResource::collection($clinics),
+                "clinics" => ClinicResource::collection((clone $clinics)->simplePaginate(request()->perPage ?? $clinics->count())),
             ]
         );
     }

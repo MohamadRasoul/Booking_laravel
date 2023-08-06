@@ -19,14 +19,14 @@ class TableTypeController extends Controller
                 "name",
                 AllowedFilter::exact('restaurant_id', 'restaurants.id')
 
-            ])->get();
+            ]);
 
 
         // Return Response
         return response()->success(
             'this is all TableTypes',
             [
-                "tableTypes" => TableTypeResource::collection($tableTypes),
+                "tableTypes" => TableTypeResource::collection((clone $tableTypes)->simplePaginate(request()->perPage ?? $tableTypes->count())),
             ]
         );
     }

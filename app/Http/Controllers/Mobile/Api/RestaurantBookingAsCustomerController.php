@@ -35,14 +35,13 @@ class RestaurantBookingAsCustomerController extends Controller
                 'user',
                 'restaurant',
                 'tableType'
-            ])
-            ->get();
+            ]);
 
         // Return Response
         return response()->success(
             'this is all RestaurantBookings',
             [
-                "restaurantBookings" => RestaurantBookingResource::collection($restaurantBookings),
+                "restaurantBookings" => RestaurantBookingResource::collection((clone $restaurantBookings)->simplePaginate(request()->perPage ?? $restaurantBookings->count())),
             ]
         );
     }

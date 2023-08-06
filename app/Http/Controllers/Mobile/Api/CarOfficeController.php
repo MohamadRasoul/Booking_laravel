@@ -13,7 +13,6 @@ class CarOfficeController extends Controller
     public function index()
     {
         // Get Data with filter
-
         $carOffices = QueryBuilder::for(CarOffice::class)
             ->allowedFilters([
                 "name",
@@ -24,14 +23,13 @@ class CarOfficeController extends Controller
                 'carTypes',
                 'user',
             ])
-            ->with('city')
-            ->get();
+            ->with('city');
 
         // Return Response
         return response()->success(
             'this is all CarOffices',
             [
-                "carOffices" => CarOfficeResource::collection($carOffices),
+                "carOffices" => CarOfficeResource::collection((clone $carOffices)->simplePaginate(request()->perPage ?? $carOffices->count())),
             ]
         );
     }

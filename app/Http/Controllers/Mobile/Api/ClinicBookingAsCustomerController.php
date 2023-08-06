@@ -36,14 +36,14 @@ class ClinicBookingAsCustomerController extends Controller
                 'user',
                 'clinicSession',
                 AllowedInclude::relationship("clinicSession.clinic")
-            ])->get();
+            ]);
 
 
         // Return Response
         return response()->success(
             'this is all ClinicBookings',
             [
-                "clinicBookings" => ClinicBookingResource::collection($clinicBookings),
+                "clinicBookings" => ClinicBookingResource::collection((clone $clinicBookings)->simplePaginate(request()->perPage ?? $clinicBookings->count())),
             ]
         );
     }

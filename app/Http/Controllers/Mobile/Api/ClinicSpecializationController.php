@@ -16,14 +16,14 @@ class ClinicSpecializationController extends Controller
         $clinicSpecializations = QueryBuilder::for(ClinicSpecialization::class)
             ->allowedFilters([
                 "name",
-            ])->get();
+            ]);
 
 
         // Return Response
         return response()->success(
             'this is all ClinicSpecializations',
             [
-                "clinicSpecializations" => ClinicSpecializationResource::collection($clinicSpecializations),
+                "clinicSpecializations" => ClinicSpecializationResource::collection((clone $clinicSpecializations)->simplePaginate(request()->perPage ?? $clinicSpecializations->count())),
             ]
         );
     }

@@ -16,14 +16,14 @@ class ClinicSessionController extends Controller
         $clinicSessions = QueryBuilder::for(ClinicSession::class)
             ->allowedFilters([
                 AllowedFilter::exact('clinic_id'),
-            ])->get();
+            ]);
 
 
         // Return Response
         return response()->success(
             'this is all ClinicSessions',
             [
-                "clinicSessions" => ClinicSessionResource::collection($clinicSessions),
+                "clinicSessions" => ClinicSessionResource::collection((clone $clinicSessions)->simplePaginate(request()->perPage ?? $clinicSessions->count())),
             ]
         );
     }
