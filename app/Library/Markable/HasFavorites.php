@@ -24,7 +24,7 @@ trait HasFavorites
             $builder->addSelect([
                 'user_is_favorite' =>
                     Favorite::selectRaw('COUNT(markable_favorites.id)')
-                        ->whereColumn('restaurants.id', '=', 'markable_favorites.markable_id')
+                        ->whereColumn(Self::getTableName() . '.id', '=', 'markable_favorites.markable_id')
                         ->where('markable_favorites.markable_type', Self::class)
                         ->where('markable_favorites.user_id', $user_id)
             ]);
@@ -35,6 +35,11 @@ trait HasFavorites
 
             $builder->withCount('favorites');
         });
+    }
+
+    public static function getTableName()
+    {
+        return (new self())->getTable();
     }
 
 }

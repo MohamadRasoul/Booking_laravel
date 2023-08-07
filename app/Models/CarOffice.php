@@ -39,6 +39,7 @@ class CarOffice extends Model implements HasMedia, CanVisit
 
     protected static function boot()
     {
+        
         parent::boot();
         static::addGlobalScope('withTotalVisitCount', function (Builder $builder) {
             $builder->withTotalVisitCount();

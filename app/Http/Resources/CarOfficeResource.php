@@ -18,7 +18,9 @@ class CarOfficeResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'favorite_count' => $this->favorite_count,
+            'favorite_count' => $this->whenHas('favorites_count', $this->favorites_count),
+            'user_is_favorite' => $this->whenHas('user_is_favorite', $this->user_is_favorite),
+
             'visit_count_total' => $this->whenHas('visit_count_total', $this->visit_count_total),
 
             'image' => $this->whenLoaded('media', ImageResource::make($this->getFirstMedia('CarOffice'))),
