@@ -37,6 +37,7 @@ class CarOfficeController extends Controller
 
     public function show(CarOffice $carOffice)
     {
+        $carOffice->visit();
         $carOffice->load('user', 'city', 'carTypes');
         // Return Response
         return response()->success(

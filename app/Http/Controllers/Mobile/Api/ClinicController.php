@@ -40,6 +40,8 @@ class ClinicController extends Controller
 
     public function show(Clinic $clinic)
     {
+        $clinic->visit();
+
         $clinic->load('user', 'city', 'clinicSpecialization', 'clinicSessions');
         // Return Response
         return response()->success(

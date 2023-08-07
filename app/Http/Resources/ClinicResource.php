@@ -16,6 +16,7 @@ class ClinicResource extends JsonResource
             'name' => $this->name,
             'about' => $this->about,
             'favorite_count' => $this->favorite_count,
+            'visit_count_total' => $this->whenHas('visit_count_total', $this->visit_count_total),
             'experience_years' => $this->experience_years,
             'session_duration' => $this->session_duration,
             'image' => $this->whenLoaded('media', ImageResource::make($this->getFirstMedia('Clinic'))),

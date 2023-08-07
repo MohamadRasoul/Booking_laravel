@@ -11,6 +11,7 @@
         "php": "^8.1",
         "archtechx/enums": "^0.3.2",
         "bepsvpt/blurhash": "^2.1",
+        "coderflexx/laravisit": "^1.4",
         "f9webltd/laravel-deletable": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
         "kutia-software-company/larafirebase": "^1.3",

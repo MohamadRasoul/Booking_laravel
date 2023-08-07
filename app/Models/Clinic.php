@@ -4,27 +4,33 @@ namespace App\Models;
 
 use App\Services\MediaService;
 use App\Traits\PlaceContactRelationTrait;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Coderflex\Laravisit\Concerns\CanVisit;
+use Coderflex\Laravisit\Concerns\HasVisits;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Maize\Markable\Markable;
+use Maize\Markable\Models\Favorite;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Maize\Markable\Markable;
-use Maize\Markable\Models\Favorite;
 
-class Clinic extends Model implements HasMedia
+class Clinic extends Model implements HasMedia, CanVisit
 {
     use HasFactory;
     use PlaceContactRelationTrait;
     use InteractsWithMedia;
     use Markable;
+    use HasVisits;
 
 
-
+    protected static $marks = [
+        Favorite::class,
+    ];
     protected $fillable = [
         'name',
         'about',
@@ -34,30 +40,21 @@ class Clinic extends Model implements HasMedia
         'user_id',
         'city_id'
     ];
-
     protected $casts = [
         'open_days' => 'array'
     ];
-
-
     protected $with = [
         'media',
         'favorites'
     ];
 
-
-    protected function favoriteCount(): Attribute
+    protected static function boot()
     {
-        return Attribute::make(
-            get: fn () => Favorite::count($this),
-        );
+        parent::boot();
+        static::addGlobalScope('withTotalVisitCount', function (Builder $builder) {
+            $builder->withTotalVisitCount();
+        });
     }
-
-
-    protected static $marks = [
-        Favorite::class,
-    ];
-
 
     public function clinicBookings(): HasManyThrough
     {
@@ -79,17 +76,13 @@ class Clinic extends Model implements HasMedia
         return $this->belongsTo(ClinicSpecialization::class);
     }
 
-
-    ########## Relations ##########
-
     public function clinicSessions(): HasMany
     {
         return $this->hasMany(ClinicSession::class);
     }
 
 
-    ########## Libraries ##########
-
+    ########## Relations ##########
 
     public function registerMediaCollections(): void
     {
@@ -99,10 +92,20 @@ class Clinic extends Model implements HasMedia
             ->singleFile();
     }
 
+
+    ########## Libraries ##########
+
     public function registerMediaConversions(Media $media = null): void
     {
         $media->setCustomProperty('hash', MediaService::hashImage($media->getPath()));
 
         $media->save();
+    }
+
+    protected function favoriteCount(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => Favorite::count($this),
+        );
     }
 }
