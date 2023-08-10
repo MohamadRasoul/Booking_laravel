@@ -36,7 +36,7 @@ class FavoriteController extends Controller
                 $clinic = Clinic::FindOrFail($id);
                 Favorite::toggle($clinic, $user);
                 break;
-            case 3: // CarOffice
+            case 4: // CarOffice
                 $carOffice = CarOffice::FindOrFail($id);
                 Favorite::toggle($carOffice, $user);
                 break;
