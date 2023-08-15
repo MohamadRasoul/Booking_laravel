@@ -160,22 +160,23 @@
                         @enderror
                     </div>
 
-                       {{-- Car_Type Field --}}
-                       <div class="mb-3">
+                    {{-- Car_Type Field --}}
+                    <div class="mb-3">
                         <div class="col-form-label">Car Type</div>
                         <select class="js-example-placeholder-multiple col-sm-12" multiple="multiple"
-                            name="car_types[]" required="">
+                                name="car_types[]" required="">
 
                             @foreach ($carTypes as $carType)
-                                <option @selected(!!Arr::first(old('car_types', []), fn($el) => $el == $keyTable)) value={{ $carType->id }}>{{ $carType->name }}
+                                <option
+                                    @selected(!!Arr::first(old('car_types', []), fn($el) => $el == $carType->id)) value={{ $carType->id }}>{{ $carType->name }}
                                 </option>
                             @endforeach
 
                         </select>
 
                         @error('car_types')
-                            <x-dashboard-component::input-error field="car_types"
-                                :="$message"></x-dashboard-component::input-error>
+                        <x-dashboard-component::input-error field="car_types"
+                                                            :="$message"></x-dashboard-component::input-error>
                         @enderror
                     </div>
 

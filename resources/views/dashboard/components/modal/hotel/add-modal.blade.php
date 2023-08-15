@@ -1,8 +1,9 @@
 @props(['daysOfWeek', 'users', 'cities', 'roomTypes'])
 
 
-<div class="modal fade modal-bookmark" id="addhotelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade modal-bookmark" id="addhotelModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
 
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -12,17 +13,17 @@
             </div>
             <div class="modal-body">
                 <form class="form-bookmark " action="{{ route('hotel.store') }}" method='post'
-                    enctype="multipart/form-data">
+                      enctype="multipart/form-data">
                     @csrf
 
                     {{-- Name Field --}}
                     <div class="mb-3">
                         <label class="col-form-label" for="recipient-name">Name</label>
                         <input class="form-control" type="text" name='name' value="{{ old('name') }}"
-                            required="">
+                               required="">
                         @error('name')
-                            <x-dashboard-component::input-error field="name"
-                                :="$message"></x-dashboard-component::input-error>
+                        <x-dashboard-component::input-error field="name"
+                                                            :="$message"></x-dashboard-component::input-error>
                         @enderror
                     </div>
 
@@ -35,8 +36,8 @@
                                                 </textarea>
 
                         @error('about')
-                            <x-dashboard-component::input-error field="about"
-                                :="$message"></x-dashboard-component::input-error>
+                        <x-dashboard-component::input-error field="about"
+                                                            :="$message"></x-dashboard-component::input-error>
                         @enderror
                     </div>
 
@@ -45,10 +46,10 @@
                     <div class="mb-3">
                         <label class="col-form-label" for="recipient-name">Address</label>
                         <input class="form-control" type="text" name='address' value="{{ old('address') }}"
-                            required="">
+                               required="">
                         @error('address')
-                            <x-dashboard-component::input-error field="address"
-                                :="$message"></x-dashboard-component::input-error>
+                        <x-dashboard-component::input-error field="address"
+                                                            :="$message"></x-dashboard-component::input-error>
                         @enderror
                     </div>
 
@@ -57,10 +58,10 @@
                     <div class="mb-3">
                         <label class="col-form-label" for="recipient-name">Phone Number</label>
                         <input class="form-control" type="text" name='phone_number' value="{{ old('phone_number') }}"
-                            required="">
+                               required="">
                         @error('phone_number')
-                            <x-dashboard-component::input-error field="phone_number"
-                                :="$message"></x-dashboard-component::input-error>
+                        <x-dashboard-component::input-error field="phone_number"
+                                                            :="$message"></x-dashboard-component::input-error>
                         @enderror
                     </div>
 
@@ -71,10 +72,10 @@
                         <div class="mb-3 mt-0  p-l-0 col-md-6">
                             <label class="col-form-label" for="recipient-name">Latitude</label>
                             <input class="form-control" type="text" name='latitude' value="{{ old('latitude') }}"
-                                required="">
+                                   required="">
                             @error('latitude')
-                                <x-dashboard-component::input-error field="latitude"
-                                    :="$message"></x-dashboard-component::input-error>
+                            <x-dashboard-component::input-error field="latitude"
+                                                                :="$message"></x-dashboard-component::input-error>
                             @enderror
                         </div>
 
@@ -83,10 +84,10 @@
                         <div class="mb-3 mt-0 p-r-0 col-md-6">
                             <label class="col-form-label" for="recipient-name">Longitude</label>
                             <input class="form-control" type="text" name='longitude' value="{{ old('longitude') }}"
-                                required="">
+                                   required="">
                             @error('longitude')
-                                <x-dashboard-component::input-error field="longitude"
-                                    :="$message"></x-dashboard-component::input-error>
+                            <x-dashboard-component::input-error field="longitude"
+                                                                :="$message"></x-dashboard-component::input-error>
                             @enderror
                         </div>
                     </div>
@@ -99,10 +100,10 @@
                             <label class="col-form-label" for="recipient-name">Open At</label>
 
                             <input class="form-control" type="time" name='open_at' value="{{ old('open_at') }}"
-                                required="">
+                                   required="">
                             @error('open_at')
-                                <x-dashboard-component::input-error field="open_at"
-                                    :="$message"></x-dashboard-component::input-error>
+                            <x-dashboard-component::input-error field="open_at"
+                                                                :="$message"></x-dashboard-component::input-error>
                             @enderror
                         </div>
 
@@ -112,10 +113,10 @@
 
                             <label class="col-form-label" for="recipient-name">Close At</label>
                             <input class="form-control" type="time" name='close_at' value="{{ old('close_at') }}"
-                                required="">
+                                   required="">
                             @error('close_at')
-                                <x-dashboard-component::input-error field="close_at"
-                                    :="$message"></x-dashboard-component::input-error>
+                            <x-dashboard-component::input-error field="close_at"
+                                                                :="$message"></x-dashboard-component::input-error>
                             @enderror
                         </div>
                     </div>
@@ -124,18 +125,19 @@
                     <div class="mb-3">
                         <div class="col-form-label">Open Days</div>
                         <select class="js-example-placeholder-multiple col-sm-12" multiple="multiple" name="open_days[]"
-                            required="">
+                                required="">
 
                             @foreach ($daysOfWeek as $keyDay => $day)
-                                <option @selected(!!Arr::first(old('open_days', []), fn($el) => $el == $keyDay)) value={{ $keyDay }}>{{ $day }}
+                                <option
+                                    @selected(!!Arr::first(old('open_days', []), fn($el) => $el == $keyDay)) value={{ $keyDay }}>{{ $day }}
                                 </option>
                             @endforeach
 
                         </select>
 
                         @error('open_days')
-                            <x-dashboard-component::input-error field="open_days"
-                                :="$message"></x-dashboard-component::input-error>
+                        <x-dashboard-component::input-error field="open_days"
+                                                            :="$message"></x-dashboard-component::input-error>
                         @enderror
                     </div>
 
@@ -144,18 +146,19 @@
                     <div class="mb-3">
                         <div class="col-form-label">Room Type</div>
                         <select class="js-example-placeholder-multiple col-sm-12" multiple="multiple"
-                            name="room_types[]" required="">
+                                name="room_types[]" required="">
 
                             @foreach ($roomTypes as $roomType)
-                                <option @selected(!!Arr::first(old('table_types', []), fn($el) => $el == $keyTable)) value={{ $roomType->id }}>{{ $roomType->name }}
+                                <option
+                                    @selected(!!Arr::first(old('table_types', []), fn($el) => $el == $roomType->id)) value={{ $roomType->id }}>{{ $roomType->name }}
                                 </option>
                             @endforeach
 
                         </select>
 
                         @error('room_types')
-                            <x-dashboard-component::input-error field="room_types"
-                                :="$message"></x-dashboard-component::input-error>
+                        <x-dashboard-component::input-error field="room_types"
+                                                            :="$message"></x-dashboard-component::input-error>
                         @enderror
                     </div>
 
@@ -164,11 +167,11 @@
                     <div class="mb-3">
                         <label class="col-form-label" for="recipient-name">Image</label>
                         <input class="form-control" type="file" aria-label="image example" name='image'
-                            required="">
+                               required="">
 
                         @error('image')
-                            <x-dashboard-component::input-error field="image"
-                                :="$message"></x-dashboard-component::input-error>
+                        <x-dashboard-component::input-error field="image"
+                                                            :="$message"></x-dashboard-component::input-error>
                         @enderror
                     </div>
 
@@ -180,10 +183,10 @@
                             <label class="col-form-label" for="recipient-name">FaceBook
                                 Url</label>
                             <input class="form-control" type="text" name='facebook_url'
-                                value="{{ old('facebook_url') }}" required="">
+                                   value="{{ old('facebook_url') }}" required="">
                             @error('facebook_url')
-                                <x-dashboard-component::input-error field="facebook_url"
-                                    :="$message"></x-dashboard-component::input-error>
+                            <x-dashboard-component::input-error field="facebook_url"
+                                                                :="$message"></x-dashboard-component::input-error>
                             @enderror
                         </div>
 
@@ -192,10 +195,10 @@
                         <div class="mb-3 mt-0 p-r-0 col-md-6">
                             <label class="col-form-label" for="recipient-name">Instagram</label>
                             <input class="form-control" type="text" name='instagram_url'
-                                value="{{ old('instagram_url') }}" required="">
+                                   value="{{ old('instagram_url') }}" required="">
                             @error('instagram_url')
-                                <x-dashboard-component::input-error field="instagram_url"
-                                    :="$message"></x-dashboard-component::input-error>
+                            <x-dashboard-component::input-error field="instagram_url"
+                                                                :="$message"></x-dashboard-component::input-error>
                             @enderror
                         </div>
                     </div>
@@ -218,8 +221,8 @@
                             </select>
 
                             @error('user_id')
-                                <x-dashboard-component::input-error field="user_id"
-                                    :="$message"></x-dashboard-component::input-error>
+                            <x-dashboard-component::input-error field="user_id"
+                                                                :="$message"></x-dashboard-component::input-error>
                             @enderror
                         </div>
 
@@ -238,15 +241,15 @@
                             </select>
 
                             @error('city_id')
-                                <x-dashboard-component::input-error field="city_id"
-                                    :="$message"></x-dashboard-component::input-error>
+                            <x-dashboard-component::input-error field="city_id"
+                                                                :="$message"></x-dashboard-component::input-error>
                             @enderror
                         </div>
                     </div>
 
 
                     <div class="modal-footer"
-                        style="border-top: 0;
+                         style="border-top: 0;
                                                              padding: 0;">
                         <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close
                         </button>
