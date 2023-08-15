@@ -21,8 +21,8 @@ class UpdateCarOfficeRequest extends DashboardFormRequest
             'image' => ['nullable'],
             'car_types' => ['array', 'min:1'],
             'car_types.*' => ['integer', 'exists:car_types,id'],
-            'user_id' => ['nullable', 'exists:users,id'],
-            'city_id' => ['nullable', 'exists:cities,id'],
+            'user_id' => ['required', 'exists:users,id'],
+            'city_id' => ['required', 'exists:cities,id'],
         ];
     }
 
@@ -34,6 +34,7 @@ class UpdateCarOfficeRequest extends DashboardFormRequest
 
     public function validated($key = null, $default = null)
     {
+
         return Arr::whereNotNull([
             'name' => $this->name,
 

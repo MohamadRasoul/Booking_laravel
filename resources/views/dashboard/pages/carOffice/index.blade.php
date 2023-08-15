@@ -87,7 +87,6 @@
                                                     data-bs-target="#editCarOfficeModal_{{ $carOffice->id }}">
                                                 <i class="fa fa-edit text-primary fs-5"></i>
                                             </button>
-
                                             <x-dashboard-component::modal.carOffice.update-modal
                                                 :carOffice="$carOffice"
                                                 :daysOfWeek="$daysOfWeek"

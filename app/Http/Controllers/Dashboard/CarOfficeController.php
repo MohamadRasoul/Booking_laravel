@@ -66,10 +66,9 @@ class CarOfficeController extends Controller
         $carOffice->carTypes()->sync($carOfficeRequest->car_types);
 
 
-
         // Edit Image for  CarOffice if exist
         $carOfficeRequest->hasFile('image') &&
-            $carOffice
+        $carOffice
             ->addMediaFromRequest('image')
             ->toMediaCollection('CarOffice');
 
