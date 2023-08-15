@@ -51,8 +51,7 @@ Route::group([
     "prefix" => "notification"
 ], function () {
 
-    Route::GET('/', [Api\NotificationController::class, "index"]);
-    Route::GET('{city}', [Api\NotificationController::class, "show"]);
+    Route::GET('', [Api\NotificationController::class, "index"]);
 
 });
 
@@ -61,10 +60,10 @@ Route::group([
 ], function () {
 
     Route::Post('/{model_Number}/model/{id}/modelNumber/assignFavorite', [Api\FavoriteController::class, "assignFavorite"]);
-    Route::get('getRestaurantFavorites',[Api\FavoriteController::class, "getRestaurantFavorites"]);
-    Route::get('getHotelFavorites',[Api\FavoriteController::class, "getHotelFavorites"]);
-    Route::get('getCarOfficeFavorites',[Api\FavoriteController::class, "getCarOfficeFavorites"]);
-    Route::get('getClinicFavorites',[Api\FavoriteController::class, "getClinicFavorites"]);
+    Route::get('getRestaurantFavorites', [Api\FavoriteController::class, "getRestaurantFavorites"]);
+    Route::get('getHotelFavorites', [Api\FavoriteController::class, "getHotelFavorites"]);
+    Route::get('getCarOfficeFavorites', [Api\FavoriteController::class, "getCarOfficeFavorites"]);
+    Route::get('getClinicFavorites', [Api\FavoriteController::class, "getClinicFavorites"]);
 });
 
 
