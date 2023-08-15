@@ -14,7 +14,7 @@ class ClinicResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'about' => $this->about,
+            'about' => $this->placeContact->about,
             'favorite_count' => $this->whenHas('favorites_count', $this->favorites_count),
             'user_is_favorite' => $this->whenHas('user_is_favorite', $this->user_is_favorite),
 
