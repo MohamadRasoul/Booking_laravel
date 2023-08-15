@@ -104,7 +104,7 @@ class FavoriteController extends Controller
     public function getCarOfficeFavorites()
     {
         $user = Auth::guard('api_user')->user();
-        $carOffices = QueryBuilder::for(Hotel::whereHasFavorite(
+        $carOffices = QueryBuilder::for(CarOffice::whereHasFavorite(
             $user
         ))
             ->allowedIncludes([
@@ -113,11 +113,8 @@ class FavoriteController extends Controller
             ])
             ->with([
                 'city',
-                'favorites'
             ])
             ->get();
-
-
         // Return Response
         return response()->success(
             'this is all carOffices',
@@ -140,7 +137,7 @@ class FavoriteController extends Controller
             ])
             ->with([
                 'city',
-                'favorites'
+                'clinicSpecialization'
             ])
             ->get();
 
