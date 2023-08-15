@@ -14,7 +14,13 @@ class CreateSessionForClinic
         $open_at = $clinicContact->open_at;
         $close_at = $clinicContact->close_at;
 
-        $start_sessions = CarbonPeriod::since($open_at)->minutes($clinic->session_duration)->until($close_at)->toArray();
+
+        $start_sessions =
+            CarbonPeriod::since($open_at)->minutes($clinic->session_duration)->until($close_at)
+            ->toArray();
+
+
+
         foreach ($start_sessions as $key => $start_session) {
             $clinic->clinicSessions()->create([
                 'slot_of_day' => $key + 1,

@@ -11,7 +11,6 @@ use App\Models\CarOffice;
 use App\Models\Clinic;
 use App\Models\Hotel;
 use App\Models\Restaurant;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maize\Markable\Models\Favorite;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -45,6 +44,7 @@ class FavoriteController extends Controller
             'your favorite is toggled success'
         );
     }
+
     public function getRestaurantFavorites()
     {
 
@@ -107,7 +107,6 @@ class FavoriteController extends Controller
         $carOffices = QueryBuilder::for(Hotel::whereHasFavorite(
             $user
         ))
-
             ->allowedIncludes([
                 'tableTypes',
                 'user',
@@ -123,7 +122,7 @@ class FavoriteController extends Controller
         return response()->success(
             'this is all carOffices',
             [
-                "carOffice" => CarOfficeResource::collection($carOffices),
+                "carOffices" => CarOfficeResource::collection($carOffices),
             ]
         );
     }
@@ -135,7 +134,6 @@ class FavoriteController extends Controller
         $clinics = QueryBuilder::for(Clinic::whereHasFavorite(
             $user
         ))
-
             ->allowedIncludes([
                 'tableTypes',
                 'user',
@@ -151,7 +149,7 @@ class FavoriteController extends Controller
         return response()->success(
             'this is all clinics',
             [
-                "clinic" => ClinicResource::collection($clinics),
+                "clinics" => ClinicResource::collection($clinics),
             ]
         );
     }
