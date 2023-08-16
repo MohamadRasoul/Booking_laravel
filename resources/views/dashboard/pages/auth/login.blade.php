@@ -2,17 +2,15 @@
     <!-- Session Status -->
 
 
-
-
     <div>
         <div>
             <a class="logo text-start" href="index.html"><img class="img-fluid for-light"
-                    src={{ asset('dashboard/assets/images/logo/login.png') }} alt="looginpage" /><img
+                                                              src={{ asset('dashboard/assets/images/logo/login.png') }} alt="looginpage"/><img
                     class="img-fluid for-dark" src={{ asset('dashboard/assets/images/logo/logo_dark.png') }}
-                    alt="looginpage" /></a>
+                    alt="looginpage"/></a>
         </div>
         <div class="login-main">
-            <form class="theme-form"method="POST" action="{{ route('login') }}">
+            <form class="theme-form" method="POST" action="{{ route('login') }}">
                 @csrf
 
                 <h4>Sign in to account</h4>
@@ -41,7 +39,7 @@
 
                     <!-- Remember Me -->
                     <div class="p-0 checkbox">
-                        <input id="checkbox1" type="checkbox" name="remember" />
+                        <input id="checkbox1" type="checkbox" name="remember"/>
                         <label class="text-muted" for="checkbox1">Remember password</label>
                     </div>
 
@@ -51,13 +49,12 @@
                     </button>
                 </div>
 
-                <p class="mt-4 mb-0 text-center">
-                    Don't have account?<a class="ms-2" href={{ route('register') }}>Create Account</a>
-                </p>
+                {{--                <p class="mt-4 mb-0 text-center">--}}
+                {{--                    Don't have account?<a class="ms-2" href={{ route('register') }}>Create Account</a>--}}
+                {{--                </p>--}}
             </form>
         </div>
     </div>
-
 
 
 </x-dashboard-layout::auth>
