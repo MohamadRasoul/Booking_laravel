@@ -18,7 +18,7 @@ class HotelBookingAsOwnerController extends Controller
     public function indexByHotel(IndexHotelBookingForOwnerRequest $request, Hotel $hotel)
     {
         // Get Data with filter
-        $hotelBookings = QueryBuilder::for($hotel->hotelBookings())
+        $hotelBookings = QueryBuilder::for($hotel->hotelBookings()->latest())
             ->allowedFilters([
                 "status",
                 AllowedFilter::exact('hotel_id'),

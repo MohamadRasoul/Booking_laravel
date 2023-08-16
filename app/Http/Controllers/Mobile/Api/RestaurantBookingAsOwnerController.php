@@ -19,8 +19,7 @@ class RestaurantBookingAsOwnerController extends Controller
     public function indexByRestaurant(IndexRestaurantBookingForOwnerRequest $request, Restaurant $restaurant)
     {
         // Get Data with filter
-
-        $restaurantBookings = QueryBuilder::for($restaurant->restaurantBookings())
+        $restaurantBookings = QueryBuilder::for($restaurant->restaurantBookings()->latest())
             ->allowedFilters([
                 "status",
                 AllowedFilter::exact('restaurant_id',),

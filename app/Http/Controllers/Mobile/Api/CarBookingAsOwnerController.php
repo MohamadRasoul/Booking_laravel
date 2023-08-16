@@ -19,7 +19,7 @@ class CarBookingAsOwnerController extends Controller
     public function indexByCarOffice(IndexCarBookingForOwnerRequest $request, CarOffice $carOffice)
     {
         // Get Data with filter
-        $carBookings = QueryBuilder::for($carOffice->carBookings())
+        $carBookings = QueryBuilder::for($carOffice->carBookings()->latest())
             ->allowedFilters([
                 "status",
                 AllowedFilter::exact('car_office_id'),

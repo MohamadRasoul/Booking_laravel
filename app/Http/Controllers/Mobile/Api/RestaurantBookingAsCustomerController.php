@@ -26,7 +26,7 @@ class RestaurantBookingAsCustomerController extends Controller
     {
         // Get Data with filter
 
-        $restaurantBookings = QueryBuilder::for($this->userAuth->restaurantBookings())
+        $restaurantBookings = QueryBuilder::for($this->userAuth->restaurantBookings()->latest())
             ->allowedFilters([
                 "status",
                 AllowedFilter::exact('restaurant_id',),

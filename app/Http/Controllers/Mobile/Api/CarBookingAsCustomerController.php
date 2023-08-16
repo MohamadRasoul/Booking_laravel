@@ -25,7 +25,7 @@ class CarBookingAsCustomerController extends Controller
     public function index(IndexCarBookingForCustomerRequest $request)
     {
         // Get Data with filter
-        $carBookings = QueryBuilder::for($this->userAuth->carBookings())
+        $carBookings = QueryBuilder::for($this->userAuth->carBookings()->latest())
             ->allowedFilters([
                 "status",
                 AllowedFilter::exact('car_office_id'),

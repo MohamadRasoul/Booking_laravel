@@ -26,7 +26,7 @@ class HotelBookingAsCustomerController extends Controller
     {
         // Get Data with filter
 
-        $hotelBookings = QueryBuilder::for($this->userAuth->hotelBookings())
+        $hotelBookings = QueryBuilder::for($this->userAuth->hotelBookings()->latest())
             ->allowedFilters([
                 "status",
                 AllowedFilter::exact('hotel_id'),

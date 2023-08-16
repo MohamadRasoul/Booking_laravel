@@ -20,7 +20,7 @@ class ClinicBookingAsOwnerController extends Controller
     {
         // Get Data with filter
 
-        $clinicBookings = QueryBuilder::for($clinic->clinicBookings())
+        $clinicBookings = QueryBuilder::for($clinic->clinicBookings()->latest())
             ->allowedFilters([
                 "status",
                 AllowedFilter::exact('clinic_id', 'clinicSession.clinic.id'),

@@ -27,7 +27,7 @@ class ClinicBookingAsCustomerController extends Controller
     {
         // Get Data with filter
 
-        $clinicBookings = QueryBuilder::for(ClinicBooking::class)
+        $clinicBookings = QueryBuilder::for($this->userAuth->clinicBookings()->latest())
             ->allowedFilters([
                 "status",
                 AllowedFilter::exact('clinic_id', 'clinicSession.clinic.id'),
