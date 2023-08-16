@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Dashboard\{AdminController, CityController, NotificationController};
+use App\Http\Controllers\Dashboard\{AdminController, CityController, DashboardController, NotificationController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('', function () {
-    return view('dashboard.pages.dashboard');
-})->name('dashboard');
+Route::get('', [DashboardController::class, 'index'])->name('dashboard');
 
 
 Route::group([
@@ -52,8 +50,6 @@ Route::group([
 });
 
 
-
-
 Route::group([
     'prefix' => 'notification',
     'as' => 'notification.'
@@ -66,7 +62,6 @@ Route::group([
 });
 
 
-
 Route::group([
     "prefix" => "carOffice",
     'as' => 'carOffice.'
@@ -74,7 +69,6 @@ Route::group([
 
     require __DIR__ . '/carOffice.php';
 });
-
 
 
 Route::group([
@@ -95,10 +89,10 @@ Route::group([
 //
 //
 Route::group([
-   "prefix" => "clinic",
-   'as' => 'clinic.'
+    "prefix" => "clinic",
+    'as' => 'clinic.'
 ], function () {
 
-   require __DIR__ . '/clinic.php';
+    require __DIR__ . '/clinic.php';
 
 });
