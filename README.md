@@ -40,7 +40,9 @@ Additionally, it offers a feature that allows venue owners to either accept or r
 
 * [blurhash](https://github.com/bepsvpt/blurhash)
 
-* [google-translate-php](https://github.com/Stichoza/google-translate-php)
+* [laravel breeze](https://laravel.com/docs/10.x/starter-kits#breeze-and-blade)
+
+* [laravel-debugbar](https://github.com/barryvdh/laravel-debugbar)
 
 * [telescope](https://laravel.com/docs/10.x/telescope)
 
